@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/tamada/nine.svg?branch=master)](https://travis-ci.org/tamada/nine)
+[![Coverage Status](https://coveralls.io/repos/github/tamada/nine/badge.svg?branch=master)](https://coveralls.io/github/tamada/nine?branch=master)
+
 # nine
 
 以下の９つのルールが守られているかを確認するためのツール．
