@@ -9,7 +9,11 @@ import java.util.stream.Stream;
 public class LineNumbersBuilder {
     private List<LineNumber> list = new ArrayList<>();
 
-    public LineNumbersBuilder(){
+    private LineNumbersBuilder(){
+    }
+
+    public static LineNumbersBuilder create(){
+        return new LineNumbersBuilder();
     }
     
     public LineNumbers build(){

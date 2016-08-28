@@ -3,6 +3,7 @@ package com.github.nine.entities;
 import static com.github.nine.Assert.assertThrows;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.lessThan;
 import static org.junit.Assert.assertThat;
 
@@ -28,6 +29,11 @@ public class LineNumberTest {
         assertThat(ten, is(greaterThan(nine)));
         assertThat(ten, is(lessThan(eleven)));
         assertThat(ten, is(new LineNumber(10)));
+
+        LineNumber ten2 = new LineNumber(10);
+        assertThat(ten.hashCode(), is(ten2.hashCode()));
+        assertThat(ten, is(not(eleven)));
+        assertThat(ten, is(not(new Object())));
     }
 
     @Test

@@ -42,7 +42,7 @@ public class FCCVisitor extends ViolationChecker{
     }
 
     private LineNumbers getLineNumbers(){
-        return new LineNumbersBuilder().build(list.stream()
+        return LineNumbersBuilder.create().build(list.stream()
                 .map(declaration -> getLineNumber(declaration.getStartPosition())));
     }
 

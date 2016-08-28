@@ -10,12 +10,12 @@ public class LineNumbers {
     private List<LineNumber> list = new ArrayList<>();
 
     public LineNumbers(LineNumber... numbers){
-        Arrays.sort(numbers);
-        Arrays.stream(numbers).forEach(item -> list.add(item));
+        this(Arrays.stream(numbers));
     }
 
     LineNumbers(Stream<LineNumber> stream){
-        stream.forEach(item -> list.add(item));
+        stream.sorted()
+        .forEach(item -> list.add(item));
     }
 
     @Override
