@@ -9,10 +9,10 @@ import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.Type;
 
-import com.github.ninerules.entities.LineNumbers;
-import com.github.ninerules.entities.LineNumbersBuilder;
+import com.github.ninerules.entities.LineCounts;
+import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationChecker;
+import com.github.ninerules.rules.Validator;
 import com.github.ninerules.rules.ViolationType;
 
 /**
@@ -20,7 +20,7 @@ import com.github.ninerules.rules.ViolationType;
  * 
  * @author Haruaki Tamada
  */
-public class FCCVisitor extends ViolationChecker{
+public class FirstClassCollectionValidator extends Validator{
     public static final ViolationType FCC = new ViolationType("not first class collection.");
     private List<FieldDeclaration> list = new ArrayList<>();
 
@@ -41,12 +41,13 @@ public class FCCVisitor extends ViolationChecker{
         super.endVisit(node);
     }
 
-    private LineNumbers getLineNumbers(){
-        return LineNumbersBuilder.create().build(list.stream()
-                .map(declaration -> getLineNumber(declaration.getStartPosition())));
+    private LineCounts getLineNumbers(){
+        return LineCountsBuilder.create().build(list.stream()
+                .map(declaration -> startLine(declaration)));
     }
 
     private boolean isStaticAndFinal(FieldDeclaration node){
+        @SuppressWarnings("unchecked")
         List<Modifier> modifiers = node.modifiers();
         return modifiers.stream()
                 .filter(modifier -> isStaticOrFinal(modifier))

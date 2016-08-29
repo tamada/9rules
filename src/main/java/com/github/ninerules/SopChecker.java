@@ -25,8 +25,7 @@ public class SopChecker {
     }
 
     private Results check(Target target){
-        Rules rules = new Rules();
-        return rules.check(target);
+        return new Rules().check(target);
     }
 
     private Target parse(Path path){

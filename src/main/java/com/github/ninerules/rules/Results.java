@@ -38,7 +38,8 @@ public class Results {
     }
 
     public void report(PrintWriter out){
-        violations.entrySet().stream()
+        violations.entrySet()
+        .stream()
         .forEach(item -> report(out, item.getKey(), item.getValue()));
     }
 

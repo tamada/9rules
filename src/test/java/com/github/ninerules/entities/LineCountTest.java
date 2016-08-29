@@ -10,27 +10,27 @@ import static org.junit.Assert.assertThat;
 import org.junit.Before;
 import org.junit.Test;
 
-public class LineNumberTest {
-    private LineNumber ten;
-    private LineNumber ninerules;
-    private LineNumber eleven;
-    private LineNumber twelve;
+public class LineCountTest {
+    private LineCount ten;
+    private LineCount ninerules;
+    private LineCount eleven;
+    private LineCount twelve;
 
     @Before
     public void setUp(){
-        ninerules = new LineNumber(9);
-        ten = new LineNumber(10);
-        eleven = new LineNumber(11);
-        twelve = new LineNumber(12);
+        ninerules = new LineCount(9);
+        ten = new LineCount(10);
+        eleven = new LineCount(11);
+        twelve = new LineCount(12);
     }
 
     @Test
     public void testBasic(){
         assertThat(ten, is(greaterThan(ninerules)));
         assertThat(ten, is(lessThan(eleven)));
-        assertThat(ten, is(new LineNumber(10)));
+        assertThat(ten, is(new LineCount(10)));
 
-        LineNumber ten2 = new LineNumber(10);
+        LineCount ten2 = new LineCount(10);
         assertThat(ten.hashCode(), is(ten2.hashCode()));
         assertThat(ten, is(not(eleven)));
         assertThat(ten, is(not(new Object())));
@@ -45,6 +45,6 @@ public class LineNumberTest {
 
     @Test
     public void testIllegalArgument(){
-        assertThrows(IllegalArgumentException.class, () -> new LineNumber(-1));
+        assertThrows(IllegalArgumentException.class, () -> new LineCount(-1));
     }
 }

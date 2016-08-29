@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.github.ninerules.entities.FileName;
 
-public abstract class ViolationChecker extends ASTVisitorPlus{
+public abstract class Validator extends ASTVisitorPlus{
     private List<Violation> violations = new ArrayList<>();
 
     public void addViolation(Violation violation){

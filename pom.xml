@@ -11,15 +11,15 @@
   <url>http://github.com/tamada/9rules</url>
 
   <scm>
-  	<url>https://github.com/tamada/9rules</url>
-  	<connection>scm:git:https://github.com/tamada/9rules.git</connection>
-  	<developerConnection>scm:git:ssh://git@github.com:tamada/9rules.git</developerConnection>
-  	<tag>HEAD</tag>
+    <url>https://github.com/tamada/9rules</url>
+    <connection>scm:git:https://github.com/tamada/9rules.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com:tamada/9rules.git</developerConnection>
+    <tag>HEAD</tag>
   </scm>
 
   <issueManagement>
-  	<system>GitHub</system>
-  	<url>https://github.com/tamada/9rules/issues</url>
+    <system>GitHub</system>
+    <url>https://github.com/tamada/9rules/issues</url>
   </issueManagement>
 
   <dependencies>
@@ -118,7 +118,7 @@
         <configuration>
           <archive>
             <manifest>
-              <mainClass>com.github.sopchecker.Main</mainClass>
+              <mainClass>com.github.ninerules.Main</mainClass>
               <addClasspath>true</addClasspath>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
             </manifest>

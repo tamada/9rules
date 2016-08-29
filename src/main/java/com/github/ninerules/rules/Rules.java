@@ -4,15 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.ninerules.Target;
-import com.github.ninerules.fcc.FCCVisitor;
-import com.github.ninerules.rules.noaccessor.NoAccessorVisitor;
+import com.github.ninerules.fcc.FirstClassCollectionValidator;
+import com.github.ninerules.rules.noaccessor.NoAccessorValidator;
+import com.github.ninerules.so.MethodLengthValidator;
+import com.github.ninerules.so.SourceLengthValidator;
 
 public class Rules {
-    private List<ViolationChecker> list = new ArrayList<>();
+    private List<Validator> list = new ArrayList<>();
 
     public Rules(){
-        list.add(new NoAccessorVisitor());
-        list.add(new FCCVisitor());
+        list.add(new NoAccessorValidator());
+        list.add(new FirstClassCollectionValidator());
+        list.add(new MethodLengthValidator());
+        list.add(new SourceLengthValidator());
     }
 
     public Results check(final Target unit){
@@ -22,7 +26,7 @@ public class Rules {
                 .orElse(Results.empty());
     }
 
-    private Results accept(Target target, ViolationChecker checker){
+    private Results accept(Target target, Validator checker){
         return target.accept(checker);
     }
 }

@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class LineNumbers {
-    private List<LineNumber> list = new ArrayList<>();
+public class LineCounts {
+    private List<LineCount> list = new ArrayList<>();
 
-    public LineNumbers(LineNumber... numbers){
+    public LineCounts(LineCount... numbers){
         this(Arrays.stream(numbers));
     }
 
-    LineNumbers(Stream<LineNumber> stream){
+    LineCounts(Stream<LineCount> stream){
         stream.sorted()
         .forEach(item -> list.add(item));
     }

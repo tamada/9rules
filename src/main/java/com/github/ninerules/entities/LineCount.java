@@ -1,24 +1,28 @@
 package com.github.ninerules.entities;
 
-public class LineNumber implements Comparable<LineNumber>{
+public class LineCount implements Comparable<LineCount>{
     private int lineNumber;
 
-    public LineNumber(int linenumber){
+    public LineCount(int linenumber){
         if(linenumber < 0){
             throw new IllegalArgumentException("no negative line number: " + linenumber);
         }
         this.lineNumber = linenumber;
     }
 
+    public boolean isGreaterThan(LineCount number){
+        return this.compareTo(number) > 0;
+    }
+
     @Override
-    public int compareTo(LineNumber number) {
+    public int compareTo(LineCount number) {
         return lineNumber - number.lineNumber;
     }
 
     @Override
     public boolean equals(Object object){
-        if(object instanceof LineNumber){
-            return lineNumber == ((LineNumber)object).lineNumber;
+        if(object instanceof LineCount){
+            return lineNumber == ((LineCount)object).lineNumber;
         }
         return false;
     }
@@ -28,12 +32,13 @@ public class LineNumber implements Comparable<LineNumber>{
         return lineNumber;
     }
 
-    public boolean isSequent(LineNumber number){
+    public LineCount difference(LineCount line){
+        return new LineCount(Math.abs(line.lineNumber - lineNumber));
+    }
+
+    public boolean isSequent(LineCount number){
         int difference = lineNumber - number.lineNumber;
-        if(Math.abs(difference) <= 1){
-            return true;
-        }
-        return false;
+        return Math.abs(difference) <= 1;
     }
 
     public String toString(){

@@ -1,9 +1,10 @@
 package com.github.ninerules.rules;
 
+import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-import com.github.ninerules.entities.LineNumber;
+import com.github.ninerules.entities.LineCount;
 
 public abstract class ASTVisitorPlus extends ASTVisitor{
     private CompilationUnit unit;
@@ -14,8 +15,24 @@ public abstract class ASTVisitorPlus extends ASTVisitor{
         return super.visit(node);
     }
 
-    public LineNumber getLineNumber(int position){
-        int line = unit.getLineNumber(position);
-        return new LineNumber(line);
+    public LineCount startLine(ASTNode node){
+        int line = unit.getLineNumber(node.getStartPosition());
+        return new LineCount(line);
+    }
+
+    public LineCount countLinesOf(ASTNode node){
+        int line = startLineNumber(node);
+        int last = endLineNumber(node);
+        return new LineCount(last - line);
+    }
+
+    private int startLineNumber(ASTNode node){
+        int start = node.getStartPosition();
+        return unit.getLineNumber(start);
+    }
+
+    private int endLineNumber(ASTNode node){
+        int lastPosition = node.getStartPosition() + node.getLength() - 1;
+        return unit.getLineNumber(lastPosition);
     }
 }
