@@ -3,13 +3,24 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.github</groupId>
-  <artifactId>nine</artifactId>
+  <artifactId>9rules</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
 
-  <name>nine</name>
-  <url>http://github.com/tamada/nine</url>
+  <name>9rules</name>
+  <url>http://github.com/tamada/9rules</url>
 
+  <scm>
+  	<url>https://github.com/tamada/9rules</url>
+  	<connection>scm:git:https://github.com/tamada/9rules.git</connection>
+  	<developerConnection>scm:git:ssh://git@github.com:tamada/9rules.git</developerConnection>
+  	<tag>HEAD</tag>
+  </scm>
+
+  <issueManagement>
+  	<system>GitHub</system>
+  	<url>https://github.com/tamada/9rules/issues</url>
+  </issueManagement>
 
   <dependencies>
     <dependency>
@@ -116,14 +127,4 @@
       </plugin>
     </plugins>
   </build>  
-  <scm>
-  	<url>https://github.com/tamada/nine</url>
-  	<connection>scm:git:https://github.com/tamada/nine.git</connection>
-  	<developerConnection>scm:git:ssh://git@github.com:tamada/nine.git</developerConnection>
-  	<tag>HEAD</tag>
-  </scm>
-  <issueManagement>
-  	<system>GitHub</system>
-  	<url>https://github.com/tamada/nine/issues</url>
-  </issueManagement>
 </project>
