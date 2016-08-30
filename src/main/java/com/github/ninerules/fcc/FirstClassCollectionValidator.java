@@ -42,7 +42,7 @@ public class FirstClassCollectionValidator extends Validator{
     }
 
     private LineCounts getLineNumbers(){
-        return LineCountsBuilder.create().build(list.stream()
+        return LineCountsBuilder.builder().build(list.stream()
                 .map(declaration -> startLine(declaration)));
     }
 
@@ -73,7 +73,6 @@ public class FirstClassCollectionValidator extends Validator{
                 || type.matches("(java.util.)?([A-Z][a-z]+)?Deque(<.*>)?")
                 || type.matches("(java.util.)?([A-Z][a-z]+)?Queue(<.*>)?")
                 || type.matches("(java.util.)?([A-Z][a-z]+)?Set(<.*>)?")
-                || type.matches("(java.util.)?([A-Z][a-z]+)?Map(<.*, .*>)?");
-                
+                || type.matches("(java.util.)?([A-Z][a-z]+)?Map(<.*, *.*>)?");
     }
 }

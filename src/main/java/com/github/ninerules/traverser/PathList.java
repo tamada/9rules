@@ -9,6 +9,7 @@ public class PathList {
     private List<Path> paths;
 
     public PathList(List<Path> paths){
+        this.paths = new ArrayList<>();
         this.paths.addAll(paths);
     }
 

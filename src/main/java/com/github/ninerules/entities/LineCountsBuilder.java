@@ -12,16 +12,21 @@ public class LineCountsBuilder {
     private LineCountsBuilder(){
     }
 
-    public static LineCountsBuilder create(){
+    public static LineCountsBuilder builder(){
         return new LineCountsBuilder();
     }
     
     public LineCounts build(){
-        return new LineCounts(list.stream());
+        return new LineCounts(list.stream().toArray(size -> new LineCount[size]));
+    }
+
+    public static LineCounts build(int... numbers){
+        return LineCountsBuilder.builder()
+                .of(numbers).build();
     }
 
     public LineCounts build(Stream<LineCount> stream){
-        return new LineCounts(stream);
+        return new LineCounts(stream.toArray(size -> new LineCount[size]));
     }
 
     public LineCountsBuilder range(int from, int to){

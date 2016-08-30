@@ -41,6 +41,8 @@ public class LineCountTest {
         assertThat(ten.isSequent(ninerules), is(true));
         assertThat(ten.isSequent(eleven), is(true));
         assertThat(ten.isSequent(twelve), is(false));
+
+        assertThat(ten.difference(twelve), is(new LineCount(2)));
     }
 
     @Test

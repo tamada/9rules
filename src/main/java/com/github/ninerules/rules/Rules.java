@@ -19,7 +19,7 @@ public class Rules {
         list.add(new SourceLengthValidator());
     }
 
-    public Results check(final Target unit){
+    public Results validate(final Target unit){
         return list.stream()
                 .map(checker -> accept(unit, checker))
                 .reduce((r1, r2) -> r1.append(r2))

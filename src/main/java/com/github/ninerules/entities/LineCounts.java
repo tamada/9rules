@@ -1,21 +1,41 @@
 package com.github.ninerules.entities;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class LineCounts {
-    private List<LineCount> list = new ArrayList<>();
+    private List<LineCount> list;
 
     public LineCounts(LineCount... numbers){
-        this(Arrays.stream(numbers));
+        list = Arrays.stream(numbers)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
-    LineCounts(Stream<LineCount> stream){
-        stream.sorted()
-        .forEach(item -> list.add(item));
+    @Override
+    public boolean equals(Object object){
+        if(object instanceof LineCounts){
+            return equals((LineCounts)object);
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode(){
+        return Objects.hash(list.toArray());
+    }
+
+    private boolean equals(LineCounts counts){
+        LineCount[] counts1 = toArray(list);
+        LineCount[] counts2 = toArray(counts.list);
+        return Arrays.equals(counts1, counts2);
+    }
+
+    private LineCount[] toArray(List<LineCount> list){
+        LineCount[] counts = new LineCount[list.size()];
+        return list.toArray(counts);
     }
 
     @Override

@@ -14,21 +14,20 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import com.github.ninerules.rules.Results;
 import com.github.ninerules.rules.Rules;
 
-public class SopChecker {
-    public void check(List<Path> list){
-        Results results = list.stream()
+public class NineRulesValidator {
+    public Results validate(List<Path> list){
+        return list.stream()
                 .map(path -> parse(path))
-                .map(unit -> check(unit))
+                .map(unit -> validate(unit))
                 .reduce((result1, result2) -> result1.append(result2))
                 .orElse(Results.empty());
-        new Reporter().report(results);
     }
 
-    private Results check(Target target){
-        return new Rules().check(target);
+    private Results validate(Target target){
+        return new Rules().validate(target);
     }
 
-    private Target parse(Path path){
+    public Target parse(Path path){
         String source = readSource(path);
         ASTParser parser = ASTParser.newParser(AST.JLS8);
         parser.setSource(source.toCharArray());

@@ -6,7 +6,7 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
-public class FileVisitor extends SimpleFileVisitor<Path>{
+class FileVisitor extends SimpleFileVisitor<Path>{
     private PathList paths = new PathList();
     private FileFilter filter;
 
@@ -15,10 +15,6 @@ public class FileVisitor extends SimpleFileVisitor<Path>{
             filter = FileFilter.NULL_FILTER;
         }
         this.filter = filter;
-    }
-
-    public FileVisitor(){
-        this(FileFilter.NULL_FILTER);
     }
 
     @Override

@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.github.ninerules.rules.Results;
 import com.github.ninerules.traverser.Traverser;
 
 /**
@@ -15,9 +16,9 @@ import com.github.ninerules.traverser.Traverser;
 public class Main{
     public Main(String[] args){
         List<Path> list = listupTargets(args);
-
-        SopChecker checker = new SopChecker();
-        checker.check(list);
+        NineRulesValidator checker = new NineRulesValidator();
+        Results results = checker.validate(list);
+        new Reporter().report(results);
     }
 
     private List<Path> listupTargets(String[] args){

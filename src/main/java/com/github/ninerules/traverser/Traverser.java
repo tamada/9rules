@@ -9,7 +9,7 @@ public class Traverser {
     private FileFilter filter;
 
     public Traverser(){
-        this(null);
+        this(FileFilter.NULL_FILTER);
     }
 
     public Traverser(FileFilter filter){
@@ -27,7 +27,7 @@ public class Traverser {
             return readAllFiles(basePath);
         } catch (IOException e) {
         }
-        return null;
+        return new PathList();
     }
 
     private PathList readAllFiles(Path basePath) throws IOException{
