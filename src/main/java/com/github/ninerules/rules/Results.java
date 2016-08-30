@@ -36,12 +36,9 @@ public class Results {
     }
 
     private void put(FileName name, List<Violation> list){
-        List<Violation> origList = violations.get(name);
-        if(origList == null){
-            origList = new ArrayList<>();
-            violations.put(name,  origList);
-        }
+        List<Violation> origList = violations.getOrDefault(name, new ArrayList<>());
         origList.addAll(list);
+        violations.put(name,  origList);
     }
 
     public void report(PrintWriter out){

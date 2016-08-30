@@ -15,7 +15,7 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.so.SourceLengthValidator;
+import com.github.ninerules.rules.so.SourceLengthValidator;
 
 public class SourceLengthValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
@@ -35,7 +35,7 @@ public class SourceLengthValidatorTest {
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(SourceLengthValidator.TOO_LONG_SOURCE, LineCountsBuilder.build(64))));
+                is(new Violation(SourceLengthValidator.TOO_LONG_SOURCE, LineCountsBuilder.build(71))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

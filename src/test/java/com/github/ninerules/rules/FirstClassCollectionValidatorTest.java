@@ -15,7 +15,7 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.fcc.FirstClassCollectionValidator;
+import com.github.ninerules.rules.fcc.FirstClassCollectionValidator;
 
 public class FirstClassCollectionValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
@@ -36,7 +36,8 @@ public class FirstClassCollectionValidatorTest {
         assertThat(violations.size(), is(1));
         assertThat(
             violations.get(0), 
-            is(new Violation(FirstClassCollectionValidator.FCC, LineCountsBuilder.build(12, 13)))
+            is(new Violation(FirstClassCollectionValidator.FCC,
+                    LineCountsBuilder.build(13, 14, 15, 16)))
         );
     }
 

@@ -1,4 +1,4 @@
-package com.github.ninerules.so;
+package com.github.ninerules.rules.so;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.MethodDeclaration;

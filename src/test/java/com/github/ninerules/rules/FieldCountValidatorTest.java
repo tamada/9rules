@@ -15,9 +15,9 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.so.MethodLengthValidator;
+import com.github.ninerules.rules.fieldcount.FieldCountValidator;
 
-public class MethodLengthValidatorTest {
+public class FieldCountValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
     private Target target;
 
@@ -29,13 +29,16 @@ public class MethodLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new MethodLengthValidator();
+        Validator validator = new FieldCountValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
-        assertThat(violations.get(0), 
-                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(48))));
+        assertThat(
+            violations.get(0), 
+            is(new Violation(FieldCountValidator.FIELD_COUNT,
+                    LineCountsBuilder.build(13, 14, 15, 16)))
+        );
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
