@@ -19,3 +19,14 @@
 8. ファーストクラスコレクションを使用すること．DONE
 9. Getter，Setter，プロパティを使用しないこと．DONE
 
+1. Use One Level of Indentation per Method
+2. Don’t Use the ```else``` Keyword
+3. Wrap All Primitives and Strings
+4. Use Only One Dot per Line
+5. Don’t Abbreviate
+6. Keep All Entities Small
+7. Don’t Use Any Classes with More Than Two Instance Variables
+8. Use First-Class Collections
+9. Don’t Use Any Getters/Setters/Properties
+
+See also [Nine rules](http://binstock.blogspot.jp/2008/04/perfecting-oos-small-classes-and-short.html), [The ThoughtWorks Anthology](http://shop.oreilly.com/product/9781934356142.do)
