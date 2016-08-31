@@ -15,7 +15,7 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.so.MethodLengthValidator;
+import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 
 public class MethodLengthValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
