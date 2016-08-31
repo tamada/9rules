@@ -29,7 +29,7 @@ public class FirstClassCollectionValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new FirstClassCollectionValidator();
+        JdtValidator validator = new FirstClassCollectionValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

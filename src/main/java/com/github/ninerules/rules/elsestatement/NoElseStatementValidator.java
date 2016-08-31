@@ -5,11 +5,11 @@ import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.Statement;
 
 import com.github.ninerules.entities.LineCounts;
-import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
 
-public class NoElseStatementValidator extends Validator {
+public class NoElseStatementValidator extends JdtValidator {
     public static final ViolationType NO_ELSE_STATEMENT = new ViolationType("else statement found.");
 
     @Override

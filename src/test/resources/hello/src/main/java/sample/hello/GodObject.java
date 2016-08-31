@@ -25,17 +25,13 @@ public class GodObject{
     }
 
     public void run(){
-        fibonacci()
-            .limit(limit)
-            .forEach(value -> System.out.println(value));
-        fizzbuzz()
-            .limit(limit)
-            .forEach(value -> System.out.println(value));
+        fibonacci().limit(limit).forEach(value -> System.out.println(value));
+        fizzbuzz().limit(limit).forEach(value -> System.out.println(value));
     }
 
     public LongStream fibonacci(){
-        return LongStream.iterate(1L, i -> i + 1).
-            map(index -> fibonacci(index));
+        return LongStream.iterate(1L, i -> i + 1)
+            .map(index -> fibonacci(index));
     }
 
     private long fibonacci(long index){

@@ -5,11 +5,11 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCounts;
-import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
 
-public class MethodLengthValidator extends Validator {
+public class MethodLengthValidator extends JdtValidator {
     public static final ViolationType TOO_LONG_METHOD = new ViolationType("method is too long (over 5 lines).");
     private static final LineCount MAX_METHOD_LENGTH = new LineCount(7);
 

@@ -29,13 +29,13 @@ public class IndentLevelValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new IndentLevelValidator();
+        JdtValidator validator = new IndentLevelValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(48))));
+                is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(44))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

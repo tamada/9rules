@@ -16,7 +16,8 @@ public abstract class ASTVisitorPlus extends ASTVisitor{
     }
 
     public LineCount startLine(ASTNode node){
-        int line = unit.getLineNumber(node.getStartPosition());
+        int startPosition = node.getStartPosition();
+        int line = unit.getLineNumber(startPosition);
         return new LineCount(line);
     }
 
@@ -32,7 +33,8 @@ public abstract class ASTVisitorPlus extends ASTVisitor{
     }
 
     private int endLineNumber(ASTNode node){
-        int lastPosition = node.getStartPosition() + node.getLength() - 1;
+        int startPosition = node.getStartPosition();
+        int lastPosition = startPosition + node.getLength() - 1;
         return unit.getLineNumber(lastPosition);
     }
 }

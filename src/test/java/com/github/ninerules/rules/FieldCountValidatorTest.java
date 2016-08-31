@@ -29,7 +29,7 @@ public class FieldCountValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new FieldCountValidator();
+        JdtValidator validator = new FieldCountValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

@@ -1,24 +1,35 @@
 package com.github.ninerules.rules.accessor;
 
+import java.util.List;
+
 import org.eclipse.jdt.core.dom.MethodDeclaration;
+import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.SimpleName;
 
-import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCounts;
-import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
 
-public class NoAccessorValidator extends Validator{
+public class NoAccessorValidator extends JdtValidator{
     public static final ViolationType SETTER = new ViolationType("setter method found");
     public static final ViolationType GETTER = new ViolationType("getter method found");
 
     @Override
     public boolean visit(MethodDeclaration node) {
-        String name = getMethodName(node);
-        LineCount lineNumber = startLine(node);
-        check(name, new LineCounts(lineNumber));
+        if(isPublicMethod(node)){
+            checkViolation(getMethodName(node), new LineCounts(startLine(node)));
+        }
         return super.visit(node);
+    }
+
+    @SuppressWarnings("unchecked")
+    private boolean isPublicMethod(MethodDeclaration node){
+        return node.modifiers()
+                .stream()
+                .filter(modifier -> modifier instanceof Modifier)
+                .filter(modifier -> ((Modifier)modifier).isPublic())
+                .count() == 1;
     }
 
     private String getMethodName(MethodDeclaration node){
@@ -26,7 +37,7 @@ public class NoAccessorValidator extends Validator{
         return simpleName.getIdentifier();
     }
 
-    private void check(String methodName, LineCounts lineNumbers){
+    private void checkViolation(String methodName, LineCounts lineNumbers){
         if(methodName.matches("get[A-Z][a-zA-Z]*$")){
             addViolation(new Violation(GETTER, lineNumbers));
         }

@@ -49,6 +49,7 @@ public class Results {
 
     private void report(PrintWriter out, FileName name, List<Violation> list){
         out.println(name);
-        list.stream().forEach(item -> out.println(item));
+        list.stream()
+        .forEach(item -> out.println(item));
     }
 }

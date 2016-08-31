@@ -24,7 +24,8 @@ public class LineCounts {
 
     @Override
     public int hashCode(){
-        return Objects.hash(list.toArray());
+        Object[] array = list.toArray();
+        return Objects.hash(array);
     }
 
     private boolean equals(LineCounts counts){

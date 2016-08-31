@@ -30,7 +30,7 @@ public class NoAccessorValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new NoAccessorValidator();
+        JdtValidator validator = new NoAccessorValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

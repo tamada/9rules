@@ -23,7 +23,6 @@ public class FieldCountValidator extends FieldCollectingValidator {
     }
 
     private void checkViolation(){
-        long count = computesFieldCount(item -> !checker.checkStatic(item));
         if(computesFieldCount(item -> !checker.checkStatic(item)) > 2){
             addViolation(new Violation(FIELD_COUNT, lineNumbers(predicate)));
         }

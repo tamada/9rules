@@ -33,13 +33,11 @@ public class OneDotPerLineValidatorTest {
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
-        assertThat(violations.size(), is(3));
+        assertThat(violations.size(), is(2));
         assertThat(violations.get(0), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(27))));
+                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(28))));
         assertThat(violations.get(1), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(36))));
-        assertThat(violations.get(2), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(48))));
+                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(29))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

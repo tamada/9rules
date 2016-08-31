@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
+import org.eclipse.jdt.core.dom.Type;
 
 import com.github.ninerules.rules.FieldChecker;
 import com.github.ninerules.rules.FieldCollectingValidator;
@@ -41,12 +42,15 @@ public class NoPrimitivesValidator extends FieldCollectingValidator{
     }
 
     private boolean checkPrimitives(FieldDeclaration node){
-        return checkPrimitives(node.getType().toString());
+        Type type = node.getType();
+        return checkPrimitives(type.toString());
     }
 
     private boolean checkPrimitives(String type){
         List<String> list = Arrays.asList("byte", "short", "int", "long", "float",
                 "double", "boolean", "char", "(java.lang.)?String", "(java.util.)?Date");
-        return list.stream().filter(item -> type.matches(item)).count() > 0;
+        return list.stream()
+                .filter(item -> type.matches(item))
+                .count() > 0;
     }    
 }

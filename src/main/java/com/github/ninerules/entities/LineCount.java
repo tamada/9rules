@@ -33,7 +33,8 @@ public class LineCount implements Comparable<LineCount>{
     }
 
     public LineCount difference(LineCount line){
-        return new LineCount(Math.abs(line.lineNumber - lineNumber));
+        int difference = line.lineNumber - lineNumber;
+        return new LineCount(Math.abs(difference));
     }
 
     public boolean isSequent(LineCount number){

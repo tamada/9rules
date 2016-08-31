@@ -29,7 +29,7 @@ public class NoPrimitivesValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new NoPrimitivesValidator();
+        JdtValidator validator = new NoPrimitivesValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

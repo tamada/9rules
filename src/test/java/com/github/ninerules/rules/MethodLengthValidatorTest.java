@@ -29,13 +29,13 @@ public class MethodLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new MethodLengthValidator();
+        JdtValidator validator = new MethodLengthValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(48))));
+                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(44))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
