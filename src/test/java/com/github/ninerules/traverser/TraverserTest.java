@@ -21,13 +21,12 @@ public class TraverserTest {
                 .map(path -> base.relativize(path))
                 .collect(Collectors.toList());
 
-        assertThat(list.size(), is(6));
+        assertThat(list.size(), is(5));
         assertThat(list.get(0), is(Paths.get("main/java/sample/hello/GodObject.java")));
         assertThat(list.get(1), is(Paths.get("main/java/sample/hello/HelloWorld.java")));
         assertThat(list.get(2), is(Paths.get("main/java/sample/hello/Launcher.java")));
         assertThat(list.get(3), is(Paths.get("main/webapp/WEB-INF/web.xml")));
         assertThat(list.get(4), is(Paths.get("main/webapp/index.html")));
-        assertThat(list.get(5), is(Paths.get("test/java/sample/hello/AppTest.java")));
     }
 
     @Test
@@ -38,10 +37,9 @@ public class TraverserTest {
                 .map(path -> base.relativize(path))
                 .collect(Collectors.toList());
 
-        assertThat(list.size(), is(4));
+        assertThat(list.size(), is(3));
         assertThat(list.get(0), is(Paths.get("main/java/sample/hello/GodObject.java")));
         assertThat(list.get(1), is(Paths.get("main/java/sample/hello/HelloWorld.java")));
         assertThat(list.get(2), is(Paths.get("main/java/sample/hello/Launcher.java")));
-        assertThat(list.get(3), is(Paths.get("test/java/sample/hello/AppTest.java")));
     }
 }
