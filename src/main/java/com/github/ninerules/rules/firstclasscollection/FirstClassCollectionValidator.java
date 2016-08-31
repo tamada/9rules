@@ -34,7 +34,8 @@ public class FirstClassCollectionValidator extends FieldCollectingValidator{
 
     private boolean isViolated(){
         long fieldSize = computesFieldCount(predicate);
-        long collectionSize = computesFieldCount(predicate.and(item -> checker.checkCollection(item)));
+        Predicate<FieldDeclaration> predicate2 = (item) -> checker.checkCollection(item);
+        long collectionSize = computesFieldCount(predicate.and(predicate2));
         return fieldSize > 1 && collectionSize > 0;
     }
 

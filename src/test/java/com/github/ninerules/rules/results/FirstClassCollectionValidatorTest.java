@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.results;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,7 +15,10 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.firstclasscollection.FirstClassCollectionValidator;
+import com.github.ninerules.rules.results.Results;
 
 public class FirstClassCollectionValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
@@ -29,7 +32,7 @@ public class FirstClassCollectionValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new FirstClassCollectionValidator();
+        JdtValidator validator = new FirstClassCollectionValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

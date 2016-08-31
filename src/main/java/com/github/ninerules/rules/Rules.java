@@ -9,7 +9,10 @@ import com.github.ninerules.rules.elsestatement.NoElseStatementValidator;
 import com.github.ninerules.rules.fieldcount.FieldCountValidator;
 import com.github.ninerules.rules.firstclasscollection.FirstClassCollectionValidator;
 import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
+import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
 import com.github.ninerules.rules.primitive.NoPrimitivesValidator;
+import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.results.ResultsAppender;
 import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 import com.github.ninerules.rules.smallobject.SourceLengthValidator;
 
@@ -20,6 +23,7 @@ public class Rules {
         list.add(new IndentLevelValidator());
         list.add(new NoElseStatementValidator());
         list.add(new NoPrimitivesValidator());
+        list.add(new OneDotPerLineValidator());
         list.add(new MethodLengthValidator());
         list.add(new SourceLengthValidator());
         list.add(new FieldCountValidator());
@@ -30,7 +34,7 @@ public class Rules {
     public Results validate(final Target unit){
         return list.stream()
                 .map(checker -> accept(unit, checker))
-                .reduce((r1, r2) -> r1.append(r2))
+                .reduce((r1, r2) -> new ResultsAppender(r1).append(r2))
                 .orElse(Results.empty());
     }
 

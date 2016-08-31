@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.github.ninerules.rules.Results;
+import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.traverser.Traverser;
 
 /**

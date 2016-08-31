@@ -15,7 +15,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
  * 
  * @author Haruaki Tamada
  */
-public class FieldCollectingValidator extends Validator{
+public class FieldCollectingValidator extends JdtValidator{
     protected List<FieldDeclaration> list = new ArrayList<>();
 
     @Override
@@ -31,9 +31,9 @@ public class FieldCollectingValidator extends Validator{
     }
 
     public LineCounts lineNumbers(Predicate<FieldDeclaration> predicate){
-        return LineCountsBuilder.builder().build(
-                list.stream()
-                .filter(predicate)
-                .map(declaration -> startLine(declaration)));
+        return LineCountsBuilder.builder()
+                .build(list.stream()
+                        .filter(predicate)
+                        .map(declaration -> startLine(declaration)));
     }
 }

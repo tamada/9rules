@@ -12,9 +12,9 @@ import org.junit.Test;
 
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.Results;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
+import com.github.ninerules.rules.results.Results;
 
 public class ReporterTest {
     private ByteArrayOutputStream out = new ByteArrayOutputStream();

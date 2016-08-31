@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.results;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,9 +15,12 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.smallobject.SourceLengthValidator;
+import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 
-public class SourceLengthValidatorTest {
+public class MethodLengthValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
     private Target target;
 
@@ -29,13 +32,13 @@ public class SourceLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new SourceLengthValidator();
+        JdtValidator validator = new MethodLengthValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(SourceLengthValidator.TOO_LONG_SOURCE, LineCountsBuilder.build(71))));
+                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(44))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

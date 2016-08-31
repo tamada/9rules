@@ -38,6 +38,7 @@ public class FieldChecker {
     }
 
     private boolean isStaticOrFinal(Modifier modifier){
-        return modifier.isFinal() || modifier.isStatic();        
+        return modifier.isFinal() 
+                || modifier.isStatic();        
     }
 }

@@ -1,8 +1,11 @@
 package com.github.ninerules;
 
 import java.io.PrintWriter;
+import java.util.List;
 
-import com.github.ninerules.rules.Results;
+import com.github.ninerules.entities.FileName;
+import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.results.Results;
 
 public class Reporter {
     private PrintWriter out;
@@ -16,7 +19,13 @@ public class Reporter {
     }
 
     public void report(Results results){
-        results.report(out);
+        results.report(this);
         out.flush();
+    }
+
+    public void report(FileName name, List<Violation> list){
+        out.println(name);
+        list.stream()
+        .forEach(item -> out.println(item));
     }
 }

@@ -9,11 +9,11 @@ import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.formatter.IndentManipulation;
 
 import com.github.ninerules.entities.LineCounts;
-import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
 
-public class IndentLevelValidator extends Validator {
+public class IndentLevelValidator extends JdtValidator {
     public static final ViolationType INDENT_LEVEL = new ViolationType("Indentation level is too much");
     private static final int MAX_INDENT_SIZE = 6;
 
@@ -30,7 +30,8 @@ public class IndentLevelValidator extends Validator {
     }
 
     private boolean isViolated(MethodDeclaration node){
-        return indentedStringStream(node).mapToInt(line -> getIndentSize(line))
+        return indentedStringStream(node)
+                .mapToInt(line -> getIndentSize(line))
                 .max()
                 .orElse(0) >= MAX_INDENT_SIZE;
     }
@@ -42,7 +43,8 @@ public class IndentLevelValidator extends Validator {
     }
 
     private Stream<String> indentedStringStream(MethodDeclaration node){
-        String indentedCode = IndentManipulation.changeIndent(node.toString(), 0, 8, 2, "", "\r\n");
+        String string = node.toString();
+        String indentedCode = IndentManipulation.changeIndent(string, 0, 8, 2, "", "\r\n");
         String[] lines = indentedCode.split("\r\n");
         return Arrays.stream(lines);
     }
