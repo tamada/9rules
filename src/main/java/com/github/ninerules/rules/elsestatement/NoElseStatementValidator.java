@@ -1,4 +1,4 @@
-package com.github.ninerules.rules.es;
+package com.github.ninerules.rules.elsestatement;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.IfStatement;
@@ -10,7 +10,7 @@ import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
 
 public class NoElseStatementValidator extends Validator {
-    public static final ViolationType NO_ELSE_STATEMENT = new ViolationType("no else statement.");
+    public static final ViolationType NO_ELSE_STATEMENT = new ViolationType("else statement found.");
 
     @Override
     public boolean visit(IfStatement node){

@@ -1,4 +1,4 @@
-package com.github.ninerules.rules.fcc;
+package com.github.ninerules.rules.firstclasscollection;
 
 import java.util.function.Predicate;
 

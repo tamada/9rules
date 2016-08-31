@@ -15,7 +15,7 @@ import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.rules.Results;
 import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.noaccessor.NoAccessorValidator;
+import com.github.ninerules.rules.accessor.NoAccessorValidator;
 import com.github.ninerules.traverser.Traverser;
 
 public class NineRulesValidatorTest {

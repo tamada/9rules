@@ -1,4 +1,4 @@
-package com.github.ninerules.rules.noaccessor;
+package com.github.ninerules.rules.accessor;
 
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.SimpleName;

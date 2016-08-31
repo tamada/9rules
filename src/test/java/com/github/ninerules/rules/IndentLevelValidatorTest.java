@@ -15,9 +15,9 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.smallobject.SourceLengthValidator;
+import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
 
-public class SourceLengthValidatorTest {
+public class IndentLevelValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
     private Target target;
 
@@ -29,13 +29,13 @@ public class SourceLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new SourceLengthValidator();
+        Validator validator = new IndentLevelValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(SourceLengthValidator.TOO_LONG_SOURCE, LineCountsBuilder.build(71))));
+                is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(48))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

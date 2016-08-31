@@ -1,8 +1,8 @@
 package com.github.ninerules.rules;
 
+import static com.github.ninerules.rules.accessor.NoAccessorValidator.*;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
-import static com.github.ninerules.rules.noaccessor.NoAccessorValidator.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -16,7 +16,7 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.noaccessor.NoAccessorValidator;
+import com.github.ninerules.rules.accessor.NoAccessorValidator;
 
 public class NoAccessorValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java";
