@@ -9,6 +9,7 @@ import com.github.ninerules.rules.elsestatement.NoElseStatementValidator;
 import com.github.ninerules.rules.fieldcount.FieldCountValidator;
 import com.github.ninerules.rules.firstclasscollection.FirstClassCollectionValidator;
 import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
+import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
 import com.github.ninerules.rules.primitive.NoPrimitivesValidator;
 import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 import com.github.ninerules.rules.smallobject.SourceLengthValidator;
@@ -20,6 +21,7 @@ public class Rules {
         list.add(new IndentLevelValidator());
         list.add(new NoElseStatementValidator());
         list.add(new NoPrimitivesValidator());
+        list.add(new OneDotPerLineValidator());
         list.add(new MethodLengthValidator());
         list.add(new SourceLengthValidator());
         list.add(new FieldCountValidator());
