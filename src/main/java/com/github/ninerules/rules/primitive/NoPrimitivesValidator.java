@@ -1,12 +1,9 @@
 package com.github.ninerules.rules.primitive;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.function.Predicate;
 
 import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
-import org.eclipse.jdt.core.dom.Type;
 
 import com.github.ninerules.rules.FieldChecker;
 import com.github.ninerules.rules.FieldCollectingValidator;

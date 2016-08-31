@@ -1,5 +1,6 @@
 package com.github.ninerules.rules;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -8,16 +9,22 @@ import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.Type;
 
 public class FieldChecker {
+    private static final List<String> MATCH_STRING = new ArrayList<>();
+
+    static{
+        MATCH_STRING.add("(java.util.)?([A-Z][a-z]+)?List(<.*>)?");
+        MATCH_STRING.add("(java.util.)?([A-Z][a-z]+)?Deque(<.*>)?");
+        MATCH_STRING.add("(java.util.)?([A-Z][a-z]+)?Queue(<.*>)?");
+        MATCH_STRING.add("(java.util.)?([A-Z][a-z]+)?Set(<.*>)?");
+        MATCH_STRING.add("(java.util.)?([A-Z][a-z]+)?Map(<.*, *.*>)?");
+    }
+    
     public boolean checkCollection(FieldDeclaration field){
         Type fieldType = field.getType();
         String type = fieldType.toString();
-        
-        return fieldType.isArrayType()
-                || type.matches("(java.util.)?([A-Z][a-z]+)?List(<.*>)?")
-                || type.matches("(java.util.)?([A-Z][a-z]+)?Deque(<.*>)?")
-                || type.matches("(java.util.)?([A-Z][a-z]+)?Queue(<.*>)?")
-                || type.matches("(java.util.)?([A-Z][a-z]+)?Set(<.*>)?")
-                || type.matches("(java.util.)?([A-Z][a-z]+)?Map(<.*, *.*>)?");
+        return fieldType.isArrayType() || 
+                MATCH_STRING.stream()
+                .anyMatch(item -> type.matches(item));
     }
 
     @SuppressWarnings("unchecked")

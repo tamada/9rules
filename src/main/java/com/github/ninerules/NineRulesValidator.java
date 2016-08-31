@@ -18,7 +18,6 @@ import com.github.ninerules.rules.results.ResultsAppender;
 public class NineRulesValidator {
     public Results validate(List<Path> list){
         return list.stream()
-                .sorted()
                 .map(path -> parse(path))
                 .map(unit -> validate(unit))
                 .reduce((result1, result2) -> new ResultsAppender(result1).append(result2))
@@ -30,10 +29,14 @@ public class NineRulesValidator {
     }
 
     public Target parse(Path path){
-        String source = readSource(path);
         ASTParser parser = ASTParser.newParser(AST.JLS8);
-        parser.setSource(source.toCharArray());
+        parser.setSource(source(path));
         return new Target(path, (CompilationUnit)parser.createAST(new NullProgressMonitor()));
+    }
+
+    private char[] source(Path path){
+        String source = readSource(path);
+        return source.toCharArray();
     }
 
     private String readSource(Path path){

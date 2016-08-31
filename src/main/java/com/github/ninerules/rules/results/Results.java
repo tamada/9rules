@@ -31,6 +31,7 @@ public class Results {
     public void report(Reporter reporter){
         violations.entrySet()
         .stream()
+        .sorted(new ResultComparator())
         .forEach(item -> report(reporter, item));
     }
 

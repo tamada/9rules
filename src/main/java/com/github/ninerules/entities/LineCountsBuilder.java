@@ -17,7 +17,9 @@ public class LineCountsBuilder {
     }
     
     public LineCounts build(){
-        return new LineCounts(list.stream().toArray(size -> new LineCount[size]));
+        LineCount[] array = list.stream()
+                .toArray(size -> new LineCount[size]);
+        return new LineCounts(array);
     }
 
     public static LineCounts build(int... numbers){

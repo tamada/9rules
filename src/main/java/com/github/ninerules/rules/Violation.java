@@ -27,7 +27,15 @@ public class Violation {
     }
 
     private boolean equals(Violation violation){
-        return Objects.equals(violation.type, type) &&
-                Objects.equals(violation.numbers, numbers);
+        return equals(violation.type)
+                && equals(violation.numbers);
+    }
+
+    private boolean equals(ViolationType type){
+        return Objects.equals(this.type, type);
+    }
+
+    private boolean equals(LineCounts numbers){
+        return Objects.equals(this.numbers, numbers);
     }
 }
