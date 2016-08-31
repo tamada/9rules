@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCount;
+import com.github.ninerules.rules.results.Results;
 
 public abstract class PlainSourceValidator implements Validator{
     private List<Violation> violations = new ArrayList<>();

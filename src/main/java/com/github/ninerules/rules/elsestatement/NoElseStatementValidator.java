@@ -1,5 +1,7 @@
 package com.github.ninerules.rules.elsestatement;
 
+import java.util.Optional;
+
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.IfStatement;
 import org.eclipse.jdt.core.dom.Statement;
@@ -20,13 +22,15 @@ public class NoElseStatementValidator extends JdtValidator {
 
     private void checkViolation(IfStatement node){
         Statement statement = node.getElseStatement();
-        if(isViolation(statement)){
+        if(isViolation(Optional.ofNullable(statement))){
             addViolation(new Violation(NO_ELSE_STATEMENT, new LineCounts(startLine(node))));
         }
     }
 
-    private boolean isViolation(Statement statement){
-        return statement != null &&
-                statement.getNodeType() != ASTNode.IF_STATEMENT;        
+    private boolean isViolation(Optional<Statement> item){
+        return item.map(statement -> {
+            int nodeType = statement.getNodeType();
+            return nodeType != ASTNode.IF_STATEMENT;        
+        }).orElse(false);
     }
 }

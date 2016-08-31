@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.results;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,9 +15,12 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
+import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
+import com.github.ninerules.rules.results.Results;
 
-public class IndentLevelValidatorTest {
+public class OneDotPerLineValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
     private Target target;
 
@@ -29,13 +32,15 @@ public class IndentLevelValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator validator = new IndentLevelValidator();
+        Validator validator = new OneDotPerLineValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
-        assertThat(violations.size(), is(1));
+        assertThat(violations.size(), is(2));
         assertThat(violations.get(0), 
-                is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(44))));
+                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(28))));
+        assertThat(violations.get(1), 
+                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(29))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

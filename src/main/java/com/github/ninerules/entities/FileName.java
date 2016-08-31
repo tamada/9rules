@@ -21,7 +21,8 @@ public class FileName {
     @Override
     public boolean equals(Object object){
         if(object instanceof FileName){
-            return Objects.equals(name, ((FileName)object).name);
+            String otherObjectName = ((FileName)object).name;
+            return Objects.equals(name, otherObjectName);
         }
         return false;
     }

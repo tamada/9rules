@@ -1,5 +1,6 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.results;
 
+import static com.github.ninerules.rules.accessor.NoAccessorValidator.*;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -15,10 +16,13 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
+import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.accessor.NoAccessorValidator;
+import com.github.ninerules.rules.results.Results;
 
-public class OneDotPerLineValidatorTest {
-    private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
+public class NoAccessorValidatorTest {
+    private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java";
     private Target target;
 
     @Before
@@ -29,15 +33,13 @@ public class OneDotPerLineValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new OneDotPerLineValidator();
+        JdtValidator validator = new NoAccessorValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(2));
-        assertThat(violations.get(0), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(28))));
-        assertThat(violations.get(1), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(29))));
+        assertThat(violations.get(0), is(new Violation(SETTER, LineCountsBuilder.build(10))));
+        assertThat(violations.get(1), is(new Violation(GETTER, LineCountsBuilder.build(14))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

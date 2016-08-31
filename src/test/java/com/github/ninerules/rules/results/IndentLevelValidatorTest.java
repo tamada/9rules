@@ -1,6 +1,5 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.results;
 
-import static com.github.ninerules.rules.accessor.NoAccessorValidator.*;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -16,10 +15,13 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.rules.accessor.NoAccessorValidator;
+import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
+import com.github.ninerules.rules.results.Results;
 
-public class NoAccessorValidatorTest {
-    private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java";
+public class IndentLevelValidatorTest {
+    private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
     private Target target;
 
     @Before
@@ -30,13 +32,13 @@ public class NoAccessorValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator validator = new NoAccessorValidator();
+        JdtValidator validator = new IndentLevelValidator();
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
-        assertThat(violations.size(), is(2));
-        assertThat(violations.get(0), is(new Violation(SETTER, LineCountsBuilder.build(10))));
-        assertThat(violations.get(1), is(new Violation(GETTER, LineCountsBuilder.build(14))));
+        assertThat(violations.size(), is(1));
+        assertThat(violations.get(0), 
+                is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(44))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

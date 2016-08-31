@@ -12,8 +12,8 @@ import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.PlainSourceValidator;
-import com.github.ninerules.rules.Results;
 import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.results.Results;
 
 public class Target {
     private Path path;
@@ -40,7 +40,6 @@ public class Target {
         try(Stream<String> stream = Files.lines(path)){
             visitLine(stream, checker);
         } catch (IOException e) {
-            e.printStackTrace();
         }
         return checker.createResults(new FileName(path));
     }

@@ -37,20 +37,8 @@ public class NoPrimitivesValidator extends FieldCollectingValidator{
 
     private boolean isViolated(){
         long fieldSize = computesFieldCount(predicate);
-        long primitivesSize = computesFieldCount(predicate.and(item -> checkPrimitives(item)));
+        long primitivesSize = computesFieldCount(predicate.and(
+                item -> new PrimitiveChecker().check(item)));
         return fieldSize > 1 && primitivesSize > 0;
     }
-
-    private boolean checkPrimitives(FieldDeclaration node){
-        Type type = node.getType();
-        return checkPrimitives(type.toString());
-    }
-
-    private boolean checkPrimitives(String type){
-        List<String> list = Arrays.asList("byte", "short", "int", "long", "float",
-                "double", "boolean", "char", "(java.lang.)?String", "(java.util.)?Date");
-        return list.stream()
-                .filter(item -> type.matches(item))
-                .count() > 0;
-    }    
 }

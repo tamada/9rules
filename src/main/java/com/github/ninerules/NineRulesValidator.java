@@ -11,15 +11,17 @@ import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
-import com.github.ninerules.rules.Results;
 import com.github.ninerules.rules.Rules;
+import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.results.ResultsAppender;
 
 public class NineRulesValidator {
     public Results validate(List<Path> list){
         return list.stream()
+                .sorted()
                 .map(path -> parse(path))
                 .map(unit -> validate(unit))
-                .reduce((result1, result2) -> result1.append(result2))
+                .reduce((result1, result2) -> new ResultsAppender(result1).append(result2))
                 .orElse(Results.empty());
     }
 

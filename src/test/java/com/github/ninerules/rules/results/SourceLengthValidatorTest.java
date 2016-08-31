@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.results;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -15,6 +15,9 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.rules.smallobject.SourceLengthValidator;
 
 public class SourceLengthValidatorTest {
