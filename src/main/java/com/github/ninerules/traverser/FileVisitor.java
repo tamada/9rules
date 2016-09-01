@@ -7,7 +7,7 @@ import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 
 class FileVisitor extends SimpleFileVisitor<Path>{
-    private PathList paths = new PathList();
+    private Paths paths = new Paths();
     private FileFilter filter;
 
     public FileVisitor(FileFilter filter){
@@ -25,7 +25,7 @@ class FileVisitor extends SimpleFileVisitor<Path>{
         return super.visitFile(file, attributes);
     }
 
-    PathList createPaths(){
+    Paths createPaths(){
         return paths;
     }
 }

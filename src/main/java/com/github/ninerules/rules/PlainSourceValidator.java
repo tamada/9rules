@@ -7,10 +7,11 @@ import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.rules.results.Results;
 
-public abstract class PlainSourceValidator implements Validator{
+public abstract class PlainSourceValidator implements Validator, StringLineVisitor{
     private List<Violation> violations = new ArrayList<>();
 
-    public abstract void visit(String line, LineCount count);
+    @Override
+    public abstract void visitLine(String line, LineCount count);
 
     @Override
     public void addViolation(Violation violation){

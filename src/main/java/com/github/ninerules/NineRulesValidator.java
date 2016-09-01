@@ -1,10 +1,7 @@
 package com.github.ninerules;
 
-import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.dom.AST;
@@ -16,32 +13,29 @@ import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.rules.results.ResultsAppender;
 
 public class NineRulesValidator {
+    private static final int PARSER_LEVEL = AST.JLS8;
+
     public Results validate(List<Path> list){
         return list.stream()
-                .sorted()
-                .map(path -> parse(path))
-                .map(unit -> validate(unit))
+                .map(path -> validate(path))
                 .reduce((result1, result2) -> new ResultsAppender(result1).append(result2))
                 .orElse(Results.empty());
     }
 
-    private Results validate(Target target){
+    private Results validate(Path path){
+        Target target = parse(path);
         return new Rules().validate(target);
     }
 
     public Target parse(Path path){
-        String source = readSource(path);
-        ASTParser parser = ASTParser.newParser(AST.JLS8);
-        parser.setSource(source.toCharArray());
+        ASTParser parser = ASTParser.newParser(PARSER_LEVEL);
+        parser.setSource(source(path));
         return new Target(path, (CompilationUnit)parser.createAST(new NullProgressMonitor()));
     }
 
-    private String readSource(Path path){
-        try {
-            return Files.lines(path)
-                    .collect(Collectors.joining("\n"));
-        } catch (IOException e) {
-        }
-        return "";
+    private char[] source(Path path){
+        SourceParser parser = new SourceParser(path);
+        String source = parser.parse();
+        return source.toCharArray();
     }
 }

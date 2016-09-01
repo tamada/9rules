@@ -1,7 +1,5 @@
 package com.github.ninerules.rules.accessor;
 
-import java.util.List;
-
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.SimpleName;

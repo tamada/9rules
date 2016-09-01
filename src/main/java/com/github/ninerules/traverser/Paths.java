@@ -5,15 +5,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class PathList {
+public class Paths {
     private List<Path> paths;
 
-    public PathList(List<Path> paths){
+    public Paths(List<Path> paths){
         this.paths = new ArrayList<>();
         this.paths.addAll(paths);
     }
 
-    PathList(){
+    Paths(){
         paths = new ArrayList<>();
     }
 

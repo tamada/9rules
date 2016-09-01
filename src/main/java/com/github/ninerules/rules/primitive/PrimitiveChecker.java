@@ -6,7 +6,7 @@ import java.util.List;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 import org.eclipse.jdt.core.dom.Type;
 
-public class PrimitiveChecker {
+class PrimitiveChecker {
     private List<String> list = Arrays.asList("byte", "short", "int", "long", "float",
         "double", "boolean", "char", "(java.lang.)?String", "(java.util.)?Date");
 

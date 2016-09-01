@@ -1,0 +1,9 @@
+com.github.ninerules.rules.accessor.NoAccessorValidator
+com.github.ninerules.rules.elsestatement.NoElseStatementValidator
+com.github.ninerules.rules.fieldcount.FieldCountValidator
+com.github.ninerules.rules.firstclasscollection.FirstClassCollectionValidator
+com.github.ninerules.rules.indentlevel.IndentLevelValidator
+com.github.ninerules.rules.onedot.OneDotPerLineValidator
+com.github.ninerules.rules.primitive.NoPrimitivesValidator
+com.github.ninerules.rules.smallobject.MethodLengthValidator
+com.github.ninerules.rules.smallobject.SourceLengthValidator

@@ -17,20 +17,20 @@ public class Traverser {
     }
 
     public Stream<Path> stream(Path basePath){
-        PathList paths = readAll(basePath);
+        Paths paths = readAll(basePath);
 
         return paths.stream();
     }
 
-    private PathList readAll(Path basePath){
+    private Paths readAll(Path basePath){
         try {
             return readAllFiles(basePath);
         } catch (IOException e) {
         }
-        return new PathList();
+        return new Paths();
     }
 
-    private PathList readAllFiles(Path basePath) throws IOException{
+    private Paths readAllFiles(Path basePath) throws IOException{
         FileVisitor visitor = new FileVisitor(filter);
         Files.walkFileTree(basePath, visitor);
 

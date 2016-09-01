@@ -3,7 +3,7 @@ package com.github.ninerules.entities;
 import java.nio.file.Path;
 import java.util.Objects;
 
-public class FileName {
+public class FileName implements Comparable<FileName>{
     private String name;
 
     public FileName(String name){
@@ -30,5 +30,11 @@ public class FileName {
     @Override
     public int hashCode(){
         return name.hashCode();
+    }
+
+    @Override
+    public int compareTo(FileName otherName) {
+        String name2 = otherName.name;
+        return name.compareTo(name2);
     }
 }
