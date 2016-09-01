@@ -1,8 +1,6 @@
 package com.github.ninerules.rules.indentlevel;
 
 import java.util.Arrays;
-import java.util.Optional;
-import java.util.OptionalInt;
 import java.util.stream.Stream;
 
 import org.eclipse.jdt.core.dom.MethodDeclaration;

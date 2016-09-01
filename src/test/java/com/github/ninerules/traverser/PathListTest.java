@@ -13,11 +13,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PathListTest {
-    private PathList pathlist;
+    private com.github.ninerules.traverser.Paths pathlist;
 
     @Before
     public void setUp(){
-        pathlist = new PathList(Arrays.asList(
+        pathlist = new com.github.ninerules.traverser.Paths(Arrays.asList(
             Paths.get("src/test/resources/hello/pom.xml"),
             Paths.get("src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java"),
             Paths.get("src/test/resources/hello/src/main/java/sample/hello/Launcher.java")

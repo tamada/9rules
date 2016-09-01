@@ -12,29 +12,17 @@ import com.github.ninerules.rules.ViolationType;
 public class OneDotPerLineValidator extends PlainSourceValidator{
     public static final ViolationType ONE_DOT = new ViolationType("Many dots per line");
     private static final Pattern PATTERN = Pattern.compile("\\.");
+    private StringFilter filter = new StringFilter();
 
     @Override
-    public void visit(String line, LineCount count){
+    public void visitLine(String line, LineCount count){
         if(isViolated(line.trim())){
             addViolation(new Violation(ONE_DOT, new LineCounts(count)));
         }
     }
 
     private boolean isViolated(String line){
-        if(line.startsWith("import")
-                || line.startsWith("package")){
-            return false;
-        }
-        return countDot(filterString(line)) > 1;
-    }
-
-    private String filterString(String line){
-        return line.replaceAll("this\\.", "")  // this. は削除する．
-                .replaceAll("\".*\"", "\"\"")  // 文字列は空文字列にする．
-                .replaceAll("^\\.", "")        // 行頭のドットは削除する． 
-                .replaceAll("\\.\\.\\. ", " ") // varargsの...を削除する．
-                .replaceAll("System\\.out\\.print", "print")
-                .trim();
+        return countDot(filter.filter(line)) > 1;
     }
 
     private int countDot(String line){
