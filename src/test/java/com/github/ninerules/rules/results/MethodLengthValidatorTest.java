@@ -12,12 +12,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.ninerules.NineRulesValidator;
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.MethodLength;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 
 public class MethodLengthValidatorTest {
@@ -32,13 +33,13 @@ public class MethodLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator validator = new MethodLengthValidator();
+        JdtValidator<MethodLength> validator = new MethodLengthValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(44))));
+                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(43))));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

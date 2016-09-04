@@ -12,13 +12,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.ninerules.NineRulesValidator;
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.DotCount;
 import com.github.ninerules.rules.Validator;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
-import com.github.ninerules.rules.results.Results;
 
 public class OneDotPerLineValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
@@ -32,7 +33,7 @@ public class OneDotPerLineValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator validator = new OneDotPerLineValidator();
+        Validator<DotCount> validator = new OneDotPerLineValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

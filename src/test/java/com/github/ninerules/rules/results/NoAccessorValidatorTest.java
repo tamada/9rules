@@ -1,6 +1,7 @@
 package com.github.ninerules.rules.results;
 
-import static com.github.ninerules.rules.accessor.NoAccessorValidator.*;
+import static com.github.ninerules.rules.accessor.NoAccessorValidator.GETTER;
+import static com.github.ninerules.rules.accessor.NoAccessorValidator.SETTER;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -13,13 +14,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.ninerules.NineRulesValidator;
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.accessor.NoAccessorValidator;
-import com.github.ninerules.rules.results.Results;
 
 public class NoAccessorValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java";
@@ -33,7 +35,7 @@ public class NoAccessorValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator validator = new NoAccessorValidator();
+        JdtValidator<NullParameter> validator = new NoAccessorValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 

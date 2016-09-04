@@ -7,16 +7,22 @@ import java.util.stream.Collectors;
 
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.Parameter;
 
 /**
  * First class collection violation checker.
  * 
  * @author Haruaki Tamada
  */
-public class FieldCollectingValidator extends JdtValidator{
+public abstract class FieldCollectingValidator<T> extends JdtValidator<T>{
     protected List<FieldDeclaration> list = new ArrayList<>();
+
+    public FieldCollectingValidator(StrictLevel level) {
+        super(level);
+    }
 
     @Override
     public boolean visit(FieldDeclaration node) {

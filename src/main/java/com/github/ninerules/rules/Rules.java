@@ -1,34 +1,22 @@
 package com.github.ninerules.rules;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ServiceLoader;
-
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.rules.results.Results;
-import com.github.ninerules.rules.results.ResultsAppender;
 
 public class Rules {
-    private List<Validator> list = new ArrayList<>();
+    private Validators validators;
+    private StrictLevel level = StrictLevel.STRICT;
 
     public Rules(){
-        ServiceLoader<Validator> serviceLoader = createLoader(Validator.class);
-        serviceLoader
-        .forEach(item -> list.add(item));
+        this(StrictLevel.STRICT);
     }
 
-    private ServiceLoader<Validator> createLoader(Class<Validator> clazz){
-        return ServiceLoader.load(clazz);
+    public Rules(StrictLevel level){
+        validators = new Validators(level);        
     }
 
     public Results validate(final Target unit){
-        return list.stream()
-                .map(checker -> accept(unit, checker))
-                .reduce((r1, r2) -> new ResultsAppender(r1).append(r2))
-                .orElse(Results.empty());
-    }
-
-    private Results accept(Target target, Validator checker){
-        return target.accept(checker);
+        return validators.validateEach(level, unit);
     }
 }
