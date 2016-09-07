@@ -24,7 +24,7 @@ public class MethodLengthValidator extends JdtValidator<MethodLength> {
 
     @Override
     public void endVisit(MethodDeclaration node){
-        LineCount difference = countLines(Optional.of(node.getBody()));
+        LineCount difference = countLines(Optional.ofNullable(node.getBody()));
         checkViolationOfMethodLength(node, difference);
         super.endVisit(node);
     }
