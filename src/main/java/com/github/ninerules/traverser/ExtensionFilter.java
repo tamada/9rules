@@ -12,13 +12,10 @@ public class ExtensionFilter implements FileFilter{
 
     @Override
     public boolean accept(Path path, BasicFileAttributes attributes) {
-        if(attributes.isDirectory()){
-            return true;
-        }
-        return extensionFilter(path.toString());
+        return filterByExtension(path.toString());
     }
 
-    private boolean extensionFilter(String fileName){
+    private boolean filterByExtension(String fileName){
         return fileName.endsWith(extension);
     }
 }

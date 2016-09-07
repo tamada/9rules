@@ -44,6 +44,13 @@ public class NoAccessorValidatorTest {
         assertThat(violations.get(1), is(new Violation(GETTER, LineCountsBuilder.build(14))));
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<NullParameter> validator = new NoAccessorValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(NullParameter.parameter()));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

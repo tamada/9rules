@@ -16,13 +16,17 @@ public class PropertyReader {
     }
 
     public Map<String, String> read(){
-        Map<String, String> map = new HashMap<>();
+        return readProperty(new HashMap<String, String>());
+    }
+
+    private Map<String, String> readProperty(Map<String, String> map){
         try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream()))){
             read(map, in.lines());
         } catch(IOException e){
         }
         return map;
     }
+
 
     private void read(Map<String, String> map, Stream<String> stream) throws IOException{
         stream.forEach(line -> {
@@ -37,5 +41,4 @@ public class PropertyReader {
         }
         return "";
     }
-
 }

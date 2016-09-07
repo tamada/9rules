@@ -45,6 +45,13 @@ public class FirstClassCollectionValidatorTest {
         );
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<NullParameter> validator = new FirstClassCollectionValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(NullParameter.parameter()));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

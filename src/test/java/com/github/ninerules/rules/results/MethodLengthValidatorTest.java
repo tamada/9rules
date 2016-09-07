@@ -42,6 +42,13 @@ public class MethodLengthValidatorTest {
                 is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(43))));
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<MethodLength> validator = new MethodLengthValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(MethodLength.STRICT_LEVEL));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

@@ -42,6 +42,13 @@ public class IndentLevelValidatorTest {
                 is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(43))));
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<IndentLevel> validator = new IndentLevelValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(IndentLevel.STRICT_LEVEL));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

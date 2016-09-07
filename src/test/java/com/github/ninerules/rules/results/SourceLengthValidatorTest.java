@@ -42,6 +42,13 @@ public class SourceLengthValidatorTest {
                 is(new Violation(SourceLengthValidator.TOO_LONG_SOURCE, LineCountsBuilder.build(65))));
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<SourceLength> validator = new SourceLengthValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(SourceLength.STRICT_LEVEL));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

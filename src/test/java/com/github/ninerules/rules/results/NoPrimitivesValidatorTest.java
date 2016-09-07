@@ -42,6 +42,13 @@ public class NoPrimitivesValidatorTest {
                 is(new Violation(NoPrimitivesValidator.NO_PRIMITIVES, LineCountsBuilder.build(13, 14, 15, 16))));
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<NullParameter> validator = new NoPrimitivesValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(NullParameter.parameter()));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

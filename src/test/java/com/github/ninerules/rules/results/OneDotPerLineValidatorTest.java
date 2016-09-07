@@ -44,6 +44,13 @@ public class OneDotPerLineValidatorTest {
                 is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(29))));
     }
 
+    @Test
+    public void testParameter(){
+        Validator<DotCount> validator = new OneDotPerLineValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(DotCount.STRICT_LEVEL));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

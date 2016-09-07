@@ -48,7 +48,7 @@ public class NoPrimitivesValidator extends FieldCollectingValidator<NullParamete
     }
 
     @Override
-    public Parameter<NullParameter> parameter() {
+    public Parameter parameter() {
         return NullParameter.parameter();
     }
 }

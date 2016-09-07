@@ -45,6 +45,13 @@ public class FieldCountValidatorTest {
         );
     }
 
+    @Test
+    public void testParameter(){
+        JdtValidator<FieldCount> validator = new FieldCountValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(FieldCount.STRICT_LEVEL));
+    }
+
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){
         FileName key = new FileName(FILE_PATH);
         return map.get(key);

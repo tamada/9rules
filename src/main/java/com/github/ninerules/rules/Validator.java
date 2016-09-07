@@ -6,7 +6,7 @@ import com.github.ninerules.parameters.Parameter;
 import com.github.ninerules.rules.results.Results;
 
 public interface Validator<T> {
-    Parameter<T> parameter();
+    Parameter parameter();
 
     StrictLevel level();
 

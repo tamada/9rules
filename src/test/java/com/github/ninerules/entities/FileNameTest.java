@@ -1,6 +1,8 @@
 package com.github.ninerules.entities;
 
+import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
@@ -30,5 +32,14 @@ public class FileNameTest {
         FileName name = new FileName(Paths.get("FileNameTest.java"));
 
         assertThat(name, is(not(new Object())));
+    }
+
+    @Test
+    public void testCompareToo(){
+        FileName name1 = new FileName(Paths.get("FileNameTest1.java"));
+        FileName name2 = new FileName(Paths.get("FileNameTest2.java"));
+
+        assertThat(name1, is(lessThan(name2)));
+        assertThat(name2, is(greaterThan(name1)));
     }
 }

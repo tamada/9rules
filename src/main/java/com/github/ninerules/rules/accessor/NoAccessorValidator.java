@@ -52,7 +52,7 @@ public class NoAccessorValidator extends JdtValidator<NullParameter>{
     }
 
     @Override
-    public Parameter<NullParameter> parameter() {
+    public Parameter parameter() {
         return NullParameter.parameter();
     }
 }

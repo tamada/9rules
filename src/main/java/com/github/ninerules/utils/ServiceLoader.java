@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -25,7 +26,6 @@ public class ServiceLoader<T> {
         try {
             return (Class<T>) Class.forName(className);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
         }
         return null;
     }
@@ -34,15 +34,14 @@ public class ServiceLoader<T> {
         try {
             return load(clazz, clazz.getClassLoader());
         } catch (IOException e) {
-            e.printStackTrace();
         }
-        return null;
+        return new ServiceLoader<T>(Stream.empty());
     }
 
     public static <T> ServiceLoader<T> load(Class<T> clazz, ClassLoader loader) throws IOException{
         String path = "META-INF/services/" + clazz.getName();
-        URL url = loader.getResource(path);
-        return ServiceLoader.<T>loadFromUrl(url);
+        Optional<URL> url = Optional.ofNullable(loader.getResource(path));
+        return ServiceLoader.<T>loadFromUrl(url.orElseThrow(() -> new IOException()));
     }
 
     private static <T> ServiceLoader<T> loadFromUrl(URL url) throws IOException{

@@ -1,6 +1,9 @@
 package com.github.ninerules.rules.smallobject;
 
+import java.util.Optional;
+
 import org.eclipse.jdt.core.dom.ASTNode;
+import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
 import com.github.ninerules.StrictLevel;
@@ -21,9 +24,14 @@ public class MethodLengthValidator extends JdtValidator<MethodLength> {
 
     @Override
     public void endVisit(MethodDeclaration node){
-        LineCount difference = countLinesOf(node.getBody());
+        LineCount difference = countLines(Optional.of(node.getBody()));
         checkViolationOfMethodLength(node, difference);
         super.endVisit(node);
+    }
+
+    private LineCount countLines(Optional<Block> block){
+        return block.map(item -> super.countLinesOf(item))
+                .orElse(new LineCount(0));
     }
 
     private void checkViolationOfMethodLength(ASTNode node, LineCount difference){
