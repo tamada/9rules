@@ -12,25 +12,23 @@ import org.junit.Test;
 public class LineCountsTest {
     @Test
     public void testBasic(){
-        LineCounts numbers = LineCountsBuilder.builder().of(1, 2, 8, 9, 10).build();
+        LineCounts numbers = LineCountsBuilder.build(builder -> builder.of(1, 2, 8, 9, 10));
         assertThat(numbers.toString(), is("1,2,8,9,10"));
 
-        LineCounts numbers2 = LineCountsBuilder.builder().of(1, 2, 8, 9, 10).build();
+        LineCounts numbers2 = LineCountsBuilder.build(builder -> builder.of(1, 2, 8, 9, 10));
         assertThat(numbers, is(numbers2));
     }
 
     @Test
     public void testRange(){
-        LineCounts numbers = LineCountsBuilder.builder().range(2, 5).build();
+        LineCounts numbers = LineCountsBuilder.build(builder -> builder.range(2, 5));
         assertThat(numbers.toString(), is("2,3,4"));
     }
 
     @Test
     public void testBuildFromStream(){
-        LineCounts numbers = LineCountsBuilder
-                .builder()
-                .build(Stream.of(1, 2, 3, 8, 9)
-                        .map(line -> new LineCount(line)));
+        Stream<LineCount> stream = Stream.of(1, 2, 3, 8, 9).map(line -> new LineCount(line)); 
+        LineCounts numbers = LineCountsBuilder.build(builder -> builder.stream(stream));
         assertThat(numbers.toString(), is("1,2,3,8,9"));
     }
 
@@ -39,7 +37,7 @@ public class LineCountsTest {
         LineCounts numbers = new LineCounts(new LineCount(1), new LineCount(4));
         assertThat(numbers.toString(), is("1,4"));
 
-        LineCounts numbers2 = LineCountsBuilder.build(1, 4);
+        LineCounts numbers2 = LineCountsBuilder.build(builder -> builder.of(1, 4));
         assertThat(numbers, is(numbers2));
     }
 

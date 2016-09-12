@@ -19,6 +19,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.MethodLength;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 
 public class MethodLengthValidatorTest {
@@ -33,18 +34,19 @@ public class MethodLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator<MethodLength> validator = new MethodLengthValidator(StrictLevel.STRICT);
+        JdtValidator validator = new MethodLengthValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(43))));
+                is(new Violation(new ViolationType(MethodLengthValidator.TOO_LONG_METHOD, validator.parameter()),
+                        LineCountsBuilder.build(builder -> builder.of(43)))));
     }
 
     @Test
     public void testParameter(){
-        JdtValidator<MethodLength> validator = new MethodLengthValidator(StrictLevel.STRICT);
+        JdtValidator validator = new MethodLengthValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(MethodLength.STRICT_LEVEL));
     }

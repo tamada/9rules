@@ -19,6 +19,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.DotCount;
 import com.github.ninerules.rules.Validator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
 
 public class OneDotPerLineValidatorTest {
@@ -33,20 +34,21 @@ public class OneDotPerLineValidatorTest {
 
     @Test
     public void testValidator(){
-        Validator<DotCount> validator = new OneDotPerLineValidator(StrictLevel.STRICT);
+        Validator validator = new OneDotPerLineValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
+        ViolationType type = new ViolationType(OneDotPerLineValidator.ONE_DOT, validator.parameter());
         assertThat(violations.size(), is(2));
         assertThat(violations.get(0), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(28))));
+                is(new Violation(type, LineCountsBuilder.build(builder -> builder.of(28)))));
         assertThat(violations.get(1), 
-                is(new Violation(OneDotPerLineValidator.ONE_DOT, LineCountsBuilder.build(29))));
+                is(new Violation(type, LineCountsBuilder.build(builder -> builder.of(29)))));
     }
 
     @Test
     public void testParameter(){
-        Validator<DotCount> validator = new OneDotPerLineValidator(StrictLevel.STRICT);
+        Validator validator = new OneDotPerLineValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(DotCount.STRICT_LEVEL));
     }

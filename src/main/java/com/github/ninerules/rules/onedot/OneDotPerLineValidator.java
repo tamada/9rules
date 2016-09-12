@@ -1,21 +1,21 @@
 package com.github.ninerules.rules.onedot;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCounts;
+import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.DotCount;
+import com.github.ninerules.parameters.Parameter;
 import com.github.ninerules.parameters.Parameters;
 import com.github.ninerules.rules.PlainSourceValidator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 
-public class OneDotPerLineValidator extends PlainSourceValidator<DotCount>{
-    public static final ViolationType ONE_DOT = new ViolationType("Many dots per line");
+public class OneDotPerLineValidator extends PlainSourceValidator{
+    public static final Message ONE_DOT = new Message("Many dots per line (more than %s dots)");
     private static final Pattern PATTERN = Pattern.compile("\\.");
-    private StringFilter filter = new StringFilter();
+
+    private StringFilterManager filter = new StringFilterManager();
 
     public OneDotPerLineValidator(StrictLevel level) {
         super(level);
@@ -24,7 +24,7 @@ public class OneDotPerLineValidator extends PlainSourceValidator<DotCount>{
     @Override
     public void visitLine(String line, LineCount count){
         if(isViolated(line.trim())){
-            addViolation(new Violation(ONE_DOT, new LineCounts(count)));
+            addViolation(buildViolation(ONE_DOT, new LineCounts(count)));
         }
     }
 
@@ -34,19 +34,17 @@ public class OneDotPerLineValidator extends PlainSourceValidator<DotCount>{
     }
 
     private DotCount countDot(String line){
-        return new DotCount(getMatchCount(PATTERN.matcher(line)));
+        return new DotCount(getMatchCount(line));
     }
 
-    private int getMatchCount(Matcher matcher){
-        int count = 0;
-        while(matcher.find()){
-            count++;
-        }
-        return count;
+    private int getMatchCount(String line){
+        MatchingCounter counter = new MatchingCounter(PATTERN);
+        return counter.apply(line);
     }
 
     @Override
-    public DotCount parameter() {
-        return Parameters.parameter(DotCount.class, level());
+    public Parameter parameter() {
+        return Parameters.parameter(
+                DotCount.class, level());
     }
 }

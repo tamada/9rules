@@ -17,17 +17,20 @@ public class StringLineVisitorHelper {
     }
 
     public void visit(Path path){
+        try {
+            visitImpl(path);
+        } catch (IOException e) { }
+    }
+
+    private void visitImpl(Path path) throws IOException{
         try(Stream<String> stream = Files.lines(path)){
             visitLine(stream);
-        } catch (IOException e) {
         }
     }
 
     private void visitLine(Stream<String> stream) throws IOException{
         Streams.zip(stream, generate())
-        .forEach(pair -> {
-            visitLine(pair);
-        });
+        .forEach(pair -> visitLine(pair));
     }
 
     private void visitLine(Pair<String, LineCount> pair){
@@ -40,5 +43,4 @@ public class StringLineVisitorHelper {
         return Stream.iterate(1, x -> x + 1)
                 .map(index -> new LineCount(index));        
     }
-
 }

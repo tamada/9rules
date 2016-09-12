@@ -19,6 +19,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.SourceLength;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.smallobject.SourceLengthValidator;
 
 public class SourceLengthValidatorTest {
@@ -33,18 +34,19 @@ public class SourceLengthValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator<SourceLength> validator = new SourceLengthValidator(StrictLevel.STRICT);
+        JdtValidator validator = new SourceLengthValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(SourceLengthValidator.TOO_LONG_SOURCE, LineCountsBuilder.build(65))));
+                is(new Violation(new ViolationType(SourceLengthValidator.TOO_LONG_SOURCE, validator.parameter()),
+                        LineCountsBuilder.build(builder -> builder.of(65)))));
     }
 
     @Test
     public void testParameter(){
-        JdtValidator<SourceLength> validator = new SourceLengthValidator(StrictLevel.STRICT);
+        JdtValidator validator = new SourceLengthValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(SourceLength.STRICT_LEVEL));
     }

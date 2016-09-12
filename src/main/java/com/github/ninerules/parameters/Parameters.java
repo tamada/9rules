@@ -1,10 +1,15 @@
 package com.github.ninerules.parameters;
 
+import static com.github.ninerules.StrictLevel.GENERAL;
+import static com.github.ninerules.StrictLevel.ROUGH;
+import static com.github.ninerules.StrictLevel.STRICT;
+
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
 import com.github.ninerules.StrictLevel;
+import com.github.ninerules.utils.ExceptionHandler;
 
 public class Parameters {
     private static final String STRICT_LEVEL_FIELD_NAME = "STRICT_LEVEL";
@@ -14,18 +19,14 @@ public class Parameters {
     private Map<StrictLevel, String> levels = new HashMap<>();
 
     private Parameters(){
-        levels.put(StrictLevel.STRICT,  STRICT_LEVEL_FIELD_NAME);
-        levels.put(StrictLevel.GENERAL, GENERAL_LEVEL_FIELD_NAME);
-        levels.put(StrictLevel.ROUGH,   ROUGH_LEVEL_FIELD_NAME);
+        levels.put(STRICT,  STRICT_LEVEL_FIELD_NAME);
+        levels.put(GENERAL, GENERAL_LEVEL_FIELD_NAME);
+        levels.put(ROUGH,   ROUGH_LEVEL_FIELD_NAME);
     }
 
     public static <T> T parameter(Class<? extends T> clazz, StrictLevel level){
-        try {
-            return INSTANCE.<T>createParameter(clazz, level);
-        } catch (NoSuchFieldException | SecurityException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return ExceptionHandler.performOrThrows(clazz, level, null,
+                (targetClass, strictLevel) -> INSTANCE.createParameter(targetClass, strictLevel));
     }
 
     @SuppressWarnings("unchecked")

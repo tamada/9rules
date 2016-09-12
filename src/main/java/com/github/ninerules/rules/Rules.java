@@ -13,7 +13,8 @@ public class Rules {
     }
 
     public Rules(StrictLevel level){
-        validators = new Validators(level);        
+        ValidatorsBuilder builder = new ValidatorsBuilder(level);
+        validators = builder.build();
     }
 
     public Results validate(final Target unit){

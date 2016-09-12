@@ -25,7 +25,7 @@ import com.github.ninerules.rules.smallobject.SourceLengthValidator;
 public class ServiceLoaderTest {
     @Test
     public void testBasic(){
-        ServiceLoader<Validator> loader = ServiceLoader.load(Validator.class);
+        ServiceLoader<Validator> loader = new ServiceLoaderBuilder<Validator>().load(Validator.class);
 
         List<Class<Validator>> validators = loader.stream()
                 .collect(Collectors.toList());
@@ -44,7 +44,7 @@ public class ServiceLoaderTest {
 
     @Test
     public void testNotExistsType(){
-        ServiceLoader<LineCount> loader = ServiceLoader.load(LineCount.class);
+        ServiceLoader<LineCount> loader = new ServiceLoaderBuilder<LineCount>().load(LineCount.class);
 
         Class<LineCount>[] counts = (Class<LineCount>[]) loader.stream().toArray(size -> new Class<?>[size]);
         assertThat(counts.length, is(0));
@@ -52,7 +52,7 @@ public class ServiceLoaderTest {
 
     @Test
     public void testDummyClassName(){
-        ServiceLoader<Pair> loader = ServiceLoader.load(Pair.class);
+        ServiceLoader<Pair> loader = new ServiceLoaderBuilder<Pair>().load(Pair.class);
 
         Class<Pair>[] pairs = (Class<Pair>[]) loader.stream().toArray(size -> new Class<?>[size]);
         assertThat(pairs.length, is(1));

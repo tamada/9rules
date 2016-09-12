@@ -7,23 +7,29 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.entities.Message;
+import com.github.ninerules.parameters.NullParameter;
 
 public class ViolationTest {
-    private ViolationType test = new ViolationType("test");
+    private Message test = new Message("test");
 
     @Test
     public void testEquals(){
-        Violation violation = new Violation(test, LineCountsBuilder.build(10));
+        Violation violation = new Violation(new ViolationType(test, NullParameter.parameter()),
+                LineCountsBuilder.build(builder -> builder.of(10)));
 
-        assertThat(violation, is(new Violation(test, LineCountsBuilder.build(10))));
+        assertThat(violation, is(new Violation(new ViolationType(test, NullParameter.parameter()),
+                LineCountsBuilder.build(builder -> builder.of(10)))));
         assertThat(violation.toString(), is("line: 10, test"));
     }
 
     @Test
     public void testNotEquals(){
-        Violation violation = new Violation(test, LineCountsBuilder.build(10));
+        Violation violation = new Violation(new ViolationType(test, NullParameter.parameter()),
+                LineCountsBuilder.build(builder -> builder.of(10)));
         
-        assertThat(violation, is(not(new Violation(test, LineCountsBuilder.build(15)))));
+        assertThat(violation, is(not(new Violation(new ViolationType(test, NullParameter.parameter()),
+                LineCountsBuilder.build(builder -> builder.of(15))))));
         assertThat(violation, is(not(new Object())));
     }
 }

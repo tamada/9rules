@@ -2,6 +2,8 @@ package com.github.ninerules;
 
 import java.nio.file.Path;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Stream;
 
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.dom.AST;
@@ -15,16 +17,23 @@ import com.github.ninerules.rules.results.ResultsAppender;
 public class NineRulesValidator {
     private static final int PARSER_LEVEL = AST.JLS8;
 
-    public Results validate(List<Path> list){
-        return list.stream()
-                .map(path -> validate(path))
-                .reduce((result1, result2) -> new ResultsAppender(result1).append(result2))
+    public Results validate(List<Path> list, StrictLevel level){
+        return validateOf(list.stream(), level)
                 .orElse(Results.empty());
     }
 
-    private Results validate(Path path){
+    public Results validate(List<Path> list){
+        return validate(list, StrictLevel.STRICT);
+    }
+
+    private Optional<Results> validateOf(Stream<Path> stream, StrictLevel level){
+        return stream.map(path -> validate(path, level))
+                .reduce((result1, result2) -> new ResultsAppender(result1).append(result2));
+    }
+
+    private Results validate(Path path, StrictLevel level){
         Target target = parse(path);
-        return new Rules().validate(target);
+        return new Rules(level).validate(target);
     }
 
     public Target parse(Path path){

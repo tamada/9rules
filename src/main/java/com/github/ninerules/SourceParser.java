@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 
+import com.github.ninerules.utils.ExceptionHandler;
+
 public class SourceParser {
     private Path path;
 
@@ -17,11 +19,12 @@ public class SourceParser {
     }
 
     private String readSource(Path path){
-        try {
-            return Files.lines(path)
-                    .collect(Collectors.joining("\n"));
-        } catch (IOException e) {
-        }
-        return "";
+        return ExceptionHandler.performOrThrows(path, "",
+                (targetPath) -> readPlainSource(targetPath));
+    }
+
+    private String readPlainSource(Path path) throws IOException{
+        return Files.lines(path)
+                .collect(Collectors.joining("\n"));
     }
 }

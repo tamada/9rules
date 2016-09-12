@@ -21,6 +21,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.accessor.NoAccessorValidator;
 
 public class NoAccessorValidatorTest {
@@ -35,18 +36,18 @@ public class NoAccessorValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator<NullParameter> validator = new NoAccessorValidator(StrictLevel.STRICT);
+        JdtValidator validator = new NoAccessorValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(2));
-        assertThat(violations.get(0), is(new Violation(SETTER, LineCountsBuilder.build(10))));
-        assertThat(violations.get(1), is(new Violation(GETTER, LineCountsBuilder.build(14))));
+        assertThat(violations.get(0), is(new Violation(new ViolationType(SETTER, NullParameter.parameter()), LineCountsBuilder.build(builder -> builder.of(10)))));
+        assertThat(violations.get(1), is(new Violation(new ViolationType(GETTER, NullParameter.parameter()), LineCountsBuilder.build(builder -> builder.of(14)))));
     }
 
     @Test
     public void testParameter(){
-        JdtValidator<NullParameter> validator = new NoAccessorValidator(StrictLevel.STRICT);
+        JdtValidator validator = new NoAccessorValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(NullParameter.parameter()));
     }

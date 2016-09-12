@@ -4,20 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 
 import com.github.ninerules.StrictLevel;
+import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.parameters.Parameter;
 
-/**
- * First class collection violation checker.
- * 
- * @author Haruaki Tamada
- */
-public abstract class FieldCollectingValidator<T> extends JdtValidator<T>{
+public abstract class FieldCollectingValidator extends JdtValidator{
     protected List<FieldDeclaration> list = new ArrayList<>();
 
     public FieldCollectingValidator(StrictLevel level) {
@@ -37,9 +33,14 @@ public abstract class FieldCollectingValidator<T> extends JdtValidator<T>{
     }
 
     public LineCounts lineNumbers(Predicate<FieldDeclaration> predicate){
-        return LineCountsBuilder.builder()
-                .build(list.stream()
-                        .filter(predicate)
-                        .map(declaration -> startLine(declaration)));
+        return LineCountsBuilder.build(builder -> 
+            builder.stream(stream(predicate))
+        );
+    }
+
+    private Stream<LineCount> stream(Predicate<FieldDeclaration> predicate){
+        return list.stream()
+                .filter(predicate)
+                .map(declaration -> startLine(declaration));
     }
 }

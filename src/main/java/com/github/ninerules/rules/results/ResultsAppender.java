@@ -15,9 +15,7 @@ public class ResultsAppender {
     }
 
     public Results append(Results results){
-        results.violations
-        .entrySet()
-        .stream()
+        results.entryStream()
         .forEach(item -> put(item));
         return this.results;
     }
@@ -30,8 +28,13 @@ public class ResultsAppender {
 
     private void put(FileName name, List<Violation> list){
         Map<FileName, List<Violation>> map = results.violations;
+        List<Violation> origList = getMergedList(map, name, list);
+        map.put(name,  origList);
+    }
+
+    private List<Violation> getMergedList(Map<FileName, List<Violation>> map, FileName name, List<Violation> list){
         List<Violation> origList = map.getOrDefault(name, new ArrayList<>());
         origList.addAll(list);
-        map.put(name,  origList);
+        return origList;
     }
 }

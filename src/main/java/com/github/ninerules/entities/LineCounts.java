@@ -16,10 +16,8 @@ public class LineCounts {
 
     @Override
     public boolean equals(Object object){
-        if(object instanceof LineCounts){
-            return equals((LineCounts)object);
-        }
-        return false;
+        return object instanceof LineCounts &&
+                equals((LineCounts)object);
     }
 
     @Override

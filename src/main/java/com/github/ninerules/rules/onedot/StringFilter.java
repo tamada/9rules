@@ -1,28 +1,19 @@
 package com.github.ninerules.rules.onedot;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Map.Entry;
+import java.util.function.Function;
 
-class StringFilter {
-    private Map<String, String> stringFrom = new HashMap<>();
+class StringFilter implements Function<String, String>{
+    private Entry<String, String> entry;
 
-    public StringFilter(){
-        PropertyReader reader = new PropertyReader(
-                getClass().getResource("/resources/StringFilter.properties"));
-        stringFrom = reader.read();
+    public StringFilter(Entry<String, String> entry){
+        this.entry = entry;
     }
 
-    public String filter(String line){
-        for(Entry<String, String> entry: stringFrom.entrySet()){
-            line = replace(line, entry);
-        }
-        return line.trim();
+    @Override
+    public String apply(String string) {
+        String key = entry.getKey();
+        String value = entry.getValue();
+        return string.replaceAll(key, value);
     }
-
-    private String replace(String line, Entry<String, String> entry){
-        String from = entry.getKey();
-        String to = entry.getValue();
-        return line.replaceAll(from, to);
-    }        
 }

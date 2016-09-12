@@ -32,6 +32,7 @@ public class FileNameTest {
         FileName name = new FileName(Paths.get("FileNameTest.java"));
 
         assertThat(name, is(not(new Object())));
+        assertThat(name, is(not(new FileName("DifferentName.java"))));
     }
 
     @Test

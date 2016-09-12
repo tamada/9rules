@@ -1,20 +1,18 @@
 package com.github.ninerules.rules.accessor;
 
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-import org.eclipse.jdt.core.dom.Modifier;
 import org.eclipse.jdt.core.dom.SimpleName;
 
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCounts;
-import com.github.ninerules.parameters.NullParameter;
-import com.github.ninerules.parameters.Parameter;
+import com.github.ninerules.entities.Message;
 import com.github.ninerules.rules.JdtValidator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 
-public class NoAccessorValidator extends JdtValidator<NullParameter>{
-    public static final ViolationType SETTER = new ViolationType("setter method found");
-    public static final ViolationType GETTER = new ViolationType("getter method found");
+public class NoAccessorValidator extends JdtValidator{
+    public static final Message SETTER = new Message("setter method found");
+    public static final Message GETTER = new Message("getter method found");
+
+    private AccessorChecker checker = new AccessorChecker();
 
     public NoAccessorValidator(StrictLevel level) {
         super(level);
@@ -22,19 +20,8 @@ public class NoAccessorValidator extends JdtValidator<NullParameter>{
 
     @Override
     public boolean visit(MethodDeclaration node) {
-        if(isPublicMethod(node)){
-            checkViolation(getMethodName(node), new LineCounts(startLine(node)));
-        }
+        checkViolation(node);
         return super.visit(node);
-    }
-
-    @SuppressWarnings("unchecked")
-    private boolean isPublicMethod(MethodDeclaration node){
-        return node.modifiers()
-                .stream()
-                .filter(modifier -> modifier instanceof Modifier)
-                .filter(modifier -> ((Modifier)modifier).isPublic())
-                .count() == 1;
     }
 
     private String getMethodName(MethodDeclaration node){
@@ -42,17 +29,20 @@ public class NoAccessorValidator extends JdtValidator<NullParameter>{
         return simpleName.getIdentifier();
     }
 
-    private void checkViolation(String methodName, LineCounts lineNumbers){
-        if(methodName.matches("get[A-Z][a-zA-Z]*$")){
-            addViolation(new Violation(GETTER, lineNumbers));
-        }
-        else if(methodName.matches("set[A-Z][a-zA-Z]*")){
-            addViolation(new Violation(SETTER, lineNumbers));
+    private void checkViolation(MethodDeclaration node){
+        if(checker.isPublicMethod(node)){
+            checkViolation(getMethodName(node), new LineCounts(startLine(node)));
         }
     }
 
-    @Override
-    public Parameter parameter() {
-        return NullParameter.parameter();
+    private void checkViolation(String methodName, LineCounts lineNumbers){
+        checkViolation("get[A-Z][a-zA-Z]*$", GETTER, methodName, lineNumbers);
+        checkViolation("set[A-Z][a-zA-Z]*$", SETTER, methodName, lineNumbers);
+    }
+
+    private void checkViolation(String pattern, Message message, String methodName, LineCounts lineNumbers){
+        if(methodName.matches(pattern)){
+            addViolation(buildViolation(message, lineNumbers));
+        }
     }
 }

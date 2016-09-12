@@ -19,6 +19,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.FieldCount;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.fieldcount.FieldCountValidator;
 
 public class FieldCountValidatorTest {
@@ -33,21 +34,21 @@ public class FieldCountValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator<FieldCount> validator = new FieldCountValidator(StrictLevel.STRICT);
+        JdtValidator validator = new FieldCountValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
-        assertThat(
-            violations.get(0), 
-            is(new Violation(FieldCountValidator.FIELD_COUNT,
-                    LineCountsBuilder.build(13, 14, 15, 16)))
+        assertThat(violations.get(0), 
+            is(new Violation(
+                    new ViolationType(FieldCountValidator.FIELD_COUNT, validator.parameter()),
+                    LineCountsBuilder.build(builder -> builder.of(13, 14, 15, 16))))
         );
     }
 
     @Test
     public void testParameter(){
-        JdtValidator<FieldCount> validator = new FieldCountValidator(StrictLevel.STRICT);
+        JdtValidator validator = new FieldCountValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(FieldCount.STRICT_LEVEL));
     }

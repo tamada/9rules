@@ -6,21 +6,18 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 import org.eclipse.jdt.core.dom.FieldDeclaration;
 
 import com.github.ninerules.StrictLevel;
-import com.github.ninerules.parameters.NullParameter;
-import com.github.ninerules.parameters.Parameter;
-import com.github.ninerules.parameters.Parameters;
+import com.github.ninerules.entities.Message;
 import com.github.ninerules.rules.FieldChecker;
 import com.github.ninerules.rules.FieldCollectingValidator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 
 /**
  * First class collection violation checker.
  * 
  * @author Haruaki Tamada
  */
-public class NoPrimitivesValidator extends FieldCollectingValidator<NullParameter>{
-    public static final ViolationType NO_PRIMITIVES = new ViolationType("no primitives.");
+public class NoPrimitivesValidator extends FieldCollectingValidator{
+    public static final Message NO_PRIMITIVES = new Message("no primitives.");
+
     private FieldChecker checker = new FieldChecker();
     private Predicate<FieldDeclaration> predicate = (item) -> !checker.checkStatic(item);
 
@@ -36,19 +33,19 @@ public class NoPrimitivesValidator extends FieldCollectingValidator<NullParamete
 
     private void checkViolation(){
         if(isViolated()){
-            addViolation(new Violation(NO_PRIMITIVES, lineNumbers(predicate)));
+            addViolation(buildViolation(NO_PRIMITIVES, lineNumbers(predicate)));
         }
+    }
+
+    private Predicate<FieldDeclaration> createPredicate(){
+        return predicate.and(item -> 
+            new PrimitiveChecker().check(item)
+        );
     }
 
     private boolean isViolated(){
         long fieldSize = computesFieldCount(predicate);
-        long primitivesSize = computesFieldCount(predicate.and(
-                item -> new PrimitiveChecker().check(item)));
+        long primitivesSize = computesFieldCount(createPredicate());
         return fieldSize > 1 && primitivesSize > 0;
-    }
-
-    @Override
-    public Parameter parameter() {
-        return NullParameter.parameter();
     }
 }

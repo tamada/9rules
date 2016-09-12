@@ -19,6 +19,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.IndentLevel;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
 
 public class IndentLevelValidatorTest {
@@ -33,18 +34,20 @@ public class IndentLevelValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator<IndentLevel> validator = new IndentLevelValidator(StrictLevel.STRICT);
+        JdtValidator validator = new IndentLevelValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(IndentLevelValidator.INDENT_LEVEL, LineCountsBuilder.build(43))));
+                is(new Violation(
+                        new ViolationType(IndentLevelValidator.INDENT_LEVEL, validator.parameter()),
+                        LineCountsBuilder.build(builder -> builder.of(43)))));
     }
 
     @Test
     public void testParameter(){
-        JdtValidator<IndentLevel> validator = new IndentLevelValidator(StrictLevel.STRICT);
+        JdtValidator validator = new IndentLevelValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(IndentLevel.STRICT_LEVEL));
     }

@@ -19,6 +19,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.primitive.NoPrimitivesValidator;
 
 public class NoPrimitivesValidatorTest {
@@ -33,18 +34,18 @@ public class NoPrimitivesValidatorTest {
 
     @Test
     public void testValidator(){
-        JdtValidator<NullParameter> validator = new NoPrimitivesValidator(StrictLevel.STRICT);
+        JdtValidator validator = new NoPrimitivesValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(NoPrimitivesValidator.NO_PRIMITIVES, LineCountsBuilder.build(13, 14, 15, 16))));
+                is(new Violation(new ViolationType(NoPrimitivesValidator.NO_PRIMITIVES, NullParameter.parameter()), LineCountsBuilder.build(builder -> builder.of(13, 14, 15, 16)))));
     }
 
     @Test
     public void testParameter(){
-        JdtValidator<NullParameter> validator = new NoPrimitivesValidator(StrictLevel.STRICT);
+        JdtValidator validator = new NoPrimitivesValidator(StrictLevel.STRICT);
 
         assertThat(validator.parameter(), is(NullParameter.parameter()));
     }

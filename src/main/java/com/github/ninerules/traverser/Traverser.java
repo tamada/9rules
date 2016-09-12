@@ -5,6 +5,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Stream;
 
+import com.github.ninerules.utils.ExceptionHandler;
+
 public class Traverser {
     private FileFilter filter;
 
@@ -23,17 +25,13 @@ public class Traverser {
     }
 
     private Paths readAll(Path basePath){
-        try {
-            return readAllFiles(basePath);
-        } catch (IOException e) {
-        }
-        return new Paths();
+        return ExceptionHandler.performOrThrows(
+                basePath, new Paths(), (path) -> readAllFiles(path));
     }
 
     private Paths readAllFiles(Path basePath) throws IOException{
         FileVisitor visitor = new FileVisitor(filter);
         Files.walkFileTree(basePath, visitor);
-
         return visitor.createPaths();
     }
 }

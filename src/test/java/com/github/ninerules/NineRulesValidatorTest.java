@@ -1,7 +1,7 @@
 package com.github.ninerules;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -13,7 +13,9 @@ import org.junit.Test;
 
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.accessor.NoAccessorValidator;
 import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.traverser.Traverser;
@@ -36,11 +38,13 @@ public class NineRulesValidatorTest {
 
         assertThat(results.contains(
             new FileName(path.resolve("sample/hello/HelloWorld.java")),
-            new Violation(NoAccessorValidator.SETTER, LineCountsBuilder.build(10))
+            new Violation(new ViolationType(NoAccessorValidator.SETTER, NullParameter.parameter()),
+                    LineCountsBuilder.build(builder -> builder.of(10)))
         ), is(true));
         assertThat(results.contains(
             new FileName(path.resolve("sample/hello/HelloWorld.java")),
-            new Violation(NoAccessorValidator.GETTER, LineCountsBuilder.build(14))
+            new Violation(new ViolationType(NoAccessorValidator.GETTER, NullParameter.parameter()),
+                    LineCountsBuilder.build(builder -> builder.of(14)))
         ), is(true));
     }
 }

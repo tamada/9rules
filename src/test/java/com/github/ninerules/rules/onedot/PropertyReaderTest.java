@@ -1,6 +1,5 @@
 package com.github.ninerules.rules.onedot;
 
-import static com.github.ninerules.Assert.assertThrows;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -38,6 +37,7 @@ public class PropertyReaderTest {
     @Test
     public void testNullPointerException(){
         PropertyReader reader = new PropertyReader(null);
-        assertThrows(NullPointerException.class, () -> reader.read());
+        Map<String, String> map = reader.read();
+        assertThat(map.size(), is(0));
     }
 }
