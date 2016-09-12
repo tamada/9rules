@@ -37,8 +37,7 @@ public class GodObject{
     private long fibonacci(long index){
         return fibonacci.computeIfAbsent(
             new Integer((int)index),
-            i -> fibonacci(i - 1) + fibonacci(i - 2)
-        );
+            i -> fibonacci(i - 1) + fibonacci(i - 2));
     }
 
     public Stream<String> fizzbuzz(){

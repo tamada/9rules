@@ -20,10 +20,8 @@ public class Violation {
 
     @Override
     public boolean equals(Object object){
-        if(object instanceof Violation){
-            return equals((Violation)object);
-        }
-        return false;
+        return object instanceof Violation
+                && equals((Violation)object);
     }
 
     private boolean equals(Violation violation){
@@ -31,8 +29,8 @@ public class Violation {
                 && equals(violation.numbers);
     }
 
-    private boolean equals(ViolationType type){
-        return Objects.equals(this.type, type);
+    private boolean equals(ViolationType type2){
+        return type.equals(type2);
     }
 
     private boolean equals(LineCounts numbers){

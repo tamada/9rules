@@ -12,12 +12,14 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.ninerules.NineRulesValidator;
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.MethodLength;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 
 public class MethodLengthValidatorTest {
@@ -27,18 +29,26 @@ public class MethodLengthValidatorTest {
     @Before
     public void setUp(){
         Path path = Paths.get(FILE_PATH);
-        target = new NineRulesValidator().parse(path);
+        target = new NineRulesValidator(StrictLevel.STRICT).parse(path);
     }
 
     @Test
     public void testValidator(){
-        JdtValidator validator = new MethodLengthValidator();
+        JdtValidator validator = new MethodLengthValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
-                is(new Violation(MethodLengthValidator.TOO_LONG_METHOD, LineCountsBuilder.build(44))));
+                is(new Violation(new ViolationType(MethodLengthValidator.TOO_LONG_METHOD, validator.parameter()),
+                        LineCountsBuilder.build(builder -> builder.of(43)))));
+    }
+
+    @Test
+    public void testParameter(){
+        JdtValidator validator = new MethodLengthValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(MethodLength.STRICT_LEVEL));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

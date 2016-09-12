@@ -1,19 +1,21 @@
 package com.github.ninerules.rules.indentlevel;
 
-import java.util.Arrays;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 import org.eclipse.jdt.core.dom.MethodDeclaration;
-import org.eclipse.jdt.core.formatter.IndentManipulation;
 
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCounts;
+import com.github.ninerules.entities.Message;
+import com.github.ninerules.parameters.IndentLevel;
 import com.github.ninerules.rules.JdtValidator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 
-public class IndentLevelValidator extends JdtValidator {
-    public static final ViolationType INDENT_LEVEL = new ViolationType("Indentation level is too much");
-    private static final int MAX_INDENT_SIZE = 6;
+public class IndentLevelValidator extends JdtValidator{
+    public static final Message INDENT_LEVEL = new Message("Indentation level is too much (more than %s indent level)");
+
+    public IndentLevelValidator(StrictLevel level) {
+        super(level);
+    }
 
     @Override
     public boolean visit(MethodDeclaration node){
@@ -23,27 +25,24 @@ public class IndentLevelValidator extends JdtValidator {
 
     private void checkViolation(MethodDeclaration node){
         if(isViolated(node)){
-            addViolation(new Violation(INDENT_LEVEL, new LineCounts(startLine(node))));
+            addViolation(buildViolation(INDENT_LEVEL, new LineCounts(startLine(node))));
         }
     }
 
     private boolean isViolated(MethodDeclaration node){
-        return indentedStringStream(node)
-                .mapToInt(line -> getIndentSize(line))
-                .max()
-                .orElse(0) >= MAX_INDENT_SIZE;
+        return computesMaxIndentLevel(node)
+                .orElse(new IndentLevel(0))
+                .isGreaterThan(parameter());
     }
 
-    private int getIndentSize(String line){
-        String trim = line.trim();
-        char firstChar = trim.charAt(0);
-        return line.indexOf(firstChar);
+    private Optional<IndentLevel> computesMaxIndentLevel(MethodDeclaration node){
+        IndentManipulator manipulator = new IndentManipulator(node);
+        return new IndentLevelStream().stream(manipulator)
+                .max((indent1, indent2) -> indent1.compareTo(indent2));
     }
 
-    private Stream<String> indentedStringStream(MethodDeclaration node){
-        String string = node.toString();
-        String indentedCode = IndentManipulation.changeIndent(string, 0, 8, 2, "", "\r\n");
-        String[] lines = indentedCode.split("\r\n");
-        return Arrays.stream(lines);
+    @Override
+    public Class<IndentLevel> parameterClass() {
+        return IndentLevel.class;
     }
 }

@@ -24,7 +24,7 @@ public abstract class ASTVisitorPlus extends ASTVisitor{
     public LineCount countLinesOf(ASTNode node){
         int line = startLineNumber(node);
         int last = endLineNumber(node);
-        return new LineCount(last - line);
+        return new LineCount(last - line - 1);
     }
 
     private int startLineNumber(ASTNode node){

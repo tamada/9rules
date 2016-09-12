@@ -20,11 +20,13 @@ public class FileName implements Comparable<FileName>{
 
     @Override
     public boolean equals(Object object){
-        if(object instanceof FileName){
-            String otherObjectName = ((FileName)object).name;
-            return Objects.equals(name, otherObjectName);
-        }
-        return false;
+        return object instanceof FileName &&
+                equals((FileName)object);
+    }
+
+    private boolean equals(FileName fileName){
+        String otherObjectName = fileName.name;
+        return Objects.equals(name, otherObjectName);
     }
 
     @Override

@@ -1,29 +1,49 @@
 package com.github.ninerules.rules.smallobject;
 
-import org.eclipse.jdt.core.dom.ASTNode;
+import java.util.Optional;
+
+import org.eclipse.jdt.core.dom.Block;
 import org.eclipse.jdt.core.dom.MethodDeclaration;
 
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCounts;
+import com.github.ninerules.entities.Message;
+import com.github.ninerules.parameters.MethodLength;
 import com.github.ninerules.rules.JdtValidator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 
 public class MethodLengthValidator extends JdtValidator {
-    public static final ViolationType TOO_LONG_METHOD = new ViolationType("method is too long (over 5 lines).");
-    private static final LineCount MAX_METHOD_LENGTH = new LineCount(7);
+    public static final Message TOO_LONG_METHOD = new Message("method is too long (over %s lines).");
+
+    public MethodLengthValidator(StrictLevel level) {
+        super(level);
+    }
 
     @Override
     public void endVisit(MethodDeclaration node){
-        LineCount difference = countLinesOf(node);
+        LineCount difference = counts(node.getBody());
         checkViolationOfMethodLength(node, difference);
         super.endVisit(node);
     }
 
-    private void checkViolationOfMethodLength(ASTNode node, LineCount difference){
-        LineCount number = startLine(node);
-        if(difference.isGreaterThan(MAX_METHOD_LENGTH)){
-            this.addViolation(new Violation(TOO_LONG_METHOD, new LineCounts(number)));
+    private LineCount counts(Block block){
+        return Optional.ofNullable(block)
+                .map(item -> super.countLinesOf(item))
+                .orElse(new LineCount(0));
+    }
+
+    private void checkViolationOfMethodLength(MethodDeclaration node, LineCount difference){
+        if(difference.isGreaterThan(limitLength())){
+            this.addViolation(buildViolation(TOO_LONG_METHOD, new LineCounts(startLine(node))));
         }
+    }
+
+    public LineCount limitLength(){
+        return ((MethodLength)parameter()).convertToLineCount();
+    }
+
+    @Override
+    public Class<MethodLength> parameterClass() {
+        return MethodLength.class;
     }
 }

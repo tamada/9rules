@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import com.github.ninerules.Reporter;
 import com.github.ninerules.entities.FileName;
@@ -29,8 +30,7 @@ public class Results {
     }
 
     public void report(Reporter reporter){
-        violations.entrySet()
-        .stream()
+        entryStream()
         .sorted(new ResultComparator())
         .forEach(item -> report(reporter, item));
     }
@@ -39,5 +39,14 @@ public class Results {
         FileName name = entry.getKey();
         List<Violation> violations = entry.getValue();
         reporter.report(name, violations);
+    }
+
+    Stream<Map.Entry<FileName, List<Violation>>> entryStream(){
+        return violations.entrySet()
+                .stream();
+    }
+
+    public Results append(Results results){
+        return new ResultsAppender(this).append(results);
     }
 }

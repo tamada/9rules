@@ -8,6 +8,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import com.github.ninerules.utils.ExceptionHandler;
+
 public class PropertyReader {
     private URL location;
 
@@ -17,25 +19,31 @@ public class PropertyReader {
 
     public Map<String, String> read(){
         Map<String, String> map = new HashMap<>();
-        try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream()))){
-            read(map, in.lines());
-        } catch(IOException e){
-        }
+        return ExceptionHandler.performOrThrows(map, map, item -> readProperty(item));
+    }
+
+    private Map<String, String> readProperty(Map<String, String> map) throws IOException{
+        openAndReadProperty(map);
         return map;
     }
 
-    private void read(Map<String, String> map, Stream<String> stream) throws IOException{
-        stream.forEach(line -> {
-            String[] pair = line.split("=");
-            map.put(pair[0], getPair(pair, 1));
-        });
-    }
-
-    private String getPair(String[] pair, int index){
-        if(index < pair.length){
-            return pair[index];
+    private void openAndReadProperty(Map<String, String> map) throws IOException{
+        try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream()))){
+            read(map, in.lines());
         }
-        return "";
     }
 
+    private void read(Map<String, String> map, Stream<String> stream) throws IOException{
+        stream.forEach(line -> putSplittedItem(map, line));
+    }
+
+    private void putSplittedItem(Map<String, String> map, String item){
+        int index = item.indexOf('=');
+        String key = item.substring(0, index);
+        map.put(key, parseLineToGetValue(item, index));
+    }
+
+    private String parseLineToGetValue(String line, int index){
+        return line.substring(index + 1);
+    }
 }

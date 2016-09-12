@@ -1,0 +1,49 @@
+package com.github.ninerules.cli;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
+import java.util.stream.Stream;
+
+import com.github.ninerules.StrictLevel;
+
+public class CommandLines {
+    private Options options;
+    private Arguments arguments;
+
+    private CommandLines(String[] args){
+        applyFields(args, (string) -> string.startsWith("-"));
+    }
+
+    public boolean printHelpIfSpecified(){
+        HelpPrinter printer = new HelpPrinter();
+        return printer.printIfSpecified(this);
+    }
+
+    public StrictLevel level(){
+        return options.level();
+    }
+
+    private void applyFields(String[] args, Predicate<String> predicate){
+        options = new Options(buildFilter(args, predicate).map(string -> new Option(string)));
+        arguments = new Arguments(buildFilter(args, predicate.negate())
+                .map(string -> new Argument(string)));
+    }
+
+    private Stream<String> buildFilter(String[] args, Predicate<String> predicate){
+        return Arrays.stream(args)
+                .filter(predicate);
+    }
+
+    public boolean hasOption(Option option){
+        return options.isSpecified(option);
+    }
+
+    public Stream<Argument> arguments(){
+        return arguments.stream();
+    }
+
+    public static CommandLines parse(String[] args){
+        CommandLines lines = new CommandLines(args);
+        return lines;
+    }
+}

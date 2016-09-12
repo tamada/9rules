@@ -3,11 +3,15 @@ package com.github.ninerules.entities;
 public class LineCount implements Comparable<LineCount>{
     private int lineNumber;
 
-    public LineCount(int linenumber){
-        if(linenumber < 0){
-            throw new IllegalArgumentException("no negative line number: " + linenumber);
+    public LineCount(int lineNumber){
+        checkArgument(lineNumber);
+        this.lineNumber = lineNumber;
+    }
+
+    private void checkArgument(int lineNumber){
+        if(lineNumber < 0){
+            throw new IllegalArgumentException("no negative line number: " + lineNumber);
         }
-        this.lineNumber = linenumber;
     }
 
     public boolean isGreaterThan(LineCount number){
@@ -21,10 +25,8 @@ public class LineCount implements Comparable<LineCount>{
 
     @Override
     public boolean equals(Object object){
-        if(object instanceof LineCount){
-            return lineNumber == ((LineCount)object).lineNumber;
-        }
-        return false;
+        return object instanceof LineCount
+                && lineNumber == ((LineCount)object).lineNumber;
     }
 
     @Override

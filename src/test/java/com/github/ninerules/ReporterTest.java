@@ -1,7 +1,7 @@
 package com.github.ninerules;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
@@ -12,6 +12,9 @@ import org.junit.Test;
 
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.entities.Message;
+import com.github.ninerules.parameters.NullParameter;
+import com.github.ninerules.parameters.Parameter;
 import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.results.Results;
@@ -23,12 +26,13 @@ public class ReporterTest {
 
     @Before
     public void setUp(){
-        ViolationType type = new ViolationType("test");
+        Message type = new Message("test");
+        Parameter parameter = NullParameter.parameter();
         results = new Results(
             new FileName("test.java"), 
             Arrays.asList(
-                new Violation(type, LineCountsBuilder.build(10)),
-                new Violation(type, LineCountsBuilder.build(15, 16))
+                new Violation(new ViolationType(type, parameter), LineCountsBuilder.build(builder -> builder.of(10))),
+                new Violation(new ViolationType(type, parameter), LineCountsBuilder.build(builder -> builder.of(15, 16)))
             )
         );
         reporter.report(results);

@@ -12,13 +12,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.github.ninerules.NineRulesValidator;
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.rules.JdtValidator;
 import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.firstclasscollection.FirstClassCollectionValidator;
-import com.github.ninerules.rules.results.Results;
 
 public class FirstClassCollectionValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
@@ -27,21 +29,28 @@ public class FirstClassCollectionValidatorTest {
     @Before
     public void setUp(){
         Path path = Paths.get(FILE_PATH);
-        target = new NineRulesValidator().parse(path);
+        target = new NineRulesValidator(StrictLevel.STRICT).parse(path);
     }
 
     @Test
     public void testValidator(){
-        JdtValidator validator = new FirstClassCollectionValidator();
+        JdtValidator validator = new FirstClassCollectionValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(1));
         assertThat(
             violations.get(0), 
-            is(new Violation(FirstClassCollectionValidator.FCC,
-                    LineCountsBuilder.build(13, 14, 15, 16)))
+            is(new Violation(new ViolationType(FirstClassCollectionValidator.FCC, validator.parameter()),
+                    LineCountsBuilder.build(builder -> builder.of(13, 14, 15, 16))))
         );
+    }
+
+    @Test
+    public void testParameter(){
+        JdtValidator validator = new FirstClassCollectionValidator(StrictLevel.STRICT);
+
+        assertThat(validator.parameter(), is(NullParameter.parameter()));
     }
 
     private List<Violation> getViolations(Map<FileName, List<Violation>> map){

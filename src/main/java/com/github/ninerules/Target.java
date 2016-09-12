@@ -30,9 +30,8 @@ public class Target {
     }
 
     public Results accept(Validator validator){
-        if(validator instanceof JdtValidator){
+        if(validator instanceof JdtValidator)
             return accept((JdtValidator)validator);
-        }
         return accept((PlainSourceValidator)validator);
     }
 }

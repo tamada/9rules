@@ -13,6 +13,9 @@ import java.util.stream.StreamSupport;
  * @see http://d.hatena.ne.jp/nowokay/20140321
  */
 public class Streams {
+    private Streams(){
+    }
+
     public static <T, U> Stream<Pair<T,U>> zip(Stream<T> f, Stream<U> s){
         Iterator<Pair<T, U>> iterator = iterator(f, s);
         return StreamSupport.stream(
