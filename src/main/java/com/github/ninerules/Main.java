@@ -11,18 +11,19 @@ import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.traverser.ExtensionFilter;
 import com.github.ninerules.traverser.Traverser;
 
-/**
- * 
- * @author Haruaki Tamada
- */
 public class Main{
     public Main(String[] args){
         CommandLines commandline = CommandLines.parse(args);
+        performUnlessHelp(commandline);
+    }
+
+    private void performUnlessHelp(CommandLines commandline){
+        if(commandline.printHelpIfSpecified()) return;
         Results results = perform(commandline);
         new Reporter().report(results);
     }
 
-    private Results perform(CommandLines commandline){
+    public Results perform(CommandLines commandline){
         NineRulesValidator checker = new NineRulesValidator(commandline.level());
         List<Path> list = listupTargets(commandline.arguments());
         return checker.validate(list);

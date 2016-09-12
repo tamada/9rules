@@ -14,6 +14,11 @@ public class CommandLines {
         applyFields(args, (string) -> string.startsWith("-"));
     }
 
+    public boolean printHelpIfSpecified(){
+        HelpPrinter printer = new HelpPrinter();
+        return printer.printIfSpecified(this);
+    }
+
     public StrictLevel level(){
         return options.level();
     }
@@ -41,5 +46,4 @@ public class CommandLines {
         CommandLines lines = new CommandLines(args);
         return lines;
     }
-
 }
