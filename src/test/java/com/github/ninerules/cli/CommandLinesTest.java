@@ -19,6 +19,8 @@ public class CommandLinesTest {
         assertThat(cli.hasOption(Option.GENERAL_OPTION), is(true));
         assertThat(cli.hasOption(Option.ROUGH_OPTION),   is(false));
 
+        assertThat(cli.printHelpIfSpecified(), is(true));
+
         Argument[] args = cli.arguments().toArray(size -> new Argument[size]);
         assertThat(args.length, is(2));
 
