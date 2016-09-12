@@ -33,7 +33,7 @@ public class NineRulesValidatorTest {
 
     @Test
     public void testBasic(){
-        NineRulesValidator validator = new NineRulesValidator();
+        NineRulesValidator validator = new NineRulesValidator(StrictLevel.STRICT);
         Results results = validator.validate(list);
 
         assertThat(results.contains(

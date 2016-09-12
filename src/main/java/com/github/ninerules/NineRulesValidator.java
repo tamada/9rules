@@ -16,14 +16,15 @@ import com.github.ninerules.rules.results.ResultsAppender;
 
 public class NineRulesValidator {
     private static final int PARSER_LEVEL = AST.JLS8;
+    private StrictLevel level = StrictLevel.STRICT;
 
-    public Results validate(List<Path> list, StrictLevel level){
-        return validateOf(list.stream(), level)
-                .orElse(Results.empty());
+    public NineRulesValidator(StrictLevel level){
+        this.level = level;
     }
 
     public Results validate(List<Path> list){
-        return validate(list, StrictLevel.STRICT);
+        return validateOf(list.stream(), level)
+                .orElse(Results.empty());
     }
 
     private Optional<Results> validateOf(Stream<Path> stream, StrictLevel level){

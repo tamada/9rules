@@ -1,12 +1,11 @@
 package com.github.ninerules;
 
 import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import com.github.ninerules.cli.Argument;
 import com.github.ninerules.cli.CommandLines;
 import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.traverser.ExtensionFilter;
@@ -24,24 +23,20 @@ public class Main{
     }
 
     private Results perform(CommandLines commandline){
-        NineRulesValidator checker = new NineRulesValidator();
-        List<Path> list = listupTargets(new String[0]);
+        NineRulesValidator checker = new NineRulesValidator(commandline.level());
+        List<Path> list = listupTargets(commandline.arguments());
         return checker.validate(list);
     }
 
-    public List<Path> listupTargets(String[] args){
+    public List<Path> listupTargets(Stream<Argument> arguments){
         Traverser traverser = new Traverser(new ExtensionFilter(".java"));
-        return listup(args, traverser);
-    }
-
-    public List<Path> listup(String[] args, Traverser traverser){
-        return listupTargets(args, traverser)
+        return listupTargets(arguments, traverser)
                 .collect(Collectors.toList());
     }
 
-    private Stream<Path> listupTargets(String[] args, Traverser traverser){
-        return Arrays.stream(args)
-                .map(dir -> Paths.get(dir))
+    private Stream<Path> listupTargets(Stream<Argument> stream, Traverser traverser){
+        return stream
+                .map(argument -> argument.toPath())
                 .flatMap(dir -> traverser.stream(dir));
     }
 

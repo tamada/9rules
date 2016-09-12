@@ -29,7 +29,7 @@ public class FieldCountValidatorTest {
     @Before
     public void setUp(){
         Path path = Paths.get(FILE_PATH);
-        target = new NineRulesValidator().parse(path);
+        target = new NineRulesValidator(StrictLevel.STRICT).parse(path);
     }
 
     @Test
