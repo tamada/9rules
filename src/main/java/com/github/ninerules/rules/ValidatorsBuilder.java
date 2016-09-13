@@ -33,7 +33,7 @@ public class ValidatorsBuilder{
     }
 
     private Validator createInstance(Class<Validator> clazz, StrictLevel level){
-        return ExceptionHandler.performOrThrows(clazz, level, null, 
+        return ExceptionHandler.perform(clazz, level, null, 
                 (targetClass, strictLevel) -> instantiate(targetClass, strictLevel));
     }
 

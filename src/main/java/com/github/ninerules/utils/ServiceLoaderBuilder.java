@@ -9,7 +9,7 @@ import java.util.stream.Stream;
 
 public class ServiceLoaderBuilder<T> {
     public ServiceLoader<T> load(Class<T> clazz){
-        return ExceptionHandler.performOrThrows(clazz, 
+        return ExceptionHandler.perform(clazz, 
                 new ServiceLoader<T>(Stream.empty()),
                 item -> load(item, item.getClassLoader()));
     }

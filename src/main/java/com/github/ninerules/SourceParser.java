@@ -19,7 +19,7 @@ public class SourceParser {
     }
 
     private String readSource(Path path){
-        return ExceptionHandler.performOrThrows(path, "",
+        return ExceptionHandler.perform(path, "",
                 (targetPath) -> readPlainSource(targetPath));
     }
 

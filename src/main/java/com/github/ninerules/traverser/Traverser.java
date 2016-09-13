@@ -25,7 +25,7 @@ public class Traverser {
     }
 
     private Paths readAll(Path basePath){
-        return ExceptionHandler.performOrThrows(
+        return ExceptionHandler.perform(
                 basePath, new Paths(), (path) -> readAllFiles(path));
     }
 

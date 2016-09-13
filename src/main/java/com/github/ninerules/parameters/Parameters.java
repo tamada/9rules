@@ -25,7 +25,7 @@ public class Parameters {
     }
 
     public static <T> T parameter(Class<? extends T> clazz, StrictLevel level){
-        return ExceptionHandler.performOrThrows(clazz, level, null,
+        return ExceptionHandler.perform(clazz, level, null,
                 (targetClass, strictLevel) -> INSTANCE.createParameter(targetClass, strictLevel));
     }
 

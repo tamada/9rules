@@ -19,7 +19,7 @@ public class ServiceLoader<T> {
 
     @SuppressWarnings("unchecked")
     private Class<T> toClass(String className){
-        return (Class<T>) ExceptionHandler.performOrThrows(className, null,
+        return (Class<T>) ExceptionHandler.perform(className, null,
                 (item) -> Class.forName(item));
     }
 }
