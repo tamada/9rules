@@ -17,10 +17,10 @@ import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.NullParameter;
-import com.github.ninerules.rules.JdtValidator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 import com.github.ninerules.rules.primitive.NoPrimitivesValidator;
+import com.github.ninerules.rules.violations.Violation;
+import com.github.ninerules.rules.violations.ViolationType;
 
 public class NoPrimitivesValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";

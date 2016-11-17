@@ -9,6 +9,8 @@ import org.junit.Test;
 import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.NullParameter;
+import com.github.ninerules.rules.violations.Violation;
+import com.github.ninerules.rules.violations.ViolationType;
 
 public class ViolationTest {
     private Message test = new Message("test");

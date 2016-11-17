@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.github.ninerules.entities.FileName;
-import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.violations.Violation;
 
 public class ResultComparator implements Comparator<Map.Entry<FileName, List<Violation>>>{
     @Override

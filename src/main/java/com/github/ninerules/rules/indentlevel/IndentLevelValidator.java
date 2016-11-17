@@ -8,7 +8,7 @@ import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.IndentLevel;
-import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 
 public class IndentLevelValidator extends JdtValidator{
     public static final Message INDENT_LEVEL = new Message("Indentation level is too much (more than %s indent level)");

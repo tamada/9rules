@@ -4,8 +4,8 @@ import java.io.PrintWriter;
 import java.util.List;
 
 import com.github.ninerules.entities.FileName;
-import com.github.ninerules.rules.Violation;
 import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.violations.Violation;
 
 public class Reporter {
     private PrintWriter out;

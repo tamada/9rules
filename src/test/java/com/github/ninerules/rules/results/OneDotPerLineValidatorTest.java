@@ -18,9 +18,9 @@ import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.DotCount;
 import com.github.ninerules.rules.Validator;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
+import com.github.ninerules.rules.violations.Violation;
+import com.github.ninerules.rules.violations.ViolationType;
 
 public class OneDotPerLineValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";

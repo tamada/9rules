@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 
 import com.github.ninerules.Reporter;
 import com.github.ninerules.entities.FileName;
-import com.github.ninerules.rules.Violation;
+import com.github.ninerules.rules.violations.Violation;
 
 public class Results {
     Map<FileName, List<Violation>> violations = new HashMap<>();

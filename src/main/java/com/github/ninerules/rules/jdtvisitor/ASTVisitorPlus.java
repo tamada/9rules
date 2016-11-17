@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.jdtvisitor;
 
 import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;

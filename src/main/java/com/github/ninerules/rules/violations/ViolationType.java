@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.violations;
 
 import java.io.Serializable;
 import java.util.Objects;

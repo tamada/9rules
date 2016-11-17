@@ -15,9 +15,9 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.parameters.Parameter;
-import com.github.ninerules.rules.Violation;
-import com.github.ninerules.rules.ViolationType;
 import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.violations.Violation;
+import com.github.ninerules.rules.violations.ViolationType;
 
 public class ReporterTest {
     private ByteArrayOutputStream out = new ByteArrayOutputStream();

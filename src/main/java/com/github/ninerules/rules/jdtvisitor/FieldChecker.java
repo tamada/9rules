@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.jdtvisitor;
 
 import java.util.List;
 import java.util.stream.Collectors;
