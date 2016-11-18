@@ -24,16 +24,25 @@ Let us check your Java source code for evaluating qualities.
 
 ## 9 rules
 
+[![9rules](images/9rules.png)](9rules.html)
 
+The 9 rules for small object programming.
 
 [Details &raquo;](9rules.html)
 
 ## How to use
 
+[![Usage](images/usage.png)](usage.html)
+
+How to use the tool.
 
 [Details &raquo;](usage.html)
 
 ## Downloads
+
+[![Download](images/download.png)](download.html)
+
+Download the tool.
 
 [Details &raquo;](download.html)
 
