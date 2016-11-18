@@ -1,7 +1,7 @@
 java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>
 
 OPTIONS:
-    --strict:  Strictly level check.  If not the level options were not specified, this option is specified. 
+    --strict:  Strictly level check.  If not the level options were not specified, this option is specified.
     --general: General level check.
     --rough:   Rough level check.
     --help:    Print this message and exit.
