@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<assembly>
+    <id>src</id>
+    <formats>
+	    <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>.</directory>
+            <includes>
+                <include>src/**</include>
+                <include>pom.xml</include>
+                <include>README.xml</include>
+                <include>LICENSE</include>
+            </includes>
+       </fileSet>
+    </fileSets>
+</assembly>

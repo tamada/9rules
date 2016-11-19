@@ -55,7 +55,7 @@ public class MainTest {
         assertThat(lines[0], is("java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>"));
         assertThat(lines[1], is(""));
         assertThat(lines[2], is("OPTIONS:"));
-        assertThat(lines[3], is("    --strict:  Strictly level check.  If not the level options were not specified, this option is specified.")); 
+        assertThat(lines[3], is("    --strict:  Strictly level check (Default).")); 
         assertThat(lines[4], is("    --general: General level check."));
         assertThat(lines[5], is("    --rough:   Rough level check."));
         assertThat(lines[6], is("    --help:    Print this message and exit."));

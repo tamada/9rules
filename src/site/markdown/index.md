@@ -14,7 +14,7 @@ The simplest use.
 
 [![Check your source code](images/carousel-checker.png)][checker]
 
-Let us check your Java source code for evaluating qualities.
+Check your Java source codes for evaluating qualities.
 
 [small]: 9rules.html
 [usage]: usage.html
@@ -26,9 +26,7 @@ Let us check your Java source code for evaluating qualities.
 
 [![9rules](images/9rules.png)](9rules.html)
 
-The 9 rules for small object programming.
-
-[Details &raquo;](9rules.html)
+Rules for small object programming.
 
 ## How to use
 
@@ -36,19 +34,13 @@ The 9 rules for small object programming.
 
 How to use the tool.
 
-[Details &raquo;](usage.html)
-
 ## Downloads
 
 [![Download](images/download.png)](download.html)
 
 Download the tool.
 
-[Details &raquo;](download.html)
-
-
 ---
 
-### About
 
-9rules is an checker for your java source codes.
+

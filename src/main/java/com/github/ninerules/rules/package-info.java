@@ -20,8 +20,6 @@
  * 
  * The package contains rule checkers for ninerules rules of object oriented programming exercise.
  * 
- * @see <a href="https://www.oreilly.co.jp/books/9784873113890/">ThoughtWorksアンソロジー ---アジャイルとオブジェクト指向によるソフトウェアイノベーション---</a>，
- * ThoughtWorks Inc.　著、株式会社オージス総研 オブジェクトの広場編集部　訳，2008年12月 発行，
- * ISBN978-4-87311-389-0
+ * @see <a href="https://www.oreilly.co.jp/books/9784873113890/">ThoughtWorksアンソロジー ---アジャイルとオブジェクト指向によるソフトウェアイノベーション---</a>，ThoughtWorks Inc.　著、株式会社オージス総研 オブジェクトの広場編集部　訳，2008年12月 発行，ISBN978-4-87311-389-0.
  */
 package com.github.ninerules.rules;

@@ -17,7 +17,7 @@ package com.github.ninerules;
  *   <li>１つのクラスにつき，インスタンス変数は２つまでにすること．</li>
  *   <li>ファーストクラスコレクションを使用すること．</li>
  *   <li>Getter，Setter，プロパティを使用しないこと．</li>
- * </ul>
+ * </ol>
  * 
  * @author Haruaki Tamada
  */

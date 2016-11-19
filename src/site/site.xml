@@ -17,19 +17,20 @@
       <highlightJs>true</highlightJs>
       <brand>
         <name>9rules</name>
-        <href>http://tamada.github.com/9rules</href>
+        <href>http://tamada.github.com/9rules/</href>
       </brand>
-      <slogan>Checking your codes, let's small object programming.</slogan>
+      <slogan>Check your Java codes for small object programming.</slogan>
       <titleTemplate>%2$s | %1$s</titleTemplate>
       <toc>top</toc>
-      <topNav>Download|reports</topNav>
+      <topNav>Download</topNav>
       <bottomNav>
         <column>Main|Download</column>
-        <column>Documentation</column>
-        <column>reports|modules</column>
+        <column>reports</column>
+        <column>Attribution</column>
       </bottomNav>
       <bottomDescription>
-        This is a very good project doing interesting and valuable things.
+        9rules is a checker for small object programming.
+        It allows Java source codes as input, and analyze them.
       </bottomDescription>
       <pages>
         <index>
@@ -39,7 +40,6 @@
           <sections>
             <carousel />
             <thumbs>3</thumbs>
-            <sidebar />
             <body />
             <columns>3</columns>
           </sections>
@@ -52,6 +52,28 @@
   </custom>
 
   <body>
-    
-  </body>  
+    <links>
+      <item name="GitHub project" href="http://github.com/tamada/9rules/" />
+      <item name="How to use" href="usage.html" />
+    </links>
+
+    <menu name="Main" inherit="top">
+      <item name="Home" href="index.html" />
+      <item name="Release notes" href="release-notes.html" />
+    </menu>
+    <menu name="Download" inherit="top">
+      <item name="Download" href="download.html" />
+      <item name="Clone from GitHub" href="download.html#Clone_from_GitHub" />
+      <item name="Authors"  href="download.html#Authors" />
+      <item name="License"  href="download.html#License" />
+    </menu>
+    <menu name="Attribution" inherit="bottom">
+      <item name="Attribution" href="attributions.html" />
+      <item name="Issues" href="http://github.com/tamada/9rules/issues/" />
+      <!--
+          <item name="Donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;amp;hosted_button_id=QWKNRFZH52828" />
+      -->
+    </menu>
+    <menu name="Maven documentation" ref="reports" inherit="bottom"/>
+  </body>
 </project>
