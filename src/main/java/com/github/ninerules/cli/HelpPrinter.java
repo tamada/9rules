@@ -1,7 +1,5 @@
 package com.github.ninerules.cli;
 
-import static com.github.ninerules.cli.Option.HELP_OPTION;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

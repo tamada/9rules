@@ -5,6 +5,8 @@ import java.util.Objects;
 import com.github.ninerules.entities.Message;
 
 abstract class IntegerParameter implements Parameter{
+    private static final long serialVersionUID = 9066650843731685566L;
+
     int value;
 
     public IntegerParameter(int value){

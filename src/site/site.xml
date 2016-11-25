@@ -40,8 +40,6 @@
           <sections>
             <carousel />
             <thumbs>3</thumbs>
-            <body />
-            <columns>3</columns>
           </sections>
         </index>
         <developer-info>

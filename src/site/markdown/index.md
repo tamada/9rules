@@ -41,6 +41,3 @@ How to use the tool.
 Download the tool.
 
 ---
-
-
-

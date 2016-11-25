@@ -11,6 +11,8 @@ package com.github.ninerules.parameters;
  * @author Haruaki Tamada
  */
 public class FieldCount extends IntegerParameter{
+    private static final long serialVersionUID = 3498119176664452012L;
+
     public static FieldCount STRICT_LEVEL = new FieldCount(2);
     public static FieldCount GENERAL_LEVEL = new FieldCount(3);
     public static FieldCount ROUGH_LEVEL = new FieldCount(4);
