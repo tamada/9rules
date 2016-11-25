@@ -19,7 +19,7 @@ public class StringLineVisitorHelper {
     public void visit(Path path){
         try {
             visitImpl(path);
-        } catch (IOException e) { }
+        } catch (IOException e){  }
     }
 
     private void visitImpl(Path path) throws IOException{

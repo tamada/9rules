@@ -1,4 +1,6 @@
 /**
+ * The package contains rule checkers for ninerules rules of object oriented programming exercise.
+ * 
  * オブジェクト指向エクセサイズの9つのルールを判定するためのパッケージ．
  * <ol>
  *   <li>1つのメソッドにつき，インデントは一段階とすること．</li>
@@ -18,10 +20,7 @@
  *   <li>Getter，Setter，プロパティを使用しないこと．</li>
  * </ol>
  * 
- * The package contains rule checkers for ninerules rules of object oriented programming exercise.
- * 
- * @see <a href="https://www.oreilly.co.jp/books/9784873113890/">ThoughtWorksアンソロジー ---アジャイルとオブジェクト指向によるソフトウェアイノベーション---</a>，
- * ThoughtWorks Inc.　著、株式会社オージス総研 オブジェクトの広場編集部　訳，2008年12月 発行，
- * ISBN978-4-87311-389-0
+
+ * @see <a href="http://shop.oreilly.com/product/9781934356142.do">The ThoughtWorks Anthology Essays on Software Technology and Innovation</a>
  */
 package com.github.ninerules.rules;

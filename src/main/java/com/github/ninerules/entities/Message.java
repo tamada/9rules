@@ -1,8 +1,11 @@
 package com.github.ninerules.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Message {
+public class Message implements Serializable{
+    private static final long serialVersionUID = 1487346776780632708L;
+
     private String message;
 
     public Message(String message){

@@ -13,6 +13,10 @@ public class Arguments {
         });
     }
 
+    public boolean isEmpty(){
+        return arguments.isEmpty();
+    }
+
     Stream<Argument> stream(){
         return arguments.stream();
     }

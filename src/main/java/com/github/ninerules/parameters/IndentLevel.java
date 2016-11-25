@@ -10,9 +10,11 @@ package com.github.ninerules.parameters;
  * @author Haruaki Tamada
  */
 public class IndentLevel extends IntegerParameter{
-    public static IndentLevel STRICT_LEVEL = new IndentLevel(1);
-    public static IndentLevel GENERAL_LEVEL = STRICT_LEVEL;
-    public static IndentLevel ROUGH_LEVEL = new IndentLevel(2);
+    private static final long serialVersionUID = -4712495670034046431L;
+
+    public static final IndentLevel STRICT_LEVEL = new IndentLevel(1);
+    public static final IndentLevel GENERAL_LEVEL = STRICT_LEVEL;
+    public static final IndentLevel ROUGH_LEVEL = new IndentLevel(2);
 
     public IndentLevel(int indentLevel){
         super(indentLevel);

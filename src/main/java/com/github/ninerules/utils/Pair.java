@@ -4,8 +4,9 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 
 /**
+ * The class holds two objects as a pair.
  * 
- * @see http://d.hatena.ne.jp/nowokay/20140321
+ * @see <a href="http://d.hatena.ne.jp/nowokay/20140321">http://d.hatena.ne.jp/nowokay/20140321</a>
  */
 public class Pair<T, U> {
     T left;

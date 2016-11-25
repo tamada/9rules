@@ -21,7 +21,7 @@ public class ServiceLoaderBuilder<T> {
     }
 
     private ServiceLoader<T> loadFromUrl(URL url) throws IOException{
-        try(BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()))){
+        try(BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), "utf-8"))){
             return new ServiceLoader<T>(in.lines());
         }
     }

@@ -1,8 +1,10 @@
 package com.github.ninerules.parameters;
 
+import java.io.Serializable;
+
 import com.github.ninerules.entities.Message;
 
-public interface Parameter extends Comparable<Parameter>{
+public interface Parameter extends Comparable<Parameter>, Serializable{
     default int compareTo(Parameter parameter){
         if(isLessThan(parameter)) return -1;
         else if(isGreaterThan(parameter)) return 1;

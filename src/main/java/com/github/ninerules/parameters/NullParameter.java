@@ -1,6 +1,8 @@
 package com.github.ninerules.parameters;
 
 public class NullParameter implements Parameter {
+    private static final long serialVersionUID = 3221767821939834819L;
+
     private static final NullParameter INSTANCE = new NullParameter();
     public static final NullParameter STRICT_LEVEL = INSTANCE;
     public static final NullParameter GENERAL_LEVEL = INSTANCE;

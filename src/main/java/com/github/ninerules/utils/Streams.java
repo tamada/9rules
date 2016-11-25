@@ -10,7 +10,7 @@ import java.util.stream.StreamSupport;
 
 /**
  * 
- * @see http://d.hatena.ne.jp/nowokay/20140321
+ * @see <a href="http://d.hatena.ne.jp/nowokay/20140321">http://d.hatena.ne.jp/nowokay/20140321</a>
  */
 public class Streams {
     private Streams(){
