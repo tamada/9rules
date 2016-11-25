@@ -17,7 +17,7 @@
       <highlightJs>true</highlightJs>
       <brand>
         <name>9rules</name>
-        <href>http://tamada.github.com/9rules/</href>
+        <href>http://tamada.github.io/9rules/</href>
       </brand>
       <slogan>Check your Java codes for small object programming.</slogan>
       <titleTemplate>%2$s | %1$s</titleTemplate>
@@ -51,7 +51,7 @@
 
   <body>
     <links>
-      <item name="GitHub project" href="http://github.com/tamada/9rules/" />
+      <item name="GitHub project" href="https://github.com/tamada/9rules/" />
       <item name="How to use" href="usage.html" />
     </links>
 
@@ -67,7 +67,7 @@
     </menu>
     <menu name="Attribution" inherit="bottom">
       <item name="Attribution" href="attributions.html" />
-      <item name="Issues" href="http://github.com/tamada/9rules/issues/" />
+      <item name="Issues" href="https://github.com/tamada/9rules/issues/" />
       <!--
           <item name="Donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;amp;hosted_button_id=QWKNRFZH52828" />
       -->
