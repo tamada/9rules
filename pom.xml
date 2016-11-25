@@ -17,6 +17,15 @@
     <tag>HEAD</tag>
   </scm>
 
+  <developers>
+    <developer>
+      <id>tamada</id>
+      <name>Haruaki Tamada</name>
+      <email>tamada@users.noreply.github.com</email>
+      <timezone>-9</timezone>
+    </developer>
+  </developers>
+
   <issueManagement>
     <system>GitHub</system>
     <url>https://github.com/tamada/9rules/issues</url>
@@ -91,6 +100,15 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.5.3</version>
+        <configuration>
+          <tagNameFormat>v@{project.version}</tagNameFormat>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
         <executions>
           <execution>
@@ -131,9 +149,29 @@
 
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-scm-publish-plugin</artifactId>
+        <version>1.1</version>
+        <configuration>
+          <pubScmUrl>scm:git:git@github.com:tamada/9rules.git</pubScmUrl>
+          <scmBranch>gh-pages</scmBranch>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.3</version>
+        <version>3.4</version>
+        <configuration>
+          <inputEncoding>utf-8</inputEncoding>
+          <outputEncoding>utf-8</outputEncoding>
+          <locales>en</locales>
+        </configuration>
         <dependencies>
+          <dependency>
+            <groupId>com.github.stephenc.wagon</groupId>
+            <artifactId>wagon-gitsite</artifactId>
+            <version>0.4.1</version>
+          </dependency>
           <dependency>
             <groupId>lt.velykis.maven.skins</groupId>
             <artifactId>reflow-velocity-tools</artifactId>
@@ -192,6 +230,23 @@
           <xmlOutputDirectory>target</xmlOutputDirectory>
           <findbugsXmlOutput>true</findbugsXmlOutput>
           <findbugsXmlOutputDirectory>target</findbugsXmlOutputDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.7.7.201606060606</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <inputEncoding>utf-8</inputEncoding>
+          <outputEncoding>utf-8</outputEncoding>
+          <aggregate>true</aggregate>
         </configuration>
       </plugin>
 
