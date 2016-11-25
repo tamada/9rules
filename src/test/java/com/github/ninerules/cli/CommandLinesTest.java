@@ -10,7 +10,7 @@ import com.github.ninerules.StrictLevel;
 public class CommandLinesTest {
     @Test
     public void testBasic(){
-        CommandLines cli = CommandLines.parse("--help --general --strict src/main/java src/test/java".split(" "));
+        CommandLines cli = new CommandLines("--help --general --strict src/main/java src/test/java".split(" "));
 
         assertThat(cli.level(), is(StrictLevel.GENERAL));
 
@@ -26,5 +26,17 @@ public class CommandLinesTest {
 
         assertThat(args[0], is(new Argument("src/main/java")));
         assertThat(args[1], is(new Argument("src/test/java")));
+    }
+
+    @Test
+    public void testBasic2(){
+        CommandLines cli = new CommandLines(new String[0]);
+
+        assertThat(cli.level(), is(StrictLevel.STRICT));
+
+        assertThat(cli.printHelpIfSpecified(), is(true));
+
+        Argument[] args = cli.arguments().toArray(size -> new Argument[size]);
+        assertThat(args.length, is(0));
     }
 }

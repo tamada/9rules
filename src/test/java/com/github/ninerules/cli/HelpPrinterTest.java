@@ -10,13 +10,13 @@ public class HelpPrinterTest {
 
     @Test
     public void testBasic(){
-        CommandLines cli = CommandLines.parse("--help --strict src/main/java".split(" "));
+        CommandLines cli = new CommandLines("--help --strict src/main/java".split(" "));
         assertThat(printer.printIfSpecified(cli), is(true));
     }
 
     @Test
     public void testNotPrint(){
-        CommandLines cli = CommandLines.parse("--strict src/main/java".split(" "));
+        CommandLines cli = new CommandLines("--strict src/main/java".split(" "));
         assertThat(printer.printIfSpecified(cli), is(false));
     }
 }

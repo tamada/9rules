@@ -100,7 +100,7 @@
               <goal>copy-dependencies</goal>
             </goals>
             <configuration>
-              <outputDirectory>${project.build.directory}</outputDirectory>
+              <outputDirectory>${project.build.directory}/lib</outputDirectory>
               <includeScope>runtime</includeScope>
             </configuration>
           </execution>
@@ -156,6 +156,7 @@
             <manifest>
               <mainClass>com.github.ninerules.Main</mainClass>
               <addClasspath>true</addClasspath>
+              <classpathPrefix>lib</classpathPrefix>
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
             </manifest>
           </archive>

@@ -1,8 +1,9 @@
 package com.github.ninerules.entities;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Message {
+public class Message implements Serializable{
     private String message;
 
     public Message(String message){

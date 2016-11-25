@@ -1,5 +1,6 @@
 package com.github.ninerules.rules.results;
 
+import java.io.Serializable;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
@@ -8,7 +9,7 @@ import java.util.Map.Entry;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.rules.violations.Violation;
 
-public class ResultComparator implements Comparator<Map.Entry<FileName, List<Violation>>>{
+public class ResultComparator implements Comparator<Map.Entry<FileName, List<Violation>>>, Serializable{
     @Override
     public int compare(Entry<FileName, List<Violation>> entry1,
             Entry<FileName, List<Violation>> entry2) {

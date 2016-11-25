@@ -28,7 +28,7 @@ public class PropertyReader {
     }
 
     private void openAndReadProperty(Map<String, String> map) throws IOException{
-        try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream()))){
+        try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream(), "utf-8"))){
             read(map, in.lines());
         }
     }

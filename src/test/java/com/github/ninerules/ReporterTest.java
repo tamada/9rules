@@ -5,6 +5,7 @@ import static org.junit.Assert.assertThat;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintWriter;
+import java.io.IOException;
 import java.util.Arrays;
 
 import org.junit.Before;
@@ -21,11 +22,12 @@ import com.github.ninerules.rules.violations.ViolationType;
 
 public class ReporterTest {
     private ByteArrayOutputStream out = new ByteArrayOutputStream();
-    private Reporter reporter = new Reporter(new PrintWriter(out));
+    private Reporter reporter;
     private Results results;
 
     @Before
-    public void setUp(){
+    public void setUp() throws IOException{
+        reporter = new Reporter(new PrintWriter(out));
         Message type = new Message("test");
         Parameter parameter = NullParameter.parameter();
         results = new Results(

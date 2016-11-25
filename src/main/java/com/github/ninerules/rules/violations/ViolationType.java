@@ -28,21 +28,23 @@ public class ViolationType implements Serializable{
         return parameter.format(message);
     }
 
+    @Override
+    public int hashCode(){
+        return Objects.hashCode(this);
+    }
+
     public boolean equals(Object object){
         return object instanceof ViolationType
             && equals((ViolationType)object);
     }
 
     private boolean equals(ViolationType type){
-        return equals(message, type.message)
-                && equals(parameter, type.parameter);
+        return equals(type.message,
+                      type.parameter);
     }
 
-    private boolean equals(Message message1, Message message2){
-        return Objects.equals(message1, message2); 
-    }
-
-    private boolean equals(Parameter parameter1, Parameter parameter2){
-        return Objects.equals(parameter1, parameter2); 
+    private boolean equals(Message message1, Parameter parameter1){
+        return Objects.equals(message, message1) &&
+            Objects.equals(parameter, parameter1); 
     }
 }

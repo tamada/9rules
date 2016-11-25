@@ -1,5 +1,6 @@
 package com.github.ninerules;
 
+import java.io.IOException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,12 +13,12 @@ import com.github.ninerules.traverser.ExtensionFilter;
 import com.github.ninerules.traverser.Traverser;
 
 public class Main{
-    public Main(String[] args){
-        CommandLines commandline = CommandLines.parse(args);
+    public Main(String[] args) throws IOException{
+        CommandLines commandline = new CommandLines(args);
         performUnlessHelp(commandline);
     }
 
-    private void performUnlessHelp(CommandLines commandline){
+    private void performUnlessHelp(CommandLines commandline) throws IOException{
         if(commandline.printHelpIfSpecified()) return;
         Results results = perform(commandline);
         new Reporter().report(results);
@@ -41,7 +42,7 @@ public class Main{
                 .flatMap(dir -> traverser.stream(dir));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         new Main(args);
     }
 }

@@ -36,4 +36,9 @@ public class Violation {
     private boolean equals(LineCounts numbers){
         return Objects.equals(this.numbers, numbers);
     }
+
+    @Override
+    public int hashCode(){
+        return Objects.hashCode(this);
+    }
 }

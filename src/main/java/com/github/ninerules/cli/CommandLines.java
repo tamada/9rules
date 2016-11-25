@@ -10,7 +10,7 @@ public class CommandLines {
     private Options options;
     private Arguments arguments;
 
-    private CommandLines(String[] args){
+    public CommandLines(String[] args){
         applyFields(args, (string) -> string.startsWith("-"));
     }
 
@@ -42,8 +42,8 @@ public class CommandLines {
         return arguments.stream();
     }
 
-    public static CommandLines parse(String[] args){
-        CommandLines lines = new CommandLines(args);
-        return lines;
+    public boolean isShowHelp(){
+        return hasOption(Option.HELP_OPTION) 
+            || arguments.isEmpty();
     }
 }

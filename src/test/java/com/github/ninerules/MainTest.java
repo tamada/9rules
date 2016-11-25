@@ -61,6 +61,6 @@ public class MainTest {
         assertThat(lines[6], is("    --help:    Print this message and exit."));
         assertThat(lines[7], is(""));
         assertThat(lines[8], is("ARGUMENTS:"));
-        assertThat(lines[9], is("    Directory includes source files."));
+        assertThat(lines[9], is("    Directories include Java source files, and Java source files."));
     }
 }
