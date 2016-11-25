@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ValidatorsBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">9rules</a> &gt; <a href="index.source.html" class="el_package">com.github.ninerules.rules</a> &gt; <span class="el_source">ValidatorsBuilder.java</span></div><h1>ValidatorsBuilder.java</h1><pre class="source lang-java linenums">package com.github.ninerules.rules;
+
+import java.lang.reflect.Constructor;
+import java.util.stream.Stream;
+
+import com.github.ninerules.StrictLevel;
+import com.github.ninerules.utils.ExceptionHandler;
+import com.github.ninerules.utils.ServiceLoader;
+import com.github.ninerules.utils.ServiceLoaderBuilder;
+
+public class ValidatorsBuilder{
+    private StrictLevel level;
+
+<span class="fc" id="L14">    public ValidatorsBuilder(StrictLevel level){</span>
+<span class="fc" id="L15">        this.level = level;</span>
+<span class="fc" id="L16">    }</span>
+
+    public Validators build(){
+<span class="fc" id="L19">        Validators validators = new Validators();</span>
+<span class="fc" id="L20">        initialize(validators);</span>
+<span class="fc" id="L21">        return validators;</span>
+    }
+
+    private void initialize(final Validators validators){
+<span class="fc" id="L25">        serviceLoaderStream()</span>
+<span class="fc" id="L26">        .map(clazz -&gt; createInstance(clazz, level))</span>
+<span class="fc" id="L27">        .forEach(item -&gt; validators.register(item));</span>
+<span class="fc" id="L28">    }</span>
+    
+    private Stream&lt;Class&lt;Validator&gt;&gt; serviceLoaderStream(){
+<span class="fc" id="L31">        ServiceLoader&lt;Validator&gt; serviceLoader = createLoader(Validator.class);</span>
+<span class="fc" id="L32">        return serviceLoader.stream();</span>
+    }
+
+    private Validator createInstance(Class&lt;Validator&gt; clazz, StrictLevel level){
+<span class="fc" id="L36">        return ExceptionHandler.perform(clazz, level, null, </span>
+<span class="fc" id="L37">                (targetClass, strictLevel) -&gt; instantiate(targetClass, strictLevel));</span>
+    }
+
+    private Validator instantiate(Class&lt;Validator&gt; clazz, StrictLevel level) throws Exception{
+<span class="fc" id="L41">        Class&lt;StrictLevel&gt; classOfStrictLevel = StrictLevel.class;</span>
+<span class="fc" id="L42">        Constructor&lt;Validator&gt; constructor = clazz.getConstructor(classOfStrictLevel);</span>
+<span class="fc" id="L43">        return constructor.newInstance(level);</span>
+    }
+
+    private ServiceLoader&lt;Validator&gt; createLoader(Class&lt;Validator&gt; clazz){
+<span class="fc" id="L47">        return new ServiceLoaderBuilder&lt;Validator&gt;().load(clazz);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

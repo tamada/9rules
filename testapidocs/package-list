@@ -1,0 +1,10 @@
+com.github.ninerules
+com.github.ninerules.cli
+com.github.ninerules.entities
+com.github.ninerules.parameters
+com.github.ninerules.rules
+com.github.ninerules.rules.onedot
+com.github.ninerules.rules.results
+com.github.ninerules.rules.violations
+com.github.ninerules.traverser
+com.github.ninerules.utils

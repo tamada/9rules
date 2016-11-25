@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LineCountsBuilder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">9rules</a> &gt; <a href="index.source.html" class="el_package">com.github.ninerules.entities</a> &gt; <span class="el_source">LineCountsBuilder.java</span></div><h1>LineCountsBuilder.java</h1><pre class="source lang-java linenums">package com.github.ninerules.entities;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+public class LineCountsBuilder {
+<span class="fc" id="L11">    private List&lt;LineCount&gt; list = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L13">    private LineCountsBuilder(){</span>
+<span class="fc" id="L14">    }</span>
+
+    public static LineCounts build(Consumer&lt;LineCountsBuilder&gt; block){
+<span class="fc" id="L17">        LineCountsBuilder builder = new LineCountsBuilder();</span>
+<span class="fc" id="L18">        block.accept(builder);</span>
+<span class="fc" id="L19">        return builder.build();</span>
+    }
+
+    private LineCounts build(){
+<span class="fc" id="L23">        LineCount[] array = list.stream()</span>
+<span class="fc" id="L24">                .toArray(size -&gt; new LineCount[size]);</span>
+<span class="fc" id="L25">        return new LineCounts(array);</span>
+    }
+
+    public LineCountsBuilder stream(Stream&lt;LineCount&gt; stream){
+<span class="fc" id="L29">        stream.forEach(</span>
+<span class="fc" id="L30">                item -&gt; list.add(item));</span>
+<span class="fc" id="L31">        return this;</span>
+    }
+
+    public LineCountsBuilder range(int from, int to){
+<span class="fc" id="L35">        IntStream.range(from, to)</span>
+<span class="fc" id="L36">        .forEach(index -&gt; list.add(new LineCount(index)));</span>
+<span class="fc" id="L37">        return this;</span>
+    }
+
+    public LineCountsBuilder of(int... numbers){
+<span class="fc" id="L41">        Arrays.stream(numbers)</span>
+<span class="fc" id="L42">        .forEach(number -&gt; list.add(new LineCount(number)));</span>
+<span class="fc" id="L43">        return this;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

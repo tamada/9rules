@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OneDotPerLineValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">9rules</a> &gt; <a href="index.source.html" class="el_package">com.github.ninerules.rules.onedot</a> &gt; <span class="el_source">OneDotPerLineValidator.java</span></div><h1>OneDotPerLineValidator.java</h1><pre class="source lang-java linenums">package com.github.ninerules.rules.onedot;
+
+import java.util.regex.Pattern;
+
+import com.github.ninerules.StrictLevel;
+import com.github.ninerules.entities.LineCount;
+import com.github.ninerules.entities.LineCounts;
+import com.github.ninerules.entities.Message;
+import com.github.ninerules.parameters.DotCount;
+import com.github.ninerules.parameters.Parameter;
+import com.github.ninerules.parameters.Parameters;
+import com.github.ninerules.rules.stringvisitor.PlainSourceValidator;
+
+public class OneDotPerLineValidator extends PlainSourceValidator{
+<span class="fc" id="L15">    public static final Message ONE_DOT = new Message(&quot;Many dots per line (more than %s dots)&quot;);</span>
+<span class="fc" id="L16">    private static final Pattern PATTERN = Pattern.compile(&quot;\\.&quot;);</span>
+
+<span class="fc" id="L18">    private StringFilterManager filter = new StringFilterManager();</span>
+
+    public OneDotPerLineValidator(StrictLevel level) {
+<span class="fc" id="L21">        super(level);</span>
+<span class="fc" id="L22">    }</span>
+
+    @Override
+    public void visitLine(String line, LineCount count){
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if(isViolated(line.trim())){</span>
+<span class="fc" id="L27">            addViolation(buildViolation(ONE_DOT, new LineCounts(count)));</span>
+        }
+<span class="fc" id="L29">    }</span>
+
+    private boolean isViolated(String line){
+<span class="fc" id="L32">        return countDot(filter.filter(line))</span>
+<span class="fc" id="L33">                .isGreaterThan(parameter());</span>
+    }
+
+    private DotCount countDot(String line){
+<span class="fc" id="L37">        return new DotCount(getMatchCount(line));</span>
+    }
+
+    private int getMatchCount(String line){
+<span class="fc" id="L41">        MatchingCounter counter = new MatchingCounter(PATTERN);</span>
+<span class="fc" id="L42">        return counter.apply(line);</span>
+    }
+
+    @Override
+    public Parameter parameter() {
+<span class="fc" id="L47">        return Parameters.parameter(</span>
+<span class="fc" id="L48">                DotCount.class, level());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

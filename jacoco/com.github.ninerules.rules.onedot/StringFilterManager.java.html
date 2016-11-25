@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StringFilterManager.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">9rules</a> &gt; <a href="index.source.html" class="el_package">com.github.ninerules.rules.onedot</a> &gt; <span class="el_source">StringFilterManager.java</span></div><h1>StringFilterManager.java</h1><pre class="source lang-java linenums">package com.github.ninerules.rules.onedot;
+
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.function.Function;
+import java.util.stream.Stream;
+
+class StringFilterManager {
+    private Function&lt;String, String&gt; function;
+
+<span class="fc" id="L12">    public StringFilterManager(){</span>
+<span class="fc" id="L13">        Map&lt;String, String&gt; stringFrom = readResource();</span>
+<span class="fc" id="L14">        function = buildFunction(stringFrom.entrySet());</span>
+<span class="fc" id="L15">    }</span>
+
+    private Function&lt;String, String&gt; buildFunction(Set&lt;Entry&lt;String, String&gt;&gt; entries){
+<span class="fc" id="L18">        return functionStream(entries)</span>
+<span class="fc" id="L19">                .reduce((filter,  next) -&gt; filter.compose(next))</span>
+<span class="fc" id="L20">                .orElse(Function.identity());</span>
+    }
+
+    private Stream&lt;Function&lt;String, String&gt;&gt; functionStream(Set&lt;Entry&lt;String, String&gt;&gt; entries){
+<span class="fc" id="L24">        return entries.stream()</span>
+<span class="fc" id="L25">                .map(entry -&gt; new StringFilter(entry));</span>
+    }
+
+    private Map&lt;String, String&gt; readResource(){
+<span class="fc" id="L29">        PropertyReader reader = new PropertyReader(</span>
+<span class="fc" id="L30">                getClass().getResource(&quot;/resources/StringFilter.properties&quot;));</span>
+<span class="fc" id="L31">        return reader.read();</span>
+    }
+
+    public String filter(String line){
+<span class="fc" id="L35">        return function.apply(line);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

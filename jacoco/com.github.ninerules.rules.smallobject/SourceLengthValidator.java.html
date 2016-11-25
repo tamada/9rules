@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SourceLengthValidator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">9rules</a> &gt; <a href="index.source.html" class="el_package">com.github.ninerules.rules.smallobject</a> &gt; <span class="el_source">SourceLengthValidator.java</span></div><h1>SourceLengthValidator.java</h1><pre class="source lang-java linenums">package com.github.ninerules.rules.smallobject;
+
+import org.eclipse.jdt.core.dom.CompilationUnit;
+
+import com.github.ninerules.StrictLevel;
+import com.github.ninerules.entities.LineCount;
+import com.github.ninerules.entities.LineCounts;
+import com.github.ninerules.entities.Message;
+import com.github.ninerules.parameters.SourceLength;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
+
+public class SourceLengthValidator extends JdtValidator {
+<span class="fc" id="L13">    public static final Message TOO_LONG_SOURCE = new Message(&quot;source code is too long (over %s lines).&quot;);</span>
+
+    public SourceLengthValidator(StrictLevel level) {
+<span class="fc" id="L16">        super(level);</span>
+<span class="fc" id="L17">    }</span>
+
+    @Override
+    public void endVisit(CompilationUnit node){
+<span class="fc" id="L21">        checkViolationOfClassDefinition(countLinesOf(node));</span>
+<span class="fc" id="L22">        super.endVisit(node);</span>
+<span class="fc" id="L23">    }</span>
+
+    private void checkViolationOfClassDefinition(LineCount lineNumber){
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if(lineNumber.isGreaterThan(limitLength())){</span>
+<span class="fc" id="L27">            this.addViolation(buildViolation(TOO_LONG_SOURCE, new LineCounts(lineNumber)));</span>
+        }
+<span class="fc" id="L29">    }</span>
+
+    private LineCount limitLength(){
+<span class="fc" id="L32">        return ((SourceLength)parameter()).convertToLineCount();</span>
+    }
+
+    @Override
+    public Class&lt;SourceLength&gt; parameterClass() {
+<span class="fc" id="L37">        return SourceLength.class;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>
