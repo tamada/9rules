@@ -6,6 +6,8 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
+import com.github.ninerules.rules.stringvisitor.StringLineVisitorHelper;
+
 public class StringLineVisitorHelperTest {
     @Test
     public void testException(){

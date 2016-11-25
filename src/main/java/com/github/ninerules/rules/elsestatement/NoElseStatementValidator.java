@@ -10,7 +10,7 @@ import org.eclipse.jdt.core.dom.Statement;
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.Message;
-import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 
 public class NoElseStatementValidator extends JdtValidator {
     public static final Message NO_ELSE_STATEMENT = new Message("else statement found.");

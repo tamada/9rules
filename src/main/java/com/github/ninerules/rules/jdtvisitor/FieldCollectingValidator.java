@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.jdtvisitor;
 
 import java.util.ArrayList;
 import java.util.List;

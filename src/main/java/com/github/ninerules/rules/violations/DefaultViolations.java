@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.violations;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,14 +6,16 @@ import java.util.List;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.rules.results.Results;
 
-public class ViolationHolder{
+public class DefaultViolations extends EmptyViolations{
     private List<Violation> violations = new ArrayList<>();
 
-    public void addViolation(Violation violation){
+    @Override
+    public void add(Violation violation){
         violations.add(violation);
     }
 
-    public final Results createResults(FileName fileName){
+    @Override
+    public Results createResults(FileName fileName){
         return new Results(fileName, violations);
     }    
 }

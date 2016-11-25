@@ -25,11 +25,12 @@ public class FileVisitorTest {
                 .map(path -> basePath.relativize(path))
                 .sorted().collect(Collectors.toList());
 
-        assertThat(list.size(), is(5));
+        assertThat(list.size(), is(6));
         assertThat(list.get(0), is(Paths.get("java/sample/hello/GodObject.java")));
-        assertThat(list.get(1), is(Paths.get("java/sample/hello/HelloWorld.java")));
-        assertThat(list.get(2), is(Paths.get("java/sample/hello/Launcher.java")));
-        assertThat(list.get(3), is(Paths.get("webapp/WEB-INF/web.xml")));
-        assertThat(list.get(4), is(Paths.get("webapp/index.html")));
+        assertThat(list.get(1), is(Paths.get("java/sample/hello/GodObjectButNotTarget.java")));
+        assertThat(list.get(2), is(Paths.get("java/sample/hello/HelloWorld.java")));
+        assertThat(list.get(3), is(Paths.get("java/sample/hello/Launcher.java")));
+        assertThat(list.get(4), is(Paths.get("webapp/WEB-INF/web.xml")));
+        assertThat(list.get(5), is(Paths.get("webapp/index.html")));
     }
 }

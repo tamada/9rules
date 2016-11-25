@@ -10,7 +10,7 @@ import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.MethodLength;
-import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 
 public class MethodLengthValidator extends JdtValidator {
     public static final Message TOO_LONG_METHOD = new Message("method is too long (over %s lines).");

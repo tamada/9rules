@@ -9,7 +9,7 @@ import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.DotCount;
 import com.github.ninerules.parameters.Parameter;
 import com.github.ninerules.parameters.Parameters;
-import com.github.ninerules.rules.PlainSourceValidator;
+import com.github.ninerules.rules.stringvisitor.PlainSourceValidator;
 
 public class OneDotPerLineValidator extends PlainSourceValidator{
     public static final Message ONE_DOT = new Message("Many dots per line (more than %s dots)");

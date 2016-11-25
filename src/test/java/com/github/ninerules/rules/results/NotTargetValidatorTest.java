@@ -15,15 +15,16 @@ import com.github.ninerules.NineRulesValidator;
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
-import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.parameters.SourceLength;
+import com.github.ninerules.rules.Validator;
 import com.github.ninerules.rules.jdtvisitor.JdtValidator;
+import com.github.ninerules.rules.onedot.OneDotPerLineValidator;
+import com.github.ninerules.rules.smallobject.MethodLengthValidator;
 import com.github.ninerules.rules.smallobject.SourceLengthValidator;
 import com.github.ninerules.rules.violations.Violation;
-import com.github.ninerules.rules.violations.ViolationType;
 
-public class SourceLengthValidatorTest {
-    private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";
+public class NotTargetValidatorTest {
+    private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObjectButNotTarget.java";
     private Target target;
 
     @Before
@@ -33,15 +34,30 @@ public class SourceLengthValidatorTest {
     }
 
     @Test
-    public void testValidator(){
+    public void testMethodLengthValidator(){
+        JdtValidator validator = new MethodLengthValidator(StrictLevel.STRICT);
+        Results results = target.accept(validator);
+        List<Violation> violations = getViolations(results.violations);
+
+        assertThat(violations.size(), is(0));
+    }
+
+    @Test
+    public void testOneDotPerLineValidator(){
+        Validator validator = new OneDotPerLineValidator(StrictLevel.STRICT);
+        Results results = target.accept(validator);
+        List<Violation> violations = getViolations(results.violations);
+
+        assertThat(violations.size(), is(0));
+    }
+
+    @Test
+    public void testSourceLengthValidator(){
         JdtValidator validator = new SourceLengthValidator(StrictLevel.STRICT);
         Results results = target.accept(validator);
         List<Violation> violations = getViolations(results.violations);
 
-        assertThat(violations.size(), is(1));
-        assertThat(violations.get(0), 
-                is(new Violation(new ViolationType(SourceLengthValidator.TOO_LONG_SOURCE, validator.parameter()),
-                        LineCountsBuilder.build(builder -> builder.of(65)))));
+        assertThat(violations.size(), is(0));
     }
 
     @Test

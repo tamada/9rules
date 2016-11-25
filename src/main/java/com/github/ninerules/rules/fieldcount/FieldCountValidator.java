@@ -8,8 +8,8 @@ import org.eclipse.jdt.core.dom.FieldDeclaration;
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.FieldCount;
-import com.github.ninerules.rules.FieldChecker;
-import com.github.ninerules.rules.FieldCollectingValidator;
+import com.github.ninerules.rules.jdtvisitor.FieldChecker;
+import com.github.ninerules.rules.jdtvisitor.FieldCollectingValidator;
 
 public class FieldCountValidator extends FieldCollectingValidator {
     public static final Message FIELD_COUNT = new Message("field count is more than %s");

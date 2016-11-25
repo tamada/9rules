@@ -1,4 +1,4 @@
-package com.github.ninerules.rules;
+package com.github.ninerules.rules.stringvisitor;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,7 +36,12 @@ public class StringLineVisitorHelper {
     private void visitLine(Pair<String, LineCount> pair){
         String line = pair.left();
         LineCount count = pair.right();
-        visitor.visitLine(line, count);
+        callVisitorLineInVisitor(line, count);
+    }
+
+    private void callVisitorLineInVisitor(String line, LineCount count){
+        String convertedLine = visitor.preVisitLine(line, count);
+        visitor.visitLine(convertedLine, count);
     }
 
     private Stream<LineCount> generate(){

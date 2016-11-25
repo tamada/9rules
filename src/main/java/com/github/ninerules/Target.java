@@ -5,10 +5,10 @@ import java.nio.file.Path;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
 import com.github.ninerules.entities.FileName;
-import com.github.ninerules.rules.JdtValidator;
-import com.github.ninerules.rules.PlainSourceValidator;
 import com.github.ninerules.rules.Validator;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 import com.github.ninerules.rules.results.Results;
+import com.github.ninerules.rules.stringvisitor.PlainSourceValidator;
 
 public class Target {
     private Path path;

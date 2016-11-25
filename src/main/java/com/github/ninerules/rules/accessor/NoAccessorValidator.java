@@ -6,7 +6,7 @@ import org.eclipse.jdt.core.dom.SimpleName;
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.Message;
-import com.github.ninerules.rules.JdtValidator;
+import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 
 public class NoAccessorValidator extends JdtValidator{
     public static final Message SETTER = new Message("setter method found");
