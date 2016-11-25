@@ -1,10 +1,7 @@
 ### Download
 
 * Version 1.0
-    * Source: [downloads/9rules-1.0.zip](downloads/9rules-1.0-src.zip)
-        * checksums: 
-    * Binary: [downloads/9rules-1.0.zip](downloads/9rules-1.0-bin.zip)
-        * checksums: 
+     * [Download from GitHub](https://github.com/tamada/9rules/releases)
 
 ### Clone from GitHub
 

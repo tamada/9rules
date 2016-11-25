@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<assembly>
+    <id>bin</id>
+    <formats>
+	    <format>zip</format>
+    </formats>
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <fileSets>
+        <fileSet>
+            <directory>target</directory>
+            <outputDirectory>./</outputDirectory>
+            <includes>
+                <include>lib/**</include>
+                <include>9rules-*.jar</include>
+            </includes>
+            <excludes>
+                <exclude>9rules-*-annotation.jar</exclude>
+            </excludes>
+       </fileSet>
+    </fileSets>
+</assembly>

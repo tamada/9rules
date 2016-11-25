@@ -115,6 +115,7 @@
           <descriptors>
             <descriptor>src/main/assembly/annotation.xml</descriptor>
             <descriptor>src/main/assembly/source.xml</descriptor>
+            <descriptor>src/main/assembly/binary.xml</descriptor>
           </descriptors>
         </configuration>
         <executions>
