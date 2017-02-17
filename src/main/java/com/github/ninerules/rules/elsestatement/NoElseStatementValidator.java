@@ -36,8 +36,8 @@ public class NoElseStatementValidator extends JdtValidator {
     }
 
     private boolean isViolation(Optional<Statement> item){
-        return item.map(statement -> {
-            return statement.getNodeType() != IF_STATEMENT;        
-        }).orElse(false);
+        return item
+                .map(statement -> statement.getNodeType() != IF_STATEMENT)
+                .orElse(false);        
     }
 }

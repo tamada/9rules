@@ -21,25 +21,24 @@ public class LineCountsBuilder {
 
     private LineCounts build(){
         LineCount[] array = list.stream()
-                .toArray(size -> new LineCount[size]);
+                .toArray(LineCount[]::new);
         return new LineCounts(array);
     }
 
     public LineCountsBuilder stream(Stream<LineCount> stream){
-        stream.forEach(
-                item -> list.add(item));
+        stream.forEach(list::add);
         return this;
     }
 
     public LineCountsBuilder range(int from, int to){
         IntStream.range(from, to)
-        .forEach(index -> list.add(new LineCount(index)));
+        .mapToObj(LineCount::new).forEach(list::add);
         return this;
     }
 
     public LineCountsBuilder of(int... numbers){
         Arrays.stream(numbers)
-        .forEach(number -> list.add(new LineCount(number)));
+        .mapToObj(LineCount::new).forEach(list::add);
         return this;
     }
 }

@@ -19,7 +19,7 @@ public class PropertyReader {
 
     public Map<String, String> read(){
         Map<String, String> map = new HashMap<>();
-        return ExceptionHandler.perform(map, map, item -> readProperty(item));
+        return ExceptionHandler.perform(map, map, this::readProperty);
     }
 
     private Map<String, String> readProperty(Map<String, String> map) throws IOException{

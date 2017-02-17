@@ -4,37 +4,46 @@ import org.eclipse.jdt.core.dom.ASTNode;
 import org.eclipse.jdt.core.dom.ASTVisitor;
 import org.eclipse.jdt.core.dom.CompilationUnit;
 
+import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.LineCount;
+import com.github.ninerules.parameters.NullParameter;
+import com.github.ninerules.parameters.Parameter;
+import com.github.ninerules.parameters.Parameters;
+import com.github.ninerules.rules.Validator;
 
-public abstract class ASTVisitorPlus extends ASTVisitor{
-    private CompilationUnit unit;
+public abstract class ASTVisitorPlus extends ASTVisitor implements Validator{
+    private LineCountCalculator calculator;
+    private StrictLevel level;
+
+    public ASTVisitorPlus(StrictLevel level){
+        this.level = level;
+    }
 
     @Override
+    public StrictLevel level(){
+        return level;
+    }
+
+    @Override
+    public Parameter parameter(){
+        return Parameters.parameter(parameterClass(), level());
+    }
+
+    public Class<? extends Parameter> parameterClass(){
+        return NullParameter.class;
+    }
+    
+    @Override
     public boolean visit(CompilationUnit node) {
-        this.unit = node;
+        this.calculator = new LineCountCalculator(node);
         return super.visit(node);
     }
 
     public LineCount startLine(ASTNode node){
-        int startPosition = node.getStartPosition();
-        int line = unit.getLineNumber(startPosition);
-        return new LineCount(line);
+        return calculator.startLine(node);
     }
 
     public LineCount countLinesOf(ASTNode node){
-        int line = startLineNumber(node);
-        int last = endLineNumber(node);
-        return new LineCount(last - line - 1);
-    }
-
-    private int startLineNumber(ASTNode node){
-        int start = node.getStartPosition();
-        return unit.getLineNumber(start);
-    }
-
-    private int endLineNumber(ASTNode node){
-        int startPosition = node.getStartPosition();
-        int lastPosition = startPosition + node.getLength() - 1;
-        return unit.getLineNumber(lastPosition);
+        return calculator.countLinesOf(node);
     }
 }

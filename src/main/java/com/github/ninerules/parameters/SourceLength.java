@@ -15,9 +15,9 @@ import com.github.ninerules.entities.LineCount;
 public class SourceLength extends IntegerParameter{
     private static final long serialVersionUID = -5086220850518085997L;
 
-    public static SourceLength STRICT_LEVEL = new SourceLength(50);
-    public static SourceLength GENERAL_LEVEL = new SourceLength(70);
-    public static SourceLength ROUGH_LEVEL = new SourceLength(100);
+    public static final SourceLength STRICT_LEVEL = new SourceLength(50);
+    public static final SourceLength GENERAL_LEVEL = new SourceLength(70);
+    public static final SourceLength ROUGH_LEVEL = new SourceLength(100);
 
     public SourceLength(int sourceLength){
         super(sourceLength);

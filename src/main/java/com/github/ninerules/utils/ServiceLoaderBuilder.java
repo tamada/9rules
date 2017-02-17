@@ -17,12 +17,12 @@ public class ServiceLoaderBuilder<T> {
     public ServiceLoader<T> load(Class<T> clazz, ClassLoader loader) throws IOException{
         String path = "META-INF/services/" + clazz.getName();
         Optional<URL> url = loadPath(path, loader);
-        return loadFromUrl(url.orElseThrow(() -> new IOException()));
+        return loadFromUrl(url.orElseThrow(IOException::new));
     }
 
     private ServiceLoader<T> loadFromUrl(URL url) throws IOException{
         try(BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream(), "utf-8"))){
-            return new ServiceLoader<T>(in.lines());
+            return new ServiceLoader<>(in.lines());
         }
     }
 

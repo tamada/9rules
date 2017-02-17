@@ -4,30 +4,32 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public class Argument {
-    private String argument;
+    private String givenArgument;
 
     public Argument(String argument){
-        this.argument = argument;
+        this.givenArgument = argument;
     }
 
     public Path toPath(){
-        return Paths.get(argument);
+        return Paths.get(givenArgument);
     }
 
     @Override
     public int hashCode(){
-        return argument.hashCode();
+        return givenArgument.hashCode();
     }
 
     @Override
     public boolean equals(Object object){
         return object instanceof Argument
-                && equals((Argument)object);
+                && isEqualsTo((Argument)object);
     }
 
-    private boolean equals(Argument arg){
-        String name = arg.argument;
-        return Objects.equals(argument, name);
+    private boolean isEqualsTo(@NonNull Argument arg){
+        String name = arg.givenArgument;
+        return Objects.equals(givenArgument, name);
     }
 }

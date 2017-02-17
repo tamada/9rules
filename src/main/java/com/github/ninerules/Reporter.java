@@ -28,6 +28,6 @@ public class Reporter {
     public void report(FileName name, List<Violation> list){
         out.println(name);
         list.stream()
-        .forEach(item -> out.println(item));
+        .forEach(out::println);
     }
 }

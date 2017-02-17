@@ -44,6 +44,7 @@ public class LineCount implements Comparable<LineCount>{
         return Math.abs(difference) <= 1;
     }
 
+    @Override
     public String toString(){
         return String.valueOf(lineNumber);
     }

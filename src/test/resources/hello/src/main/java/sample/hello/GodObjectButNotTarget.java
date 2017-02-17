@@ -1,14 +1,13 @@
 package sample.hello;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Date;
-import java.util.function.Function;
-import java.util.stream.Stream;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
+import java.util.stream.Stream;
 
-import com.github.ninerules.annotation.IgnoreRules
+import com.github.ninerules.annotation.IgnoreRules;
 
 @IgnoreRules
 public class GodObjectButNotTarget{
@@ -18,11 +17,11 @@ public class GodObjectButNotTarget{
     private String dummyString = "dummy";
     private Date dummyDate = new Date();
 
-    public GodObject(int limit){
+    public GodObjectButNotTarget(int limit){
         this();
         this.limit = limit;
     }
-    public GodObject(){
+    public GodObjectButNotTarget(){
         fibonacci.put(1, 1L);
         fibonacci.put(2, 1L);
     }

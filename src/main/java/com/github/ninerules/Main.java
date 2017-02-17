@@ -19,9 +19,9 @@ public class Main{
     }
 
     private void performUnlessHelp(CommandLines commandline) throws IOException{
-        if(commandline.printHelpIfSpecified()) return;
-        Results results = perform(commandline);
-        new Reporter().report(results);
+        if(commandline.printHelpIfSpecified())
+            return;
+        new Reporter().report(perform(commandline));
     }
 
     public Results perform(CommandLines commandline){
@@ -37,9 +37,8 @@ public class Main{
     }
 
     private Stream<Path> listupTargets(Stream<Argument> stream, Traverser traverser){
-        return stream
-                .map(argument -> argument.toPath())
-                .flatMap(dir -> traverser.stream(dir));
+        return stream.map(Argument::toPath)
+                .flatMap(traverser::stream);
     }
 
     public static void main(String[] args) throws IOException {

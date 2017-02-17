@@ -11,7 +11,7 @@ public class Traverser {
     private FileFilter filter;
 
     public Traverser(){
-        this(FileFilter.NULL_FILTER);
+        this(NullFilter.INSTANCE);
     }
 
     public Traverser(FileFilter filter){
@@ -25,8 +25,7 @@ public class Traverser {
     }
 
     private Paths readAll(Path basePath){
-        return ExceptionHandler.perform(
-                basePath, new Paths(), (path) -> readAllFiles(path));
+        return ExceptionHandler.perform(basePath, new Paths(), this::readAllFiles);
     }
 
     private Paths readAllFiles(Path basePath) throws IOException{

@@ -16,13 +16,13 @@ class StringFilterManager {
 
     private Function<String, String> buildFunction(Set<Entry<String, String>> entries){
         return functionStream(entries)
-                .reduce((filter,  next) -> filter.compose(next))
+                .reduce(Function::compose)
                 .orElse(Function.identity());
     }
 
     private Stream<Function<String, String>> functionStream(Set<Entry<String, String>> entries){
         return entries.stream()
-                .map(entry -> new StringFilter(entry));
+                .map(StringFilter::new);
     }
 
     private Map<String, String> readResource(){

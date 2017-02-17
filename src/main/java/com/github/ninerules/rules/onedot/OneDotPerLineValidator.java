@@ -23,9 +23,8 @@ public class OneDotPerLineValidator extends PlainSourceValidator{
 
     @Override
     public void visitLine(String line, LineCount count){
-        if(isViolated(line.trim())){
+        if(isViolated(line.trim()))
             addViolation(buildViolation(ONE_DOT, new LineCounts(count)));
-        }
     }
 
     private boolean isViolated(String line){
@@ -44,7 +43,7 @@ public class OneDotPerLineValidator extends PlainSourceValidator{
 
     @Override
     public Parameter parameter() {
-        return Parameters.parameter(
-                DotCount.class, level());
+        return Parameters
+                .parameter(DotCount.class, level());
     }
 }

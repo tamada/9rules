@@ -15,7 +15,7 @@ public class FieldCountValidator extends FieldCollectingValidator {
     public static final Message FIELD_COUNT = new Message("field count is more than %s");
 
     private FieldChecker checker = new FieldChecker();
-    private Predicate<FieldDeclaration> predicate = (item) -> !checker.checkStaticAndFinal(item);
+    private Predicate<FieldDeclaration> predicate = item -> !checker.checkStaticAndFinal(item);
 
     public FieldCountValidator(StrictLevel level) {
         super(level);

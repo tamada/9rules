@@ -16,7 +16,7 @@ public class ResultsAppender {
 
     public Results append(Results results){
         results.entryStream()
-        .forEach(item -> put(item));
+        .forEach(this::put);
         return this.results;
     }
 

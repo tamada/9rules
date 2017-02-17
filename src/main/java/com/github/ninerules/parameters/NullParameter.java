@@ -29,4 +29,15 @@ public class NullParameter implements Parameter {
     public boolean isGreaterThan(Parameter parameter) {
         return false;
     }
+
+    @Override
+    public boolean equals(Object object){
+        return object instanceof Parameter
+                && isEqualsTo((Parameter)object);
+    }
+
+    @Override
+    public int hashCode(){
+        return 1;
+    }
 }

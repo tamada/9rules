@@ -28,14 +28,13 @@ public class MethodLengthValidator extends JdtValidator {
 
     private LineCount counts(Block block){
         return Optional.ofNullable(block)
-                .map(item -> super.countLinesOf(item))
+                .map(super::countLinesOf)
                 .orElse(new LineCount(0));
     }
 
     private void checkViolationOfMethodLength(MethodDeclaration node, LineCount difference){
-        if(difference.isGreaterThan(limitLength())){
+        if(difference.isGreaterThan(limitLength()))
             this.addViolation(buildViolation(TOO_LONG_METHOD, new LineCounts(startLine(node))));
-        }
     }
 
     public LineCount limitLength(){

@@ -37,8 +37,8 @@ public class Results {
 
     public void report(Reporter reporter, Map.Entry<FileName, List<Violation>> entry){
         FileName name = entry.getKey();
-        List<Violation> violations = entry.getValue();
-        reporter.report(name, violations);
+        List<Violation> list = entry.getValue();
+        reporter.report(name, list);
     }
 
     Stream<Map.Entry<FileName, List<Violation>>> entryStream(){

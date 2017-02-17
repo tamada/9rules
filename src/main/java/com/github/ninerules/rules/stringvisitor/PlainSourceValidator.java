@@ -18,6 +18,7 @@ public abstract class PlainSourceValidator implements StringLineVisitor, Validat
         this.level = level;
     }
 
+    @Override
     public StrictLevel level(){
         return level;
     }
@@ -38,12 +39,8 @@ public abstract class PlainSourceValidator implements StringLineVisitor, Validat
         return line;
     }
 
-    @Override
-    public abstract void visitLine(String line, LineCount count);
-
     private void updateViolationsIfLineCountainsIgnoreRules(String line){
-        if(line.contains("@IgnoreRules")){
+        if(line.contains("@IgnoreRules"))
             holder = new EmptyViolations();
-        }
     }
 }

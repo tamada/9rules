@@ -3,6 +3,8 @@ package com.github.ninerules.entities;
 import java.nio.file.Path;
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public class FileName implements Comparable<FileName>{
     private String name;
 
@@ -14,6 +16,7 @@ public class FileName implements Comparable<FileName>{
         this(path.toString());
     }
 
+    @Override
     public String toString(){
         return name;
     }
@@ -21,10 +24,10 @@ public class FileName implements Comparable<FileName>{
     @Override
     public boolean equals(Object object){
         return object instanceof FileName &&
-                equals((FileName)object);
+                isEqualsTo((FileName)object);
     }
 
-    private boolean equals(FileName fileName){
+    private boolean isEqualsTo(@NonNull FileName fileName){
         String otherObjectName = fileName.name;
         return Objects.equals(name, otherObjectName);
     }

@@ -41,6 +41,6 @@ public abstract class FieldCollectingValidator extends JdtValidator{
     private Stream<LineCount> stream(Predicate<FieldDeclaration> predicate){
         return list.stream()
                 .filter(predicate)
-                .map(declaration -> startLine(declaration));
+                .map(this::startLine);
     }
 }

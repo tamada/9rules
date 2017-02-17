@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public class LineCounts {
     private List<LineCount> list;
 
@@ -17,7 +19,7 @@ public class LineCounts {
     @Override
     public boolean equals(Object object){
         return object instanceof LineCounts &&
-                equals((LineCounts)object);
+                checkEquals((LineCounts)object);
     }
 
     @Override
@@ -26,7 +28,7 @@ public class LineCounts {
         return Objects.hash(array);
     }
 
-    private boolean equals(LineCounts counts){
+    private boolean checkEquals(@NonNull LineCounts counts){
         LineCount[] counts1 = toArray(list);
         LineCount[] counts2 = toArray(counts.list);
         return Arrays.equals(counts1, counts2);
@@ -40,7 +42,7 @@ public class LineCounts {
     @Override
     public String toString(){
         return list.stream()
-                .map(number -> number.toString())
+                .map(Object::toString)
                 .collect(Collectors.joining(","));
     }
 }

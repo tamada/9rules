@@ -15,9 +15,9 @@ import com.github.ninerules.entities.LineCount;
 public class MethodLength extends IntegerParameter{
     private static final long serialVersionUID = -558219757374141851L;
 
-    public static MethodLength STRICT_LEVEL = new MethodLength(3);
-    public static MethodLength GENERAL_LEVEL = new MethodLength(5);
-    public static MethodLength ROUGH_LEVEL = new MethodLength(10);
+    public static final MethodLength STRICT_LEVEL = new MethodLength(3);
+    public static final MethodLength GENERAL_LEVEL = new MethodLength(5);
+    public static final MethodLength ROUGH_LEVEL = new MethodLength(10);
 
     public MethodLength(int methodLength){
         super(methodLength);

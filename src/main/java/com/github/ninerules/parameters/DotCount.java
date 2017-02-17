@@ -13,9 +13,9 @@ package com.github.ninerules.parameters;
 public class DotCount extends IntegerParameter{
     private static final long serialVersionUID = -1461125148076263772L;
 
-    public static DotCount STRICT_LEVEL = new DotCount(1);
-    public static DotCount GENERAL_LEVEL = new DotCount(2);
-    public static DotCount ROUGH_LEVEL = new DotCount(3);
+    public static final DotCount STRICT_LEVEL = new DotCount(1);
+    public static final DotCount GENERAL_LEVEL = new DotCount(2);
+    public static final DotCount ROUGH_LEVEL = new DotCount(3);
 
     public DotCount(int dotCount){
         super(dotCount);

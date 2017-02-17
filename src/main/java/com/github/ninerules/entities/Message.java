@@ -3,37 +3,39 @@ package com.github.ninerules.entities;
 import java.io.Serializable;
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 public class Message implements Serializable{
     private static final long serialVersionUID = 1487346776780632708L;
 
-    private String message;
+    private String string;
 
     public Message(String message){
-        this.message = message;
+        this.string = message;
     }
 
     @Override
     public boolean equals(Object object){
         return object instanceof Message
-                && equals((Message)object);
+                && checkEquals((Message)object);
     }
 
-    private boolean equals(Message message){
-        String otherMessage = message.message;
-        return Objects.equals(this.message, otherMessage);
+    private boolean checkEquals(@NonNull Message message){
+        String otherMessage = message.string;
+        return Objects.equals(this.string, otherMessage);
     }
 
     @Override
     public int hashCode(){
-        return message.hashCode();
+        return string.hashCode();
     }
 
     public String format(Object... args){
-        return String.format(message, args);
+        return String.format(string, args);
     }
 
     @Override
     public String toString(){
-        return message;
+        return string;
     }
 }

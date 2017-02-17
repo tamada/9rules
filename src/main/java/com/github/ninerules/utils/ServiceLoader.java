@@ -14,12 +14,11 @@ public class ServiceLoader<T> {
 
     public Stream<Class<T>> stream(){
         return list.stream()
-                .map(className -> toClass(className));
+                .map(this::toClass);
     }
 
     @SuppressWarnings("unchecked")
     private Class<T> toClass(String className){
-        return (Class<T>) ExceptionHandler.perform(className, null,
-                (item) -> Class.forName(item));
+        return (Class<T>) ExceptionHandler.perform(className, null, Class::forName);
     }
 }

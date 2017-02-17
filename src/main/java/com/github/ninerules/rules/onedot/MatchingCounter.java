@@ -17,8 +17,13 @@ class MatchingCounter implements Function<String, Integer> {
     }
 
     private int count(Matcher matcher){
-        int count = 0;
-        while(matcher.find()) count++;
-        return count;
+        return count(matcher, new Counter());
+    }
+
+    private int count(Matcher matcher, Counter counter){
+        while(matcher.find())
+            counter.increment();
+        return counter.value();
     }
 }
+

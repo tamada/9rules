@@ -8,6 +8,7 @@ import com.github.ninerules.rules.results.Results;
 public class EmptyViolations implements Violations{
     @Override
     public void add(Violation violation){
+        // do nothing because this object has no violations.
     }
 
     @Override

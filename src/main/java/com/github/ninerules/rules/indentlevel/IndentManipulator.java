@@ -20,8 +20,7 @@ public class IndentManipulator {
     }
 
     private String indentedString(Optional<MethodDeclaration> block) {
-        return block
-                .map(item -> item.toString())
+        return block.map(Object::toString)
                 .orElse("");
     }
 

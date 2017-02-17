@@ -19,13 +19,13 @@ public class IndentLevelStream {
 
     private IndentLevel parseIndentLevel(String line) {
         Optional<String> indentLevel = StringUtils.optional(line);
-        return indentLevel.map(string -> buildIndentLevel(string))
+        return indentLevel.map(this::buildIndentLevel)
                 .orElse(new IndentLevel(0));
     }
 
     public Stream<IndentLevel> stream(IndentManipulator manipulator) {
         return manipulator.stream()
-                .map(item -> parseIndentLevel(item))
+                .map(this::parseIndentLevel)
                 .distinct();
     }
 }

@@ -19,6 +19,6 @@ public class TypeChecker {
     public boolean isCollection(Type fieldType){
         final String type = fieldType.toString();
         return COLLECTIONS.stream()
-                .anyMatch(item -> type.matches(item));
+                .anyMatch(type::matches);
     }
 }

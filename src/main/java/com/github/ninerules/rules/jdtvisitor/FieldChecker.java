@@ -12,8 +12,8 @@ public class FieldChecker {
 
     public boolean checkCollection(FieldDeclaration field){
         Type fieldType = field.getType();
-        return fieldType.isArrayType() || 
-                checker.isCollection(fieldType);
+        return fieldType.isArrayType()
+                || checker.isCollection(fieldType);
     }
 
     @SuppressWarnings("unchecked")
@@ -23,13 +23,13 @@ public class FieldChecker {
 
     public boolean checkStatic(FieldDeclaration node){
         return modifiers(node).stream()
-                .filter(modifier -> modifier.isStatic())
+                .filter(Modifier::isStatic)
                 .collect(Collectors.counting()) == 1;
     }
 
     public boolean checkStaticAndFinal(FieldDeclaration node){
         return modifiers(node).stream()
-                .filter(modifier -> isStaticOrFinal(modifier))
+                .filter(this::isStaticOrFinal)
                 .collect(Collectors.counting()) == 2;
     }
 
