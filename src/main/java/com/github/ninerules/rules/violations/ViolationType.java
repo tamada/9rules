@@ -24,27 +24,25 @@ public class ViolationType implements Serializable{
 
     @Override
     public String toString(){
-        if(parameter == null) return String.valueOf(message);
+        if(parameter == null)
+            return String.valueOf(message);
         return parameter.format(message);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hashCode(this);
+        return Objects.hash(message, parameter);
     }
 
+    @Override
     public boolean equals(Object object){
         return object instanceof ViolationType
-            && equals((ViolationType)object);
+            && checkEquals(((ViolationType)object).message, 
+                    ((ViolationType)object).parameter);
     }
 
-    private boolean equals(ViolationType type){
-        return equals(type.message,
-                      type.parameter);
-    }
-
-    private boolean equals(Message message1, Parameter parameter1){
-        return Objects.equals(message, message1) &&
-            Objects.equals(parameter, parameter1); 
+    private boolean checkEquals(Message otherMessage, Parameter otherParameter){
+        return Objects.equals(message,  otherMessage)
+                && Objects.equals(parameter, otherParameter);
     }
 }

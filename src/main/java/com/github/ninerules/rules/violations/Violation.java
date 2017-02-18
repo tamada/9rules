@@ -2,6 +2,8 @@ package com.github.ninerules.rules.violations;
 
 import java.util.Objects;
 
+import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.github.ninerules.entities.LineCounts;
 
 public class Violation {
@@ -21,24 +23,24 @@ public class Violation {
     @Override
     public boolean equals(Object object){
         return object instanceof Violation
-                && equals((Violation)object);
+                && checkEquals((Violation)object);
     }
 
-    private boolean equals(Violation violation){
-        return equals(violation.type)
-                && equals(violation.numbers);
+    private boolean checkEquals(@NonNull Violation violation){
+        return checkEquals(violation.type)
+                && checkEquals(violation.numbers);
     }
 
-    private boolean equals(ViolationType type2){
+    private boolean checkEquals(ViolationType type2){
         return type.equals(type2);
     }
 
-    private boolean equals(LineCounts numbers){
-        return Objects.equals(this.numbers, numbers);
+    private boolean checkEquals(LineCounts numbers){
+        return this.numbers.equals(numbers);
     }
 
     @Override
     public int hashCode(){
-        return Objects.hashCode(this);
+        return Objects.hash(type, numbers);
     }
 }

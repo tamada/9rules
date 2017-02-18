@@ -14,7 +14,7 @@ import com.github.ninerules.rules.violations.EmptyViolations;
 import com.github.ninerules.rules.violations.Violation;
 import com.github.ninerules.rules.violations.Violations;
 
-public abstract class JdtValidator extends LevelSwitchableValidator implements Validator{
+public abstract class JdtValidator extends ASTVisitorPlus implements Validator{
     private Violations holder = new DefaultViolations();
 
     public JdtValidator(StrictLevel level){
@@ -42,8 +42,7 @@ public abstract class JdtValidator extends LevelSwitchableValidator implements V
     }
 
     private void ignoreIfTypeIsIgnoreRule(String name){
-        if(Objects.equals("IgnoreRules", name)){
+        if(Objects.equals("IgnoreRules", name))
             holder = new EmptyViolations();
-        }
     }
 }

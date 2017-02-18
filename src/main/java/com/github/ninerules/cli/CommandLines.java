@@ -11,7 +11,7 @@ public class CommandLines {
     private Arguments arguments;
 
     public CommandLines(String[] args){
-        applyFields(args, (string) -> string.startsWith("-"));
+        applyFields(args, string -> string.startsWith("-"));
     }
 
     public boolean printHelpIfSpecified(){
@@ -24,9 +24,9 @@ public class CommandLines {
     }
 
     private void applyFields(String[] args, Predicate<String> predicate){
-        options = new Options(buildFilter(args, predicate).map(string -> new Option(string)));
+        options = new Options(buildFilter(args, predicate).map(Option::new));
         arguments = new Arguments(buildFilter(args, predicate.negate())
-                .map(string -> new Argument(string)));
+                .map(Argument::new));
     }
 
     private Stream<String> buildFilter(String[] args, Predicate<String> predicate){

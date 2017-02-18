@@ -7,7 +7,7 @@ import java.util.Map;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.rules.violations.Violation;
 
-public class ResultsAppender {
+class ResultsAppender {
     private Results results;
 
     public ResultsAppender(Results results){
@@ -16,7 +16,7 @@ public class ResultsAppender {
 
     public Results append(Results results){
         results.entryStream()
-        .forEach(item -> put(item));
+        .forEach(this::put);
         return this.results;
     }
 

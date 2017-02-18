@@ -6,22 +6,20 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Paths {
-    private List<Path> paths;
+    private List<Path> pathList = new ArrayList<>();
 
     public Paths(List<Path> paths){
-        this.paths = new ArrayList<>();
-        this.paths.addAll(paths);
+        this.pathList.addAll(paths);
     }
 
     Paths(){
-        paths = new ArrayList<>();
     }
 
     Stream<Path> stream(){
-        return paths.stream();
+        return pathList.stream();
     }
 
     void add(Path path){
-        paths.add(path);
+        pathList.add(path);
     }
 }

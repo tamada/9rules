@@ -18,7 +18,7 @@ import com.github.ninerules.rules.jdtvisitor.FieldCollectingValidator;
 public class FirstClassCollectionValidator extends FieldCollectingValidator{
     public static final Message FCC = new Message("not first class collection.");
     private FieldChecker checker = new FieldChecker();
-    private Predicate<FieldDeclaration> predicate = (item) -> !checker.checkStaticAndFinal(item);
+    private Predicate<FieldDeclaration> predicate = item -> !checker.checkStaticAndFinal(item);
 
     public FirstClassCollectionValidator(StrictLevel level) {
         super(level);
@@ -37,7 +37,7 @@ public class FirstClassCollectionValidator extends FieldCollectingValidator{
     }
 
     private long computesFieldCount(){
-        Predicate<FieldDeclaration> predicate2 = (item) -> checker.checkCollection(item);
+        Predicate<FieldDeclaration> predicate2 = checker::checkCollection;
         return computesFieldCount(predicate.and(predicate2));
     }
 

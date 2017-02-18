@@ -25,6 +25,9 @@ public class MethodLengthTest {
         assertThat(length2, is(lessThan(length3)));
         assertThat(length4, is(greaterThan(length1)));
 
+        assertThat(length1, is(new MethodLength(3)));
         assertThat(length1, is(not(new Object())));
+        assertThat(length1, is(not(length2)));
+        assertThat(length1, is(not(new SourceLength(3))));
     }
 }

@@ -19,7 +19,7 @@ public class NoPrimitivesValidator extends FieldCollectingValidator{
     public static final Message NO_PRIMITIVES = new Message("no primitives.");
 
     private FieldChecker checker = new FieldChecker();
-    private Predicate<FieldDeclaration> predicate = (item) -> !checker.checkStatic(item);
+    private Predicate<FieldDeclaration> predicate = item -> !checker.checkStatic(item);
 
     public NoPrimitivesValidator(StrictLevel level) {
         super(level);
@@ -32,15 +32,12 @@ public class NoPrimitivesValidator extends FieldCollectingValidator{
     }
 
     private void checkViolation(){
-        if(isViolated()){
+        if(isViolated())
             addViolation(buildViolation(NO_PRIMITIVES, lineNumbers(predicate)));
-        }
     }
 
     private Predicate<FieldDeclaration> createPredicate(){
-        return predicate.and(item -> 
-            new PrimitiveChecker().check(item)
-        );
+        return predicate.and(PrimitiveChecker::check);
     }
 
     private boolean isViolated(){

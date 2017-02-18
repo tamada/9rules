@@ -13,31 +13,28 @@ public class Options {
             Option.STRICT_OPTION,
             Option.GENERAL_OPTION,
             Option.ROUGH_OPTION);
-    private List<Option> options = new ArrayList<>();
+    private List<Option> optionList = new ArrayList<>();
 
     public Options(Stream<Option> stream){
-        stream.forEach(item -> {
-            options.add(item);
-        });
+        stream.forEach(optionList::add);
     }
 
     public boolean isSpecified(Option option){
-        return options.contains(option);
+        return optionList.contains(option);
     }
 
     Stream<Option> options(){
-        return options.stream();
+        return optionList.stream();
     }
 
     public StrictLevel level(){
         return specifiedLevelOption()
-                .map(option -> option.toLevel())
+                .map(Option::toLevel)
                 .orElse(StrictLevel.STRICT);
     }
 
     private Optional<Option> specifiedLevelOption(){
-        return options()
-                .filter(option -> TARGETS.contains(option))
+        return options().filter(TARGETS::contains)
                 .findFirst();
     }
 }

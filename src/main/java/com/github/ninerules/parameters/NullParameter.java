@@ -11,7 +11,7 @@ public class NullParameter implements Parameter {
     private NullParameter(){
     }
 
-    public static NullParameter parameter(){
+    public static final NullParameter parameter(){
         return INSTANCE;
     }
 
@@ -28,5 +28,15 @@ public class NullParameter implements Parameter {
     @Override
     public boolean isGreaterThan(Parameter parameter) {
         return false;
+    }
+
+    @Override
+    public boolean equals(Object object){
+        return object == parameter();
+    }
+
+    @Override
+    public int hashCode(){
+        return 1;
     }
 }

@@ -41,7 +41,7 @@ public class MethodLengthValidatorTest {
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
                 is(new Violation(new ViolationType(MethodLengthValidator.TOO_LONG_METHOD, validator.parameter()),
-                        LineCountsBuilder.build(builder -> builder.of(43)))));
+                        new LineCountsBuilder().of(43).build())));
     }
 
     @Test

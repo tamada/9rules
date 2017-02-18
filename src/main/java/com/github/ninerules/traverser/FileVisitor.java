@@ -14,13 +14,12 @@ class FileVisitor extends SimpleFileVisitor<Path>{
     public FileVisitor(FileFilter filter){
         Optional<FileFilter> optionalFilter = Optional.ofNullable(filter);
         this.filter = optionalFilter
-                .orElse(FileFilter.NULL_FILTER);
+                .orElse(NullFilter.INSTANCE);
     }
 
     @Override
     public FileVisitResult visitFile(Path file, BasicFileAttributes attributes) throws IOException {
-        filter.ifAccept(file, attributes,
-                (path) -> paths.add(path));
+        filter.ifAccept(file, attributes, paths::add);
         return super.visitFile(file, attributes);
     }
 

@@ -5,19 +5,17 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class Arguments {
-    private List<Argument> arguments = new ArrayList<>();
+    private List<Argument> list = new ArrayList<>();
 
     public Arguments(Stream<Argument> stream){
-        stream.forEach(item -> {
-            arguments.add(item);   
-        });
+        stream.forEach(list::add);
     }
 
     public boolean isEmpty(){
-        return arguments.isEmpty();
+        return list.isEmpty();
     }
 
     Stream<Argument> stream(){
-        return arguments.stream();
+        return list.stream();
     }
 }

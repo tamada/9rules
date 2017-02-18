@@ -1,21 +1,26 @@
 package com.github.ninerules.utils;
 
+import java.util.Optional;
+
 public class ExceptionHandler {
     private ExceptionHandler(){
     }
 
-    public static <V, R, E extends Exception> R perform(V argumentToFunction,
-            R returnValueIfExceptionThrows, ThrowableFunction<V, R, E> function){
-        try{ return function.apply(argumentToFunction); }
-        catch(Exception e){ }
-        return returnValueIfExceptionThrows;
+    public static <V, R, E extends Exception> Optional<R> perform(V argumentToFunction, 
+            ThrowableFunction<V, R, E> function){
+        try{
+            return Optional.of(function.apply(argumentToFunction));
+        } catch(Exception e){
+            return Optional.empty();
+        }
     }
 
-    public static <V1, V2, R, E extends Exception> R perform(V1 argument1ToFunction,
-            V2 argument2ToFunction, R returnValueIfExceptionThrows,
-            ThrowableBiFunction<V1, V2, R, E> function){
-        try{ return function.apply(argument1ToFunction, argument2ToFunction); }
-        catch(Exception e){ }
-        return returnValueIfExceptionThrows;
+    public static <V1, V2, R, E extends Exception> Optional<R> perform(V1 argumentToFunction1,
+            V2 argumentToFunction2, ThrowableBiFunction<V1, V2, R, E> function){
+        try{
+            return Optional.of(function.apply(argumentToFunction1, argumentToFunction2));
+        } catch(Exception e){
+            return Optional.empty();
+        }
     }
 }

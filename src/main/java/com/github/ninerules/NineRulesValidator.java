@@ -12,7 +12,6 @@ import org.eclipse.jdt.core.dom.CompilationUnit;
 
 import com.github.ninerules.rules.Rules;
 import com.github.ninerules.rules.results.Results;
-import com.github.ninerules.rules.results.ResultsAppender;
 
 public class NineRulesValidator {
     private static final int PARSER_LEVEL = AST.JLS8;
@@ -29,7 +28,7 @@ public class NineRulesValidator {
 
     private Optional<Results> validateOf(Stream<Path> stream, StrictLevel level){
         return stream.map(path -> validate(path, level))
-                .reduce((result1, result2) -> new ResultsAppender(result1).append(result2));
+                .reduce(Results::append);
     }
 
     private Results validate(Path path, StrictLevel level){

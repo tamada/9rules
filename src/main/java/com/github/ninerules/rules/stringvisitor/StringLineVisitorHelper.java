@@ -19,7 +19,10 @@ public class StringLineVisitorHelper {
     public void visit(Path path){
         try {
             visitImpl(path);
-        } catch (IOException e){  }
+        }
+        catch (IOException e){
+            // do nothing for ignoring exception.
+        }
     }
 
     private void visitImpl(Path path) throws IOException{
@@ -30,7 +33,7 @@ public class StringLineVisitorHelper {
 
     private void visitLine(Stream<String> stream) throws IOException{
         Streams.zip(stream, generate())
-        .forEach(pair -> visitLine(pair));
+        .forEach(this::visitLine);
     }
 
     private void visitLine(Pair<String, LineCount> pair){
@@ -46,6 +49,6 @@ public class StringLineVisitorHelper {
 
     private Stream<LineCount> generate(){
         return Stream.iterate(1, x -> x + 1)
-                .map(index -> new LineCount(index));        
+                .map(LineCount::new);        
     }
 }

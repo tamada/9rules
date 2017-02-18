@@ -1,28 +1,24 @@
 package com.github.ninerules.cli;
 
-import static com.github.ninerules.StrictLevel.STRICT;
-import static com.github.ninerules.StrictLevel.GENERAL;
-import static com.github.ninerules.StrictLevel.ROUGH;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
-
+import org.checkerframework.checker.nullness.qual.NonNull;
 import com.github.ninerules.StrictLevel;
 
 public class Option {
-    public static final Option HELP_OPTION    = new Option("--help");
-    public static final Option STRICT_OPTION  = new Option("--strict");
-    public static final Option GENERAL_OPTION = new Option("--general");
-    public static final Option ROUGH_OPTION   = new Option("--rough");
     private static final Map<Option, StrictLevel> LEVELS = new HashMap<>();
+
+    public static final Option HELP_OPTION    = new Option("--help");
+    public static final Option STRICT_OPTION  = new Option("--strict",  StrictLevel.STRICT);
+    public static final Option GENERAL_OPTION = new Option("--general", StrictLevel.GENERAL);
+    public static final Option ROUGH_OPTION   = new Option("--rough",   StrictLevel.ROUGH);
 
     private String optionName;
 
-    static{
-        LEVELS.put(STRICT_OPTION,  STRICT);
-        LEVELS.put(GENERAL_OPTION, GENERAL);
-        LEVELS.put(ROUGH_OPTION,   ROUGH);
+    private Option(String label, StrictLevel level){
+        this(label);
+        LEVELS.put(this, level);
     }
 
     public Option(String optionName){
@@ -30,7 +26,8 @@ public class Option {
     }
 
     public StrictLevel toLevel(){
-        return LEVELS.getOrDefault(this, STRICT);
+        return LEVELS.getOrDefault(
+                this, StrictLevel.STRICT);
     }
 
     @Override
@@ -40,11 +37,11 @@ public class Option {
 
     @Override
     public boolean equals(Object object){
-        return object instanceof Option
-                && equals((Option)object);
+        return object instanceof Option 
+                && checkEquals((Option)object);
     }
 
-    private boolean equals(Option option){
+    private boolean checkEquals(@NonNull Option option){
         String name = option.optionName;
         return Objects.equals(optionName, name);
     }

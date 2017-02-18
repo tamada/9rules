@@ -42,7 +42,7 @@ public class IndentLevelValidatorTest {
         assertThat(violations.get(0), 
                 is(new Violation(
                         new ViolationType(IndentLevelValidator.INDENT_LEVEL, validator.parameter()),
-                        LineCountsBuilder.build(builder -> builder.of(43)))));
+                        new LineCountsBuilder().of(43).build())));
     }
 
     @Test

@@ -8,9 +8,13 @@ import java.util.stream.Stream;
 
 public class HelpPrinter {
     public boolean printIfSpecified(CommandLines cli){
-        if(!cli.isShowHelp()) return false;
-        printHelp();
-        return true;
+        return printIfSpecified(cli.isShowHelp(), this::printHelp);
+    }
+
+    private boolean printIfSpecified(boolean flag, Runnable runnable){
+        if(flag)
+            runnable.run();
+        return flag;
     }
 
     public void printHelp(){
@@ -26,6 +30,6 @@ public class HelpPrinter {
     }
 
     private void printLines(Stream<String> stream) throws IOException{
-        stream.forEach(line -> System.out.println(line));
+        stream.forEach(System.out::println);
     }
 }

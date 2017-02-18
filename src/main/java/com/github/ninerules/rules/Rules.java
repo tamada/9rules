@@ -6,11 +6,6 @@ import com.github.ninerules.rules.results.Results;
 
 public class Rules {
     private Validators validators;
-    private StrictLevel level = StrictLevel.STRICT;
-
-    public Rules(){
-        this(StrictLevel.STRICT);
-    }
 
     public Rules(StrictLevel level){
         ValidatorsBuilder builder = new ValidatorsBuilder(level);
@@ -18,6 +13,6 @@ public class Rules {
     }
 
     public Results validate(final Target unit){
-        return validators.validateEach(level, unit);
+        return validators.validateEach(unit);
     }
 }

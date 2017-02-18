@@ -23,9 +23,8 @@ public class SourceLengthValidator extends JdtValidator {
     }
 
     private void checkViolationOfClassDefinition(LineCount lineNumber){
-        if(lineNumber.isGreaterThan(limitLength())){
+        if(lineNumber.isGreaterThan(limitLength()))
             this.addViolation(buildViolation(TOO_LONG_SOURCE, new LineCounts(lineNumber)));
-        }
     }
 
     private LineCount limitLength(){
