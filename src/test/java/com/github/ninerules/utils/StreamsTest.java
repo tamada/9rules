@@ -1,7 +1,8 @@
 package com.github.ninerules.utils;
 
-import static org.junit.Assert.assertThat;
+import static com.github.ninerules.Assert.assertAvailablePrivateConstructor;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,5 +41,10 @@ public class StreamsTest {
         assertThat(list.get(5).right(), is(6));
         assertThat(list.get(6).left(),  is("g"));
         assertThat(list.get(6).right(), is(7));
+    }
+
+    @Test
+    public void testDefaultPrivateConstructor() throws Exception{
+        assertAvailablePrivateConstructor(Streams.class);
     }
 }

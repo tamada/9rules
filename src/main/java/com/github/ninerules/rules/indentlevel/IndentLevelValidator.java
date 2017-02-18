@@ -38,7 +38,7 @@ public class IndentLevelValidator extends JdtValidator{
     private Optional<IndentLevel> computesMaxIndentLevel(MethodDeclaration node){
         IndentManipulator manipulator = new IndentManipulator(node);
         return new IndentLevelStream().stream(manipulator)
-                .max((indent1, indent2) -> indent1.compareTo(indent2));
+                .max(IndentLevel::compareTo);
     }
 
     @Override

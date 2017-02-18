@@ -8,15 +8,10 @@ import java.util.stream.Stream;
 
 import com.github.ninerules.utils.Pair;
 
-public class PredicateHelper<A, R> implements BiFunction<A, A, R>{
+class PredicateHelper<A, R> implements BiFunction<A, A, R>{
     private List<Pair<BiPredicate<A, A>, R>> list = new ArrayList<>();
 
     public PredicateHelper(){
-        // do nothing for default constructor.
-    }
-
-    public PredicateHelper(Stream<Pair<BiPredicate<A, A>, R>> pairs){
-        pairs.forEach(this::register);
     }
 
     public void register(Pair<BiPredicate<A, A>, R> pair){

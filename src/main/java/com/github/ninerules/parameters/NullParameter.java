@@ -11,7 +11,7 @@ public class NullParameter implements Parameter {
     private NullParameter(){
     }
 
-    public static NullParameter parameter(){
+    public static final NullParameter parameter(){
         return INSTANCE;
     }
 
@@ -32,8 +32,7 @@ public class NullParameter implements Parameter {
 
     @Override
     public boolean equals(Object object){
-        return object instanceof Parameter
-                && isEqualsTo((Parameter)object);
+        return object == parameter();
     }
 
     @Override

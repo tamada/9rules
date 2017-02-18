@@ -20,5 +20,7 @@ public class ArgumentTest {
         assertThat(argument.toPath(), is(Paths.get("pom.xml")));
 
         assertThat(new Argument("build.xml").toPath(), is(Paths.get("build.xml")));
+
+        assertThat(argument.hashCode(), is(new Argument("pom.xml").hashCode()));
     }
 }

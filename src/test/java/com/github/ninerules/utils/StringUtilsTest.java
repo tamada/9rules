@@ -1,5 +1,6 @@
 package com.github.ninerules.utils;
 
+import static com.github.ninerules.Assert.assertAvailablePrivateConstructor;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
@@ -19,5 +20,10 @@ public class StringUtilsTest {
     public void testIfNotEmpty(){
         assertThat(StringUtils.ifNotEmpty("", (value) -> value + value), is(Optional.empty()));
         assertThat(StringUtils.ifNotEmpty("abc", (value) -> value + value), is(Optional.of("abcabc")));
+    }
+
+    @Test
+    public void testDefaultPrivateConstructor() throws Exception{
+        assertAvailablePrivateConstructor(StringUtils.class);
     }
 }

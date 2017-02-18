@@ -16,6 +16,8 @@ public class MessageTest {
 
         assertThat(name, is(not(new Message("message2"))));
         assertThat(name, is(not(new Object())));
+
+        assertThat(name.hashCode(), is(new Message("message1").hashCode()));
     }
 
     @Test

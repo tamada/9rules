@@ -42,7 +42,7 @@ public class FirstClassCollectionValidatorTest {
         assertThat(
             violations.get(0), 
             is(new Violation(new ViolationType(FirstClassCollectionValidator.FCC, validator.parameter()),
-                    LineCountsBuilder.build(builder -> builder.of(13, 14, 15, 16))))
+                    new LineCountsBuilder().of(13, 14, 15, 16).build()))
         );
     }
 

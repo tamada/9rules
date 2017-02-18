@@ -41,6 +41,6 @@ public class Violation {
 
     @Override
     public int hashCode(){
-        return Objects.hashCode(this);
+        return Objects.hash(type, numbers);
     }
 }

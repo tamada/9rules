@@ -31,7 +31,7 @@ public class ViolationType implements Serializable{
 
     @Override
     public int hashCode(){
-        return Objects.hashCode(this);
+        return Objects.hash(message, parameter);
     }
 
     @Override

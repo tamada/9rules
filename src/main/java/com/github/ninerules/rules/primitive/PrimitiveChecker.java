@@ -12,13 +12,13 @@ class PrimitiveChecker {
 
     private PrimitiveChecker(){
     }
-
+    
     public static boolean check(FieldDeclaration node){
         Type type = node.getType();
         return check(type.toString());
     }
 
-    private static boolean check(String type){
+    static boolean check(String type){
         return list.stream()
                 .filter(type::matches)
                 .count() > 0;

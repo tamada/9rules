@@ -4,8 +4,6 @@ import java.nio.file.Path;
 import java.nio.file.attribute.BasicFileAttributes;
 
 public class ExtensionFilter implements FileFilter{
-    public static final FileFilter NULL_FILTER = (path, attributes) -> true;
-
     private String extension;
 
     public ExtensionFilter(String extension){

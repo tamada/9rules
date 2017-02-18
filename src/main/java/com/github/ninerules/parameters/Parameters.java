@@ -25,7 +25,8 @@ public class Parameters {
     }
 
     public static <T> T parameter(Class<? extends T> clazz, StrictLevel level){
-        return ExceptionHandler.perform(clazz, level, null, INSTANCE::createParameter);
+        return ExceptionHandler.perform(clazz, level, INSTANCE::createParameter)
+                .orElse(null);
     }
 
     @SuppressWarnings("unchecked")

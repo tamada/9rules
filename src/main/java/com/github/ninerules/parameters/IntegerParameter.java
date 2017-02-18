@@ -1,7 +1,9 @@
 package com.github.ninerules.parameters;
 
 import java.util.Objects;
+
 import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.github.ninerules.entities.Message;
 
 abstract class IntegerParameter implements Parameter{

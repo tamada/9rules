@@ -7,10 +7,6 @@ import com.github.ninerules.rules.results.Results;
 public class Rules {
     private Validators validators;
 
-    public Rules(){
-        this(StrictLevel.STRICT);
-    }
-
     public Rules(StrictLevel level){
         ValidatorsBuilder builder = new ValidatorsBuilder(level);
         validators = builder.build();

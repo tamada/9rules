@@ -25,7 +25,8 @@ public class Traverser {
     }
 
     private Paths readAll(Path basePath){
-        return ExceptionHandler.perform(basePath, new Paths(), this::readAllFiles);
+        return ExceptionHandler.perform(basePath, this::readAllFiles)
+                .orElseGet(Paths::new);
     }
 
     private Paths readAllFiles(Path basePath) throws IOException{

@@ -10,8 +10,9 @@ import java.util.stream.Stream;
 public class ServiceLoaderBuilder<T> {
     public ServiceLoader<T> load(Class<T> clazz){
         return ExceptionHandler.perform(clazz, 
-                new ServiceLoader<T>(Stream.empty()),
-                item -> load(item, item.getClassLoader()));
+                item -> load(item, item.getClassLoader()))
+                .orElseGet(() -> new ServiceLoader<T>(Stream.empty()));
+
     }
 
     public ServiceLoader<T> load(Class<T> clazz, ClassLoader loader) throws IOException{

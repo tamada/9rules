@@ -19,7 +19,8 @@ public class PropertyReader {
 
     public Map<String, String> read(){
         Map<String, String> map = new HashMap<>();
-        return ExceptionHandler.perform(map, map, this::readProperty);
+        return ExceptionHandler.perform(map, this::readProperty)
+                .orElse(map);
     }
 
     private Map<String, String> readProperty(Map<String, String> map) throws IOException{
@@ -29,15 +30,15 @@ public class PropertyReader {
 
     private void openAndReadProperty(Map<String, String> map) throws IOException{
         try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream(), "utf-8"))){
-            read(map, in.lines());
+            readImpl(map, in.lines());
         }
     }
 
-    private void read(Map<String, String> map, Stream<String> stream) throws IOException{
-        stream.forEach(line -> putSplittedItem(map, line));
+    private void readImpl(Map<String, String> map, Stream<String> stream) throws IOException{
+        stream.forEach(line -> splitItemAndPutThem(map, line));
     }
 
-    private void putSplittedItem(Map<String, String> map, String item){
+    private void splitItemAndPutThem(Map<String, String> map, String item){
         int index = item.indexOf('=');
         String key = item.substring(0, index);
         map.put(key, parseLineToGetValue(item, index));

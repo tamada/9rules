@@ -5,6 +5,7 @@ import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 import java.util.Objects;
+import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import org.junit.Test;
@@ -12,23 +13,27 @@ import org.junit.Test;
 public class LineCountsTest {
     @Test
     public void testBasic(){
-        LineCounts numbers = LineCountsBuilder.build(builder -> builder.of(1, 2, 8, 9, 10));
+        LineCounts numbers = new LineCountsBuilder()
+                .of(1, 2, 8, 9, 10).build();
         assertThat(numbers.toString(), is("1,2,8,9,10"));
 
-        LineCounts numbers2 = LineCountsBuilder.build(builder -> builder.of(1, 2, 8, 9, 10));
+        LineCounts numbers2 = new LineCountsBuilder()
+                .of(1, 2, 8, 9, 10).build();
         assertThat(numbers, is(numbers2));
     }
 
     @Test
     public void testRange(){
-        LineCounts numbers = LineCountsBuilder.build(builder -> builder.range(2, 5));
+        LineCounts numbers = new LineCountsBuilder()
+                .of(2, 5).build();
         assertThat(numbers.toString(), is("2,3,4"));
     }
 
     @Test
     public void testBuildFromStream(){
-        Stream<LineCount> stream = Stream.of(1, 2, 3, 8, 9).map(line -> new LineCount(line)); 
-        LineCounts numbers = LineCountsBuilder.build(builder -> builder.stream(stream));
+        Stream<LineCount> stream = IntStream.of(1, 2, 3, 8, 9).mapToObj(line -> new LineCount(line)); 
+        LineCounts numbers = new LineCountsBuilder()
+                .stream(stream).build();
         assertThat(numbers.toString(), is("1,2,3,8,9"));
     }
 
@@ -37,7 +42,7 @@ public class LineCountsTest {
         LineCounts numbers = new LineCounts(new LineCount(1), new LineCount(4));
         assertThat(numbers.toString(), is("1,4"));
 
-        LineCounts numbers2 = LineCountsBuilder.build(builder -> builder.of(1, 4));
+        LineCounts numbers2 = new LineCountsBuilder().of(1, 4).build();
         assertThat(numbers, is(numbers2));
     }
 

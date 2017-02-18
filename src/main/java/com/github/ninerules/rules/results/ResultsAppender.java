@@ -7,7 +7,7 @@ import java.util.Map;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.rules.violations.Violation;
 
-public class ResultsAppender {
+class ResultsAppender {
     private Results results;
 
     public ResultsAppender(Results results){

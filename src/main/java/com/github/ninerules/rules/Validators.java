@@ -7,7 +7,6 @@ import java.util.stream.Stream;
 
 import com.github.ninerules.Target;
 import com.github.ninerules.rules.results.Results;
-import com.github.ninerules.rules.results.ResultsAppender;
 
 public class Validators{
     private List<Validator> list = new ArrayList<>();
@@ -30,6 +29,6 @@ public class Validators{
     
     public Optional<Results> validate(Target unit){
         return stream().map(unit::accept)
-                .reduce((r1, r2) -> new ResultsAppender(r1).append(r2));
+                .reduce(Results::append);
     }
 }
