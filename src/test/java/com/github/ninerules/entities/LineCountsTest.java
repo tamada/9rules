@@ -25,7 +25,7 @@ public class LineCountsTest {
     @Test
     public void testRange(){
         LineCounts numbers = new LineCountsBuilder()
-                .of(2, 5).build();
+                .of(2, 3, 4).build();
         assertThat(numbers.toString(), is("2,3,4"));
     }
 
