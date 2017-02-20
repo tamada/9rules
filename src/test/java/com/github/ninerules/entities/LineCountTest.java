@@ -3,8 +3,8 @@ package com.github.ninerules.entities;
 import static com.github.ninerules.Assert.assertThrows;
 import static org.hamcrest.Matchers.greaterThan;
 import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.lessThan;
+import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Before;

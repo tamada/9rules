@@ -16,7 +16,6 @@ public class Argument {
     public Path toPath(){
         return Paths.get(givenArgument);
     }
-
     @Override
     public int hashCode(){
         return givenArgument.hashCode();

@@ -3,7 +3,9 @@ package com.github.ninerules.cli;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+
 import org.checkerframework.checker.nullness.qual.NonNull;
+
 import com.github.ninerules.StrictLevel;
 
 public class Option {
