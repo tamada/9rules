@@ -41,7 +41,7 @@ public class SourceLengthValidatorTest {
         assertThat(violations.size(), is(1));
         assertThat(violations.get(0), 
                 is(new Violation(new ViolationType(SourceLengthValidator.TOO_LONG_SOURCE, validator.parameter()),
-                        new LineCountsBuilder().of(65).build())));
+                        LineCountsBuilder.builder().of(65).build())));
     }
 
     @Test

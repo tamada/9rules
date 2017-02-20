@@ -41,8 +41,12 @@ public class NoAccessorValidatorTest {
         List<Violation> violations = getViolations(results.violations);
 
         assertThat(violations.size(), is(2));
-        assertThat(violations.get(0), is(new Violation(new ViolationType(SETTER, NullParameter.parameter()), new LineCountsBuilder().of(10).build())));
-        assertThat(violations.get(1), is(new Violation(new ViolationType(GETTER, NullParameter.parameter()), new LineCountsBuilder().of(14).build())));
+        assertThat(violations.get(0), is(new Violation(
+                new ViolationType(SETTER, NullParameter.parameter()),
+                LineCountsBuilder.builder().of(10).build())));
+        assertThat(violations.get(1), is(new Violation(
+                new ViolationType(GETTER, NullParameter.parameter()), 
+                LineCountsBuilder.builder().of(14).build())));
     }
 
     @Test

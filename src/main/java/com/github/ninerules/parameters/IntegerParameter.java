@@ -2,8 +2,6 @@ package com.github.ninerules.parameters;
 
 import java.util.Objects;
 
-import org.checkerframework.checker.nullness.qual.NonNull;
-
 import com.github.ninerules.entities.Message;
 
 abstract class IntegerParameter implements Parameter{
@@ -22,13 +20,9 @@ abstract class IntegerParameter implements Parameter{
 
     @Override
     public boolean equals(Object object){
-        return object instanceof Parameter && checkEquals((Parameter)object);
-    }
-
-    private boolean checkEquals(@NonNull Parameter parameter){
-        Class<?> clazz1 = getClass();
-        Class<?> clazz2 = parameter.getClass();
-        return Objects.equals(clazz1, clazz2) && isEqualsTo(parameter);
+        return object != null && Objects
+                .equals(getClass(), object.getClass())
+                && isEqualsTo((Parameter)object);
     }
 
     @Override

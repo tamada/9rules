@@ -33,8 +33,8 @@ public class ReporterTest {
         results = new Results(
             new FileName("test.java"), 
             Arrays.asList(
-                new Violation(new ViolationType(type, parameter), new LineCountsBuilder().of(10).build()),
-                new Violation(new ViolationType(type, parameter), new LineCountsBuilder().of(15, 16).build())
+                new Violation(new ViolationType(type, parameter), LineCountsBuilder.builder().of(10).build()),
+                new Violation(new ViolationType(type, parameter), LineCountsBuilder.builder().of(15, 16).build())
             )
         );
         reporter.report(results);

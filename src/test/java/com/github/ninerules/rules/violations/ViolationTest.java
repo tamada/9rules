@@ -18,11 +18,11 @@ public class ViolationTest {
     @Test
     public void testEquals(){
         Violation violation = new Violation(new ViolationType(test, NullParameter.parameter()),
-                new LineCountsBuilder().of(10).build());
+                LineCountsBuilder.builder().of(10).build());
         Violation violation2 = new Violation(new ViolationType(test, NullParameter.parameter()),
-                new LineCountsBuilder().of(10).build());
+                LineCountsBuilder.builder().of(10).build());
         Violation violation3 = new Violation(new ViolationType(test, NullParameter.parameter()),
-                new LineCountsBuilder().of(12).build());
+                LineCountsBuilder.builder().of(12).build());
 
         assertThat(violation, is(violation2));
         assertThat(violation, is(not(violation3)));
@@ -34,10 +34,10 @@ public class ViolationTest {
     @Test
     public void testNotEquals(){
         Violation violation = new Violation(new ViolationType(test, NullParameter.parameter()),
-                new LineCountsBuilder().of(10).build());
+                LineCountsBuilder.builder().of(10).build());
         
         assertThat(violation, is(not(new Violation(new ViolationType(test, NullParameter.parameter()),
-                new LineCountsBuilder().of(15).build()))));
+                LineCountsBuilder.builder().of(15).build()))));
         assertThat(violation, is(not(new Object())));
     }
 }

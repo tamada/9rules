@@ -39,12 +39,12 @@ public class NineRulesValidatorTest {
         assertThat(results.contains(
             new FileName(path.resolve("sample/hello/HelloWorld.java")),
             new Violation(new ViolationType(NoAccessorValidator.SETTER, NullParameter.parameter()),
-                    new LineCountsBuilder().of(10).build())
+                    LineCountsBuilder.builder().of(10).build())
         ), is(true));
         assertThat(results.contains(
             new FileName(path.resolve("sample/hello/HelloWorld.java")),
             new Violation(new ViolationType(NoAccessorValidator.GETTER, NullParameter.parameter()),
-                    new LineCountsBuilder().of(14).build())
+                    LineCountsBuilder.builder().of(14).build())
         ), is(true));
     }
 }
