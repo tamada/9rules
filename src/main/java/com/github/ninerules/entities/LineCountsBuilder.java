@@ -32,6 +32,12 @@ public class LineCountsBuilder {
         return this;
     }
 
+    public LineCountsBuilder rangeClosed(int startInclusive, int endInclusive){
+        LineCountStream.rangeClosed(startInclusive, endInclusive)
+        .forEach(list::add);
+        return this;
+    }
+
     public LineCountsBuilder of(int... numbers){
         LineCountStream.of(numbers)
         .forEach(list::add);

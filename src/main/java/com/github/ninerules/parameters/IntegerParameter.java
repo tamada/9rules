@@ -20,13 +20,13 @@ abstract class IntegerParameter implements Parameter{
 
     @Override
     public boolean equals(Object object){
-        return object != null && Objects
-                .equals(getClass(), object.getClass())
-                && isEqualsTo((Parameter)object);
+        return object instanceof IntegerParameter && Objects.equals(
+                        getClass(), object.getClass())
+                && isEqualTo((Parameter)object);
     }
 
     @Override
-    public boolean isEqualsTo(Parameter parameter){
+    public boolean isEqualTo(Parameter parameter){
         return value == ((IntegerParameter)parameter).value;
     }
 

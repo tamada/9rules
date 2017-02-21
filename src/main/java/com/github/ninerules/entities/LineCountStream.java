@@ -4,6 +4,10 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LineCountStream{
+    private LineCountStream(){
+        // do nothing.
+    }
+
     public static Stream<LineCount> generate(){
         return IntStream.iterate(1, x -> x + 1)
                 .mapToObj(LineCount::new);

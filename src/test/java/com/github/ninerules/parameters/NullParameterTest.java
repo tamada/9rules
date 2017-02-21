@@ -21,7 +21,7 @@ public class NullParameterTest {
 
         assertThat(instance.isLessThan(null), is(false));
         assertThat(instance.isGreaterThan(null), is(false));
-        assertThat(instance.isEqualsTo(null), is(false));
-        assertThat(instance.isEqualsTo(NullParameter.parameter()), is(true));
+        assertThat(instance.isEqualTo(null), is(false));
+        assertThat(instance.isEqualTo(NullParameter.parameter()), is(true));
     }
 }

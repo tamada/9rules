@@ -64,10 +64,10 @@ public class DotCountTest {
 
     @Test
     public void testIntegerParameter2(){
-        assertThat(count1.isEqualsTo(count1), is(true));
-        assertThat(count1.isEqualsTo(new DotCount(1)), is(true));
+        assertThat(count1.isEqualTo(count1), is(true));
+        assertThat(count1.isEqualTo(new DotCount(1)), is(true));
 
-        assertThat(count1.isEqualsTo(count2), is(false));
-        assertThat(count1.isEqualsTo(new DotCount(3)), is(false));
+        assertThat(count1.isEqualTo(count2), is(false));
+        assertThat(count1.isEqualTo(new DotCount(3)), is(false));
     }
 }

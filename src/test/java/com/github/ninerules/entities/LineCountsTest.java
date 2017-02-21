@@ -1,5 +1,6 @@
 package com.github.ninerules.entities;
 
+import static com.github.ninerules.Assert.assertAvailablePrivateConstructor;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
@@ -25,8 +26,15 @@ public class LineCountsTest {
     @Test
     public void testRange(){
         LineCounts numbers = LineCountsBuilder.builder()
-                .of(2, 3, 4).build();
+                .range(2, 5).build();
         assertThat(numbers.toString(), is("2,3,4"));
+    }
+
+    @Test
+    public void testRangeClosed(){
+        LineCounts numbers = LineCountsBuilder.builder()
+                .rangeClosed(2, 5).build();
+        assertThat(numbers.toString(), is("2,3,4,5"));
     }
 
     @Test
@@ -58,5 +66,10 @@ public class LineCountsTest {
         LineCount[] counts = new LineCount[] { new LineCount(1), new LineCount(4) };
 
         assertThat(new LineCounts(counts).hashCode(), is(Objects.hash(new LineCount(1), new LineCount(4))));
+    }
+
+    @Test
+    public void testPrivateConstructorOfLineCountStream() throws Exception{
+        assertAvailablePrivateConstructor(LineCountStream.class);
     }
 }
