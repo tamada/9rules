@@ -7,7 +7,6 @@ import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
-
 @SuppressWarnings("unused")
 public class GodObject{
     public static final int DEFAULT_LIMIT_SIZE = 50;
