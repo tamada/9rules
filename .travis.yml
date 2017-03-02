@@ -5,5 +5,16 @@ jdk:
 env:
     - secure: "vjmakn7sFVHbLFwVMz505A1vO/5+14AZMBBE+a6N7Pm664Ob/Km9Zos0STWnnA7CJ1WTjPnNHS1n6rd0NBW+m94BEky/32GAVPEm08az+XxBsWekjKM/hAUVQre56NPBs5QhyovRMVP8Re03viisA1bPFoHKm5AzvbagxvIJv3QZwMeAntKFPkCmLiw0cdhuRJNjaurnrK2Z1LHxj5WC31tvhoXWhcw/zbIRA2XoSE0moR41FJRnzzjzpBPLluQ7Lvbxp301SjkZpNBLhG/c8oLHbQ/3Asf2frGPnc4EKH4R4spckBVkNbuFYZFBE07nK4+V4idVkVC819t+qd7VLp8x2S5yhvaIkFVsVvVUmaW8BX0i/OR1mx/hkIrbkuEBP8osdmXtih4KLUFYuGRwUi0lbTiAGZNs6VaSEjzTHADCNqE2cu6YkwghgiIocjieT9/yqMSnjD4Rebcns3UR2H+Sc2JghPFtakjoiAPSgPitpTOsZo5fUrgHWBV0X0Otb4UDw4dzZyjOVcAqUD30yVXjbaCjdIVi8DTlFO7qTMXUWSYF5erdCJu9DvjjUB2htwJDnNl5xVcLLpdtFlEcyTrg4GjdrZMXQI5f3ryY95bqzNdv8tKs/ywFvA0FH8c+9WrqdW+bPlHxRVssLRHp4MbqEY5D9VMitT6T6gl/0hU="
 
+addons:
+  sonarqube:
+    token:
+      secure: "YL9JxEZXFIb8dkUwLiiEa7VoSk2zg7EW92nF682hGxOaDfoNr86u2+L0+C5vC4qagus1WiVcrLWhBJrPibwMvaTfQlvYO8LpY8JtlSDmRpmfp+ZDc7WI1XS79NrAdF3S6PuzjT6uRsoeMmyPBAHYmxma7gBXVjUHCXHD0boRW/6yxICwxvI9+eB52g0T2EpD0ieqFgisqh0H9v0GfL5BKquNUsWDcIRsFswp6H+KtYECKk+xcmZQLuqlfuG+kaqEbOgOBns6MX3n8o1DG9FjCaaC+Z5eYoYgDDT9Q96IPHXqzIJJfwALtWrCAemThyk1RLStC4z3/mCAokkeX0uvAe78gVw1qdtm09ZIiaRU5g/Jhv4Cmnx/3uPtE3SqOp4r1odIsQqcrcpRqZmwGK2k09HDi03267TkpDHU63U51VDtUPAdi5FEqLk5TbgdMo/4zJY+rSB5JwXRQFokmQulaswMdCiGwwkwKf3xkOc7pH6z7zKRkfHqoxd9ZDzhEbWtR9bboqlg4pH21d3L+5NpmJBKHhBPwZIGA8TeziMXn5IqGfgaipwyo1SlAh5XfjpV99y4mdJxwGkPH0S5Uy3PYmWmJLrLUtPl11F0cwCQcDIThY/qKEJYHDLSXOO59bbRK9lOy+gveMy91a89iF121VEIroievVqO+AQ4c9er6SQ="
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+
 after_success:
     - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
+    - mvn sonar:sonar
