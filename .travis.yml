@@ -18,3 +18,4 @@ cache:
 after_success:
     - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
     - mvn sonar:sonar
+
