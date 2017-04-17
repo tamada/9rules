@@ -13,7 +13,7 @@ addons:
 
 after_success:
     - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
-    - mvn -Dsonar.host.url=https:/sonarqube.com -Dsonar.login=${SONARQUBE_TOKEN} sonar:sonr
+    - mvn -Dsonar.host.url=https:/sonarqube.com -Dsonar.login=${SONARQUBE_TOKEN} sonar:sonar
 
 cache:
   directories:
