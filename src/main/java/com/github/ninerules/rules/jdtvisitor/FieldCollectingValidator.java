@@ -34,7 +34,7 @@ public abstract class FieldCollectingValidator extends JdtValidator{
 
     public LineCounts lineNumbers(Predicate<FieldDeclaration> predicate){
         return new LineCountsBuilder()
-                .stream(stream(predicate))
+                .of(stream(predicate))
                 .build();
     }
 

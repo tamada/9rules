@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.stream.Stream;
 
 import com.github.ninerules.entities.LineCount;
+import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.utils.Pair;
 import com.github.ninerules.utils.Streams;
 
@@ -33,7 +34,7 @@ public class StringLineVisitorHelper {
 
     private void visitLine(Stream<String> stream){
         Streams.zip(stream, 
-                LineCountGenerator.generate())
+                LineCountsBuilder.generate())
         .forEach(this::visitLine);
     }
 

@@ -15,14 +15,14 @@ public class LineCountsBuilder {
         return new LineCounts(array);
     }
 
-    public LineCountsBuilder stream(Stream<LineCount> stream){
-        stream.forEach(list::add);
-        return this;
-    }
-
     public LineCountsBuilder range(int from, int to){
         IntStream.range(from, to)
         .mapToObj(LineCount::new).forEach(list::add);
+        return this;
+    }
+
+    public LineCountsBuilder of(Stream<LineCount> stream){
+        stream.forEach(list::add);
         return this;
     }
 
@@ -30,5 +30,10 @@ public class LineCountsBuilder {
         Arrays.stream(numbers)
         .mapToObj(LineCount::new).forEach(list::add);
         return this;
+    }
+
+    public static Stream<LineCount> generate(){
+        return Stream.iterate(1, x -> x + 1)
+                .map(LineCount::new);
     }
 }

@@ -14,12 +14,12 @@ import com.github.ninerules.traverser.ExtensionFilter;
 import com.github.ninerules.traverser.Traverser;
 
 public class Main{
-    public Main(String[] args, PrintWriter out) throws IOException{
+    public Main(String[] args, PrintWriter out){
         CommandLines commandline = new CommandLines(args);
         performUnlessHelp(commandline, out);
     }
 
-    private void performUnlessHelp(CommandLines commandline, PrintWriter out) throws IOException{
+    private void performUnlessHelp(CommandLines commandline, PrintWriter out){
         if(commandline.printHelpIfSpecified(out))
             return;
         new Reporter(out).report(perform(commandline));
