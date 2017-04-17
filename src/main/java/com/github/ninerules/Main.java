@@ -1,6 +1,5 @@
 package com.github.ninerules;
 
-import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Path;
 import java.util.List;
@@ -42,7 +41,7 @@ public class Main{
                 .flatMap(traverser::stream);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args){
         try(PrintWriter out = new PrintWriter(System.out)){
             new Main(args, out);
         }
