@@ -3,10 +3,17 @@ package com.github.ninerules.cli;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.stream.Stream;
 
 public class HelpPrinter {
+    private PrintWriter out;
+
+    public HelpPrinter(PrintWriter out){
+        this.out = out;
+    }
+
     public boolean printIfSpecified(CommandLines cli){
         return printIfSpecified(cli.isShowHelp(), this::printHelp);
     }
@@ -29,7 +36,7 @@ public class HelpPrinter {
         }
     }
 
-    private void printLines(Stream<String> stream) throws IOException{
-        stream.forEach(System.out::println);
+    private void printLines(Stream<String> stream){
+        stream.forEach(out::println);
     }
 }

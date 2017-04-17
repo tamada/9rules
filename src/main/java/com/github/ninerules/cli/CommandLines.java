@@ -1,5 +1,6 @@
 package com.github.ninerules.cli;
 
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
@@ -14,8 +15,8 @@ public class CommandLines {
         applyFields(args, string -> string.startsWith("-"));
     }
 
-    public boolean printHelpIfSpecified(){
-        HelpPrinter printer = new HelpPrinter();
+    public boolean printHelpIfSpecified(PrintWriter out){
+        HelpPrinter printer = new HelpPrinter(out);
         return printer.printIfSpecified(this);
     }
 

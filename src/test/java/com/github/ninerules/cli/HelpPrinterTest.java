@@ -1,12 +1,14 @@
 package com.github.ninerules.cli;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
+
+import java.io.PrintWriter;
 
 import org.junit.Test;
 
 public class HelpPrinterTest {
-    private HelpPrinter printer = new HelpPrinter();
+    private HelpPrinter printer = new HelpPrinter(new PrintWriter(System.out));
 
     @Test
     public void testBasic(){

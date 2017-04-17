@@ -9,9 +9,6 @@ import java.util.stream.Stream;
 public class LineCountsBuilder {
     private List<LineCount> list = new ArrayList<>();
 
-    public LineCountsBuilder(){
-    }
-
     public LineCounts build(){
         LineCount[] array = list.stream()
                 .toArray(LineCount[]::new);

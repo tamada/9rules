@@ -31,7 +31,7 @@ public class StringLineVisitorHelper {
         }
     }
 
-    private void visitLine(Stream<String> stream) throws IOException{
+    private void visitLine(Stream<String> stream){
         Streams.zip(stream, generate())
         .forEach(this::visitLine);
     }

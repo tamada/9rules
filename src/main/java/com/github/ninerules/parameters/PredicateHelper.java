@@ -11,9 +11,6 @@ import com.github.ninerules.utils.Pair;
 class PredicateHelper<A, R> implements BiFunction<A, A, R>{
     private List<Pair<BiPredicate<A, A>, R>> list = new ArrayList<>();
 
-    public PredicateHelper(){
-    }
-
     public void register(Pair<BiPredicate<A, A>, R> pair){
         list.add(pair);
     }

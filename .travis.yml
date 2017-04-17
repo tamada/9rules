@@ -9,11 +9,11 @@ addons:
   sonarqube:
     organization: tamada-github
     token:
-      secure: "YL9JxEZXFIb8dkUwLiiEa7VoSk2zg7EW92nF682hGxOaDfoNr86u2+L0+C5vC4qagus1WiVcrLWhBJrPibwMvaTfQlvYO8LpY8JtlSDmRpmfp+ZDc7WI1XS79NrAdF3S6PuzjT6uRsoeMmyPBAHYmxma7gBXVjUHCXHD0boRW/6yxICwxvI9+eB52g0T2EpD0ieqFgisqh0H9v0GfL5BKquNUsWDcIRsFswp6H+KtYECKk+xcmZQLuqlfuG+kaqEbOgOBns6MX3n8o1DG9FjCaaC+Z5eYoYgDDT9Q96IPHXqzIJJfwALtWrCAemThyk1RLStC4z3/mCAokkeX0uvAe78gVw1qdtm09ZIiaRU5g/Jhv4Cmnx/3uPtE3SqOp4r1odIsQqcrcpRqZmwGK2k09HDi03267TkpDHU63U51VDtUPAdi5FEqLk5TbgdMo/4zJY+rSB5JwXRQFokmQulaswMdCiGwwkwKf3xkOc7pH6z7zKRkfHqoxd9ZDzhEbWtR9bboqlg4pH21d3L+5NpmJBKHhBPwZIGA8TeziMXn5IqGfgaipwyo1SlAh5XfjpV99y4mdJxwGkPH0S5Uy3PYmWmJLrLUtPl11F0cwCQcDIThY/qKEJYHDLSXOO59bbRK9lOy+gveMy91a89iF121VEIroievVqO+AQ4c9er6SQ="
+      secure: "yHqtSo+Unsu2jqgFLYLKNvB6/A3S1IWX+XnMM3GtgTLFdTt7h9Y08tqtewi6SlNeu8hqPnM75ROiOa8JOcQqQfcMsuOiHiW1xzDDo9dyxQc8PsqzDnPF1CRWNfov7xf+lANrWZPhN/+ruU9DLbZu4AgVIX5/7uUvmEEUY0Eo3e0u7Faw2Re7oZ+T8vpreyVxNpsI56r85sxzY/RB7r7vtM9Epmq33Wk26falDLiJBBLgW13BFTa8lerHY26SLOYthTN9vODJsijfy40q5i9qmKLNh2NDdtRQGEAJbfXg+4w8gSIfNPawNc70LKnWbIgrCv45NIL+QlulkpplGU+5RMX39sFcvSblNj+8vQSAYqG2u8muS4jmEJTHfIm9XhU3qKMCP0bdqE6i09pOWK1LRGm9f0rbysiGHOhHeeX3/F6S+2ySWrpBce0F8o7fQC6KQIWl2Ib3edeKl245PNxG1KpemucNDapk+ZpHFrrY18J0Bk+pfNTrLb8d5hDZraoXUzug1QfBRNhLABaN67sLgT31ceTlMPIwmjjJMuAYnO/B0H0Bsnl66Fa23t/3SobKTGUaeAemd4pzWUW1psk9+7vBkzrgpVEKIuMo/TdmjkMYOITj4ITcKGWpYQFv7fbsRbASQVOFvbC+ZF9xLTj4Z1IomWHK63Noj/ryHTkL/WY="
 
 after_success:
     - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
-    - mvn sonar:sonar -Dsonar.host.url=https:/sonarqube.com -Dsonar.login=${SONARQUBE_TOKEN}
+    - mvn -Dsonar.host.url=https:/sonarqube.com -Dsonar.login=${SONARQUBE_TOKEN} sonar:sonr
 
 cache:
   directories:
