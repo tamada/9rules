@@ -43,6 +43,8 @@ public class Main{
     }
 
     public static void main(String[] args) throws IOException {
-        new Main(args, new PrintWriter(System.out));
+        try(PrintWriter out = new PrintWriter(System.out)){
+            new Main(args, out);
+        }
     }
 }
