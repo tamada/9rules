@@ -14,7 +14,10 @@ public interface Parameter extends Comparable<Parameter>, Serializable{
 
     boolean isLessThan(Parameter param);
 
-    boolean isGreaterThan(Parameter param);
+    default boolean isGreaterThan(Parameter param){
+        return !isLessThan(param) && 
+                !isEqualsTo(param);
+    }
 
     default String format(Message format){
         return format.toString();

@@ -12,7 +12,6 @@ public class ServiceLoaderBuilder<T> {
         return ExceptionHandler.perform(clazz, 
                 item -> load(item, item.getClassLoader()))
                 .orElseGet(() -> new ServiceLoader<T>(Stream.empty()));
-
     }
 
     public ServiceLoader<T> load(Class<T> clazz, ClassLoader loader) throws IOException{

@@ -32,7 +32,8 @@ public class StringLineVisitorHelper {
     }
 
     private void visitLine(Stream<String> stream){
-        Streams.zip(stream, generate())
+        Streams.zip(stream, 
+                LineCountGenerator.generate())
         .forEach(this::visitLine);
     }
 
@@ -45,10 +46,5 @@ public class StringLineVisitorHelper {
     private void callVisitorLineInVisitor(String line, LineCount count){
         String convertedLine = visitor.preVisitLine(line, count);
         visitor.visitLine(convertedLine, count);
-    }
-
-    private Stream<LineCount> generate(){
-        return Stream.iterate(1, x -> x + 1)
-                .map(LineCount::new);        
     }
 }

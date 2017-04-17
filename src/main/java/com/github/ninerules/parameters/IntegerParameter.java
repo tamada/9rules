@@ -37,11 +37,6 @@ abstract class IntegerParameter implements Parameter{
     }
 
     @Override
-    public boolean isGreaterThan(Parameter parameter){
-        return value > ((IntegerParameter)parameter).value;
-    }
-
-    @Override
     public boolean isLessThan(Parameter parameter){
         return value < ((IntegerParameter)parameter).value;
     }
