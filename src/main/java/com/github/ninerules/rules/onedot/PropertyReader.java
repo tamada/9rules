@@ -34,7 +34,7 @@ public class PropertyReader {
         }
     }
 
-    private void readImpl(Map<String, String> map, Stream<String> stream) throws IOException{
+    private void readImpl(Map<String, String> map, Stream<String> stream){
         stream.forEach(line -> splitItemAndPutThem(map, line));
     }
 

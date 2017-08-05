@@ -5,9 +5,26 @@ jdk:
 env:
     - secure: "vjmakn7sFVHbLFwVMz505A1vO/5+14AZMBBE+a6N7Pm664Ob/Km9Zos0STWnnA7CJ1WTjPnNHS1n6rd0NBW+m94BEky/32GAVPEm08az+XxBsWekjKM/hAUVQre56NPBs5QhyovRMVP8Re03viisA1bPFoHKm5AzvbagxvIJv3QZwMeAntKFPkCmLiw0cdhuRJNjaurnrK2Z1LHxj5WC31tvhoXWhcw/zbIRA2XoSE0moR41FJRnzzjzpBPLluQ7Lvbxp301SjkZpNBLhG/c8oLHbQ/3Asf2frGPnc4EKH4R4spckBVkNbuFYZFBE07nK4+V4idVkVC819t+qd7VLp8x2S5yhvaIkFVsVvVUmaW8BX0i/OR1mx/hkIrbkuEBP8osdmXtih4KLUFYuGRwUi0lbTiAGZNs6VaSEjzTHADCNqE2cu6YkwghgiIocjieT9/yqMSnjD4Rebcns3UR2H+Sc2JghPFtakjoiAPSgPitpTOsZo5fUrgHWBV0X0Otb4UDw4dzZyjOVcAqUD30yVXjbaCjdIVi8DTlFO7qTMXUWSYF5erdCJu9DvjjUB2htwJDnNl5xVcLLpdtFlEcyTrg4GjdrZMXQI5f3ryY95bqzNdv8tKs/ywFvA0FH8c+9WrqdW+bPlHxRVssLRHp4MbqEY5D9VMitT6T6gl/0hU="
 
+<<<<<<< HEAD
 script:
     - mvn package
 
 after_success:
     - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
     - bash <(curl -s https://codecov.io/bash)
+=======
+addons:
+  sonarqube:
+    token:
+      secure: "yHqtSo+Unsu2jqgFLYLKNvB6/A3S1IWX+XnMM3GtgTLFdTt7h9Y08tqtewi6SlNeu8hqPnM75ROiOa8JOcQqQfcMsuOiHiW1xzDDo9dyxQc8PsqzDnPF1CRWNfov7xf+lANrWZPhN/+ruU9DLbZu4AgVIX5/7uUvmEEUY0Eo3e0u7Faw2Re7oZ+T8vpreyVxNpsI56r85sxzY/RB7r7vtM9Epmq33Wk26falDLiJBBLgW13BFTa8lerHY26SLOYthTN9vODJsijfy40q5i9qmKLNh2NDdtRQGEAJbfXg+4w8gSIfNPawNc70LKnWbIgrCv45NIL+QlulkpplGU+5RMX39sFcvSblNj+8vQSAYqG2u8muS4jmEJTHfIm9XhU3qKMCP0bdqE6i09pOWK1LRGm9f0rbysiGHOhHeeX3/F6S+2ySWrpBce0F8o7fQC6KQIWl2Ib3edeKl245PNxG1KpemucNDapk+ZpHFrrY18J0Bk+pfNTrLb8d5hDZraoXUzug1QfBRNhLABaN67sLgT31ceTlMPIwmjjJMuAYnO/B0H0Bsnl66Fa23t/3SobKTGUaeAemd4pzWUW1psk9+7vBkzrgpVEKIuMo/TdmjkMYOITj4ITcKGWpYQFv7fbsRbASQVOFvbC+ZF9xLTj4Z1IomWHK63Noj/ryHTkL/WY="
+
+after_success:
+    - mvn -DrepoToken=$COVERALLS_TOKEN clean test jacoco:report coveralls:report
+    - mvn -Dsonar.host.url=https:/sonarqube.com -Dsonar.organization=tamada-github -Dsonar.login=${SONARQUBE_TOKEN} sonar:sonar
+
+cache:
+  directories:
+    - '$HOME/.m2/repository'
+    - '$HOME/.sonar/cache'
+
+>>>>>>> master

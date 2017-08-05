@@ -41,7 +41,7 @@ public class LineCountsTest {
     public void testBuildFromStream(){
         Stream<LineCount> stream = IntStream.of(1, 2, 3, 8, 9).mapToObj(line -> new LineCount(line)); 
         LineCounts numbers = LineCountsBuilder.builder()
-                .stream(stream).build();
+                .of(stream).build();
         assertThat(numbers.toString(), is("1,2,3,8,9"));
     }
 

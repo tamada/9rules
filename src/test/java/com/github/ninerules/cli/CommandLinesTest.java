@@ -3,6 +3,8 @@ package com.github.ninerules.cli;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
+import java.io.PrintWriter;
+
 import org.junit.Test;
 
 import com.github.ninerules.StrictLevel;
@@ -19,7 +21,7 @@ public class CommandLinesTest {
         assertThat(cli.hasOption(Option.GENERAL_OPTION), is(true));
         assertThat(cli.hasOption(Option.ROUGH_OPTION),   is(false));
 
-        assertThat(cli.printHelpIfSpecified(), is(true));
+        assertThat(cli.printHelpIfSpecified(new PrintWriter(System.out)), is(true));
 
         Argument[] args = cli.arguments().toArray(size -> new Argument[size]);
         assertThat(args.length, is(2));
@@ -34,7 +36,7 @@ public class CommandLinesTest {
 
         assertThat(cli.level(), is(StrictLevel.STRICT));
 
-        assertThat(cli.printHelpIfSpecified(), is(true));
+        assertThat(cli.printHelpIfSpecified(new PrintWriter(System.out)), is(true));
 
         Argument[] args = cli.arguments().toArray(size -> new Argument[size]);
         assertThat(args.length, is(0));

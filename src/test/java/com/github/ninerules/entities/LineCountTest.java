@@ -7,6 +7,9 @@ import static org.hamcrest.Matchers.lessThan;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -43,6 +46,17 @@ public class LineCountTest {
         assertThat(ten.isSequent(twelve), is(false));
 
         assertThat(ten.difference(twelve), is(new LineCount(2)));
+    }
+    
+    @Test
+    public void testGenerator(){
+        List<LineCount> counts = LineCountsBuilder.generate().limit(10).collect(Collectors.toList());
+
+        assertThat(counts.size(), is(10));
+        assertThat(counts.get(0), is(new LineCount(1)));
+        assertThat(counts.get(1), is(new LineCount(2)));
+        assertThat(counts.get(2), is(new LineCount(3)));
+        assertThat(counts.get(9), is(new LineCount(10)));
     }
 
     @Test
