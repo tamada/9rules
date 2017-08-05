@@ -42,7 +42,7 @@ public class FieldCountValidatorTest {
         assertThat(violations.get(0), 
             is(new Violation(
                     new ViolationType(FieldCountValidator.FIELD_COUNT, validator.parameter()),
-                    new LineCountsBuilder().of(13, 14, 15, 16).build()))
+                    LineCountsBuilder.builder().of(13, 14, 15, 16).build()))
         );
     }
 

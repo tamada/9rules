@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 import com.github.ninerules.annotation.IgnoreRules;
 
+@SuppressWarnings("unused")
 @IgnoreRules
 public class GodObjectButNotTarget{
     public static final int DEFAULT_LIMIT_SIZE = 50;

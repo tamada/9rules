@@ -7,6 +7,7 @@ import java.util.stream.Stream;
 
 import com.github.ninerules.entities.LineCount;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.utils.LoggingHelper;
 import com.github.ninerules.utils.Pair;
 import com.github.ninerules.utils.Streams;
 
@@ -20,9 +21,8 @@ public class StringLineVisitorHelper {
     public void visit(Path path){
         try {
             visitImpl(path);
-        }
-        catch (IOException e){
-            // do nothing for ignoring exception.
+        } catch (IOException e){
+            LoggingHelper.throwing(getClass(), "visit", e);
         }
     }
 

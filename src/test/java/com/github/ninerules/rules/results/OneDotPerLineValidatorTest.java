@@ -41,9 +41,9 @@ public class OneDotPerLineValidatorTest {
         ViolationType type = new ViolationType(OneDotPerLineValidator.ONE_DOT, validator.parameter());
         assertThat(violations.size(), is(2));
         assertThat(violations.get(0), 
-                is(new Violation(type, new LineCountsBuilder().of(28).build())));
+                is(new Violation(type, LineCountsBuilder.builder().of(28).build())));
         assertThat(violations.get(1), 
-                is(new Violation(type, new LineCountsBuilder().of(29).build())));
+                is(new Violation(type, LineCountsBuilder.builder().of(29).build())));
     }
 
     @Test

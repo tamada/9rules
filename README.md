@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/tamada/9rules.svg?branch=master)](https://travis-ci.org/tamada/9rules)
 [![Coverage Status](https://coveralls.io/repos/github/tamada/9rules/badge.svg?branch=master)](https://coveralls.io/github/tamada/9rules?branch=master)
+[![codecov](https://codecov.io/gh/tamada/9rules/branch/master/graph/badge.svg)](https://codecov.io/gh/tamada/9rules)
 [![codebeat badge](https://codebeat.co/badges/7338b3d9-520f-429b-ba55-16aec78615d1)](https://codebeat.co/projects/github-com-tamada-9rules)
 [![Gitter](https://badges.gitter.im/9rules/Lobby.svg)](https://gitter.im/9rules/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![Quality Gate](https://sonarqube.com/api/badges/gate?key=com.github:9rules)](https://sonarqube.com/dashboard/index/com.github:9rules)

@@ -18,6 +18,6 @@ public class ParameterComparator implements Comparator<Parameter>{
     private void registerPredicates(PredicateHelper<Parameter, Integer> helper){
         helper.register(Parameter::isLessThan, -1);
         helper.register(Parameter::isGreaterThan, 1);
-        helper.register(Parameter::isEqualsTo, 0);
+        helper.register(Parameter::isEqualTo, 0);
     }
 }

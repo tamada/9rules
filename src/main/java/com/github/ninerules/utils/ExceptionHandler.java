@@ -11,7 +11,7 @@ public class ExceptionHandler {
         try{
             return optionalOf(function.apply(argumentToFunction));
         } catch(Exception e){
-            return Optional.empty();
+            return loggingAndReturnEmpty(e);
         }
     }
 
@@ -20,8 +20,14 @@ public class ExceptionHandler {
         try{
             return optionalOf(function.apply(argumentToFunction1, argumentToFunction2));
         } catch(Exception e){
-            return Optional.empty();
+            return loggingAndReturnEmpty(e);
         }
+    }
+
+    private static <R> Optional<R> loggingAndReturnEmpty(Throwable throwable){
+        LoggingHelper.throwing(
+                ExceptionHandler.class, "perform", throwable);
+        return Optional.empty();
     }
 
     private static <R> Optional<R> optionalOf(R returnValue){

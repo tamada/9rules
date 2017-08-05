@@ -16,7 +16,7 @@ public class NullParameter implements Parameter {
     }
 
     @Override
-    public boolean isEqualsTo(Parameter parameter) {
+    public boolean isEqualTo(Parameter parameter) {
         return this == parameter;
     }
 

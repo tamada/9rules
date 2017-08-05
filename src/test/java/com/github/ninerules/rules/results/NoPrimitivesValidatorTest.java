@@ -42,7 +42,7 @@ public class NoPrimitivesValidatorTest {
         assertThat(violations.get(0), 
                 is(new Violation(new ViolationType(
                         NoPrimitivesValidator.NO_PRIMITIVES, NullParameter.parameter()),
-                        new LineCountsBuilder().of(13, 14, 15, 16).build())));
+                        LineCountsBuilder.builder().of(13, 14, 15, 16).build())));
     }
 
     @Test

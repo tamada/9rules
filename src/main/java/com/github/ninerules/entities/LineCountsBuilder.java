@@ -1,13 +1,19 @@
 package com.github.ninerules.entities;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class LineCountsBuilder {
     private List<LineCount> list = new ArrayList<>();
+
+    private LineCountsBuilder(){
+        //  do nothing.
+    }
+
+    public static  LineCountsBuilder builder(){
+        return new LineCountsBuilder();
+    }
 
     public LineCounts build(){
         LineCount[] array = list.stream()
@@ -16,8 +22,14 @@ public class LineCountsBuilder {
     }
 
     public LineCountsBuilder range(int from, int to){
-        IntStream.range(from, to)
-        .mapToObj(LineCount::new).forEach(list::add);
+        LineCountStream.range(from, to)
+        .forEach(list::add);
+        return this;
+    }
+
+    public LineCountsBuilder rangeClosed(int startInclusive, int endInclusive){
+        LineCountStream.rangeClosed(startInclusive, endInclusive)
+        .forEach(list::add);
         return this;
     }
 
@@ -27,8 +39,8 @@ public class LineCountsBuilder {
     }
 
     public LineCountsBuilder of(int... numbers){
-        Arrays.stream(numbers)
-        .mapToObj(LineCount::new).forEach(list::add);
+        LineCountStream.of(numbers)
+        .forEach(list::add);
         return this;
     }
 
