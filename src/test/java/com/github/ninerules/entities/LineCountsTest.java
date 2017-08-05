@@ -24,6 +24,13 @@ public class LineCountsTest {
     }
 
     @Test
+    public void testGenerate() {
+        Stream<LineCount> stream = LineCountStream.generate();
+        LineCounts counts = new LineCounts(stream.skip(3).limit(5).toArray(LineCount[]::new));
+        assertThat(counts.toString(), is("4,5,6,7,8"));
+    }
+
+    @Test
     public void testRange(){
         LineCounts numbers = LineCountsBuilder.builder()
                 .range(2, 5).build();
