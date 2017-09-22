@@ -37,7 +37,7 @@
   </issueManagement>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/org.eclipse.jdt/core -->
+    <!-- https://mvnrepository.com/artifact/org.eclipse.jdt/org.eclipse.jdt.core -->
     <dependency>
       <groupId>org.eclipse.jdt</groupId>
       <artifactId>org.eclipse.jdt.core</artifactId>
