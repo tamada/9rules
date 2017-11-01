@@ -11,7 +11,7 @@ import com.github.ninerules.parameters.IndentLevel;
 import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 
 public class IndentLevelValidator extends JdtValidator{
-    public static final Message INDENT_LEVEL = new Message("Indentation level is too much (more than %s indent level)");
+    public static final Message INDENT_LEVEL = new Message("indentation level is too much (more than %s indent level).");
 
     public IndentLevelValidator(StrictLevel level) {
         super(level);
