@@ -9,8 +9,8 @@ import com.github.ninerules.entities.Message;
 import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 
 public class NoAccessorValidator extends JdtValidator{
-    public static final Message SETTER = new Message("setter method found");
-    public static final Message GETTER = new Message("getter method found");
+    public static final Message SETTER = new Message("setter method found.");
+    public static final Message GETTER = new Message("getter method found.");
 
     private AccessorChecker checker = new AccessorChecker();
 

@@ -12,7 +12,7 @@ import com.github.ninerules.parameters.Parameters;
 import com.github.ninerules.rules.stringvisitor.PlainSourceValidator;
 
 public class OneDotPerLineValidator extends PlainSourceValidator{
-    public static final Message ONE_DOT = new Message("Many dots per line (more than %s dots)");
+    public static final Message ONE_DOT = new Message("many dots per line (more than %s dots).");
     private static final Pattern PATTERN = Pattern.compile("\\.");
 
     private StringFilterManager filter = new StringFilterManager();

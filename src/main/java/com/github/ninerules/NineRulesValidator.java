@@ -22,16 +22,16 @@ public class NineRulesValidator {
     }
 
     public Results validate(List<Path> list){
-        return validateOf(list.stream(), level)
+        return validateOf(list.stream())
                 .orElse(Results.empty());
     }
 
-    private Optional<Results> validateOf(Stream<Path> stream, StrictLevel level){
-        return stream.map(path -> validate(path, level))
+    private Optional<Results> validateOf(Stream<Path> stream){
+        return stream.map(this::validate)
                 .reduce(Results::append);
     }
 
-    private Results validate(Path path, StrictLevel level){
+    private Results validate(Path path){
         Target target = parse(path);
         return new Rules(level).validate(target);
     }
