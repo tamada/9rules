@@ -14,7 +14,7 @@ import com.github.ninerules.rules.Rules;
 import com.github.ninerules.rules.results.Results;
 
 public class NineRulesValidator {
-    private static final int PARSER_LEVEL = AST.JLS8;
+    private static final int PARSER_LEVEL = AST.JLS9;
     private StrictLevel level = StrictLevel.STRICT;
 
     public NineRulesValidator(StrictLevel level){

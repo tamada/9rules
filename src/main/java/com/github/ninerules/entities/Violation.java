@@ -1,10 +1,8 @@
-package com.github.ninerules.rules.violations;
+package com.github.ninerules.entities;
 
 import java.util.Objects;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
-
-import com.github.ninerules.entities.LineCounts;
 
 public class Violation {
     private ViolationType type;

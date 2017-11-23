@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.github.ninerules.entities.FileName;
+import com.github.ninerules.entities.Violation;
 import com.github.ninerules.rules.results.Results;
 
 public class DefaultViolations extends EmptyViolations{

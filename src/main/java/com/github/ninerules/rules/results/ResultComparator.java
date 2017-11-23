@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import com.github.ninerules.entities.FileName;
-import com.github.ninerules.rules.violations.Violation;
+import com.github.ninerules.entities.Violation;
 
 public class ResultComparator implements Comparator<Map.Entry<FileName, List<Violation>>>, Serializable{
     private static final long serialVersionUID = 6230999149980197051L;

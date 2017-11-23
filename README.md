@@ -51,7 +51,7 @@ This tool analyzes Java source codes to validate above rules.
 ## Requirements
 
 * Platform
-    * Java 8
+    * Java 9 (Module is not supported, yet)
     * Maven 3.x
 * Dependencies
     * JDT Core 3.10.0

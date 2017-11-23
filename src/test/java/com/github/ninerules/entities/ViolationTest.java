@@ -1,4 +1,4 @@
-package com.github.ninerules.rules.violations;
+package com.github.ninerules.entities;
 
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -8,9 +8,9 @@ import org.junit.Test;
 
 import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.entities.Message;
+import com.github.ninerules.entities.Violation;
+import com.github.ninerules.entities.ViolationType;
 import com.github.ninerules.parameters.NullParameter;
-import com.github.ninerules.rules.violations.Violation;
-import com.github.ninerules.rules.violations.ViolationType;
 
 public class ViolationTest {
     private Message test = new Message("test");

@@ -14,11 +14,11 @@ import org.junit.Test;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.entities.Message;
+import com.github.ninerules.entities.Violation;
+import com.github.ninerules.entities.ViolationType;
 import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.parameters.Parameter;
 import com.github.ninerules.rules.results.Results;
-import com.github.ninerules.rules.violations.Violation;
-import com.github.ninerules.rules.violations.ViolationType;
 
 public class ReporterTest {
     private ByteArrayOutputStream out = new ByteArrayOutputStream();

@@ -4,10 +4,10 @@ import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCounts;
 import com.github.ninerules.entities.Message;
+import com.github.ninerules.entities.Violation;
+import com.github.ninerules.entities.ViolationType;
 import com.github.ninerules.parameters.Parameter;
 import com.github.ninerules.rules.results.Results;
-import com.github.ninerules.rules.violations.Violation;
-import com.github.ninerules.rules.violations.ViolationType;
 
 public interface Validator {
     void addViolation(Violation violation);

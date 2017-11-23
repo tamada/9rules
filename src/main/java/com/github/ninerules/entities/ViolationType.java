@@ -1,9 +1,8 @@
-package com.github.ninerules.rules.violations;
+package com.github.ninerules.entities;
 
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.github.ninerules.entities.Message;
 import com.github.ninerules.parameters.NullParameter;
 import com.github.ninerules.parameters.Parameter;
 

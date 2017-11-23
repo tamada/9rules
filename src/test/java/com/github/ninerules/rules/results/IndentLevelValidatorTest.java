@@ -16,11 +16,11 @@ import com.github.ninerules.StrictLevel;
 import com.github.ninerules.Target;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCountsBuilder;
+import com.github.ninerules.entities.Violation;
+import com.github.ninerules.entities.ViolationType;
 import com.github.ninerules.parameters.IndentLevel;
 import com.github.ninerules.rules.indentlevel.IndentLevelValidator;
 import com.github.ninerules.rules.jdtvisitor.JdtValidator;
-import com.github.ninerules.rules.violations.Violation;
-import com.github.ninerules.rules.violations.ViolationType;
 
 public class IndentLevelValidatorTest {
     private static final String FILE_PATH = "src/test/resources/hello/src/main/java/sample/hello/GodObject.java";

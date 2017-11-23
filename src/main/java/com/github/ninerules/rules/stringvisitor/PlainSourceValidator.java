@@ -3,11 +3,11 @@ package com.github.ninerules.rules.stringvisitor;
 import com.github.ninerules.StrictLevel;
 import com.github.ninerules.entities.FileName;
 import com.github.ninerules.entities.LineCount;
+import com.github.ninerules.entities.Violation;
 import com.github.ninerules.rules.Validator;
 import com.github.ninerules.rules.results.Results;
 import com.github.ninerules.rules.violations.DefaultViolations;
 import com.github.ninerules.rules.violations.EmptyViolations;
-import com.github.ninerules.rules.violations.Violation;
 import com.github.ninerules.rules.violations.Violations;
 
 public abstract class PlainSourceValidator implements StringLineVisitor, Validator{

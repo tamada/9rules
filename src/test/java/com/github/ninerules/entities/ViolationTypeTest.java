@@ -1,4 +1,4 @@
-package com.github.ninerules.rules.violations;
+package com.github.ninerules.entities;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
@@ -6,6 +6,7 @@ import static org.junit.Assert.assertThat;
 import org.junit.Test;
 
 import com.github.ninerules.entities.Message;
+import com.github.ninerules.entities.ViolationType;
 import com.github.ninerules.parameters.FieldCount;
 
 public class ViolationTypeTest {
