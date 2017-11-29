@@ -1,6 +1,8 @@
 package com.github.ninerules;
 
 import java.io.PrintWriter;
+import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -41,8 +43,8 @@ public class Main{
                 .flatMap(traverser::stream);
     }
 
-    public static void main(String[] args){
-        try(PrintWriter out = new PrintWriter(System.out)){
+    public static void main(String[] args) throws UnsupportedEncodingException {
+        try(PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out, "utf-8"))){
             new Main(args, out);
         }
     }

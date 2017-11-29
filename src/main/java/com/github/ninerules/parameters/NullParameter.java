@@ -32,7 +32,7 @@ public class NullParameter implements Parameter {
 
     @Override
     public boolean equals(Object object){
-        return object == parameter();
+        return this == object;
     }
 
     @Override
