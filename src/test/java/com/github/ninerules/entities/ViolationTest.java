@@ -6,10 +6,6 @@ import static org.junit.Assert.assertThat;
 
 import org.junit.Test;
 
-import com.github.ninerules.entities.LineCountsBuilder;
-import com.github.ninerules.entities.Message;
-import com.github.ninerules.entities.Violation;
-import com.github.ninerules.entities.ViolationType;
 import com.github.ninerules.parameters.NullParameter;
 
 public class ViolationTest {
