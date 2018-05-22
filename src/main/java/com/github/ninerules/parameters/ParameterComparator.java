@@ -1,8 +1,11 @@
 package com.github.ninerules.parameters;
 
+import java.io.Serializable;
 import java.util.Comparator;
 
-public class ParameterComparator implements Comparator<Parameter>{
+public class ParameterComparator implements Comparator<Parameter>, Serializable{
+    private static final long serialVersionUID = 3372664484116875247L;
+
     @Override
     public int compare(Parameter o1, Parameter o2) {
         PredicateHelper<Parameter, Integer> helper = buildHelper();
