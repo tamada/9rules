@@ -1,8 +1,10 @@
-# 9 rules
+---
+title: Description
+---
 
 ## Rules
 
-This tool checks the 9 rules of small object programming for Java source codes.
+This tool checks the 9 rules of small object programming for the Java source codes.
 Originally, 9 rules were shown in [The ThoughtWorks Anthology](http://shop.oreilly.com/product/9781934356142.do).
 The rules are as follows.
 

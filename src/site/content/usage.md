@@ -1,22 +1,24 @@
-# Usage
+---
+title: Usage
+---
 
 ## Usage of 9rules
 
-9rules is an executable jar, therefore, simply type ```java -jar 9rules-1.X.jar```,
+9rules is an executable jar, therefore, simply type ```java -jar 9rules-VERSION.jar```,
 and specified java source codes and source code directory.
 
 Then, the tool checks each java source code and reports the results of the check.
 
-### Example
+## Example
 
 We assume that the project was cloned and compiled with [Maven 3](http://maven.apache.org/).
 
-#### An simple use case
+### An simple use case
 
 ```sh
 $ ls
 LICENSE    README.md  pom.xml    src/       target/
-$ java -jar target/9rules-1.0.jar  src/test/resources/hello/src/main/java/
+$ java -jar target/9rules-1.0.0.jar  src/test/resources/hello/src/main/java/
 src/test/resources/hello/src/main/java/sample/hello/GodObject.java
 line: 53, else statement found.
 line: 13,14,15,16, field count is more than 2
@@ -36,19 +38,19 @@ src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
 ```
 
-#### An Java source code as input
+### An Java source code as input
 
 Also, the tool can arrow an source code as input.
 
 ```
 $ ls
 LICENSE    README.md  pom.xml    src/       target/
-$ java -jar target/9rules-1.0.jar  src/test/resources/hello/src/test/resources/hello/src/main/java/sample/hello/Launcher.java
+$ java -jar target/9rules-1.0.0.jar  src/test/resources/hello/src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
 ```
 
-### Help
+## Help
 
 ```sh
 java -jar 9rules.jar [OPTIONS] <TARGETS...>
@@ -104,3 +106,6 @@ the tool ignore all rules by specifying the annotation, and checks all rules wit
 In the future version, the tool will arrange the annotations for ignoring each rule.
 
 
+## Demo
+
+![images/demo.gif]

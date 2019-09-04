@@ -1,0 +1,39 @@
+baseURL = "https://tamada.github.io/9rules"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "9rules"
+theme = "cayman-hugo-theme"
+
+pygmentsCodefences = true
+pygmentsStyle = "pygments"
+
+[params]
+    project_name = "9rules"
+    project_tagline = "Checking tool of small object programming for the Java language."
+    dateFormat = "2006-01-02"
+
+    footer = "[![GitHub](https://img.shields.io/badge/GitHub-tamada/9rules-blueviolet.svg?logo=github)](https://github.com/tamada/9rules) Made with [Hugo](https://gohugo.io/). Theme by [Cayman](https://github.com/zwbetz-gh/cayman-hugo-theme). Deployed to [GitHub Pages](https://pages.github.com/)."
+
+    katex = true
+
+[menu]
+  [[menu.nav]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.nav]]
+    name = "Description"
+    url = "/description/"
+    weight = 2
+  [[menu.nav]]
+    name = "Install"
+    url = "/install/"
+    weight = 3
+  [[menu.nav]]
+    name = "Usage"
+    url = "/usage/"
+    weight = 4
+  [[menu.nav]]
+    name = "About"
+    url = "/about/"
+    weight = 5
