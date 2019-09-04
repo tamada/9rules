@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <assembly>
-    <id>annotation</id>
-    <formats>
-	    <format>jar</format>
-    </formats>
-    <includeBaseDirectory>false</includeBaseDirectory>
-    <fileSets>
-        <fileSet>
-            <directory>target/classes</directory>
-            <outputDirectory>./</outputDirectory>
-            <includes>
-                <include>com/github/ninerules/annotation/**/*.class</include>
-            </includes>
-       </fileSet>
-    </fileSets>
+  <id>annotation</id>
+  <formats>
+	<format>jar</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <fileSets>
+    <fileSet>
+      <directory>target/classes</directory>
+      <outputDirectory>./</outputDirectory>
+      <includes>
+        <include>com/github/ninerules/annotation/**/*.class</include>
+      </includes>
+    </fileSet>
+  </fileSets>
 </assembly>
