@@ -22,7 +22,7 @@
       <directory>src/scripts</directory>
       <outputDirectory>./bin</outputDirectory>
       <includes>
-        <include>9rules</include>
+        <include>9rules.sh</include>
       </includes>
     </fileSet>
   </fileSets>
