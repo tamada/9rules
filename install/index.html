@@ -21,7 +21,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  <title>9rules | 9rules</title>
+  <title>Install | 9rules</title>
 </head>
 
 <body>
@@ -70,44 +70,46 @@
 
   <section class="main-content">
     
-<h1>9rules</h1>
+  <h1>Install</h1>
+  
 
+<h2 id="homebrew">Homebrew</h2>
 
+<p>Install 9rules via <a href="https://brew.sh">Homebrew</a>, simply run:</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ brew tap tamada/brew
+$ brew install ninerules</code></pre></div>
+<p><code>9rules</code> command (wrapper for shell script) will be installed.</p>
 
-<h2 id="table-of-contents">Table of Contents</h2>
+<h2 id="install-yourself">Install yourself</h2>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ git clone https://github.com/tamada/9rules.git
+$ <span style="color:#008000">cd</span> 9rules
+$ mvn package</code></pre></div>
+<h2 id="requirements">Requirements</h2>
 
 <ul>
-<li><a href="description">Description</a></li>
-<li><a href="install">Installation</a>
+<li>Runtime
 
 <ul>
-<li><a href="install#homebrew">Homebrew</a></li>
-<li><a href="install#install-yourself">Install yourself</a></li>
-<li><a href="install#requirements">Requirements</a></li>
+<li>Java 8 or later.</li>
 </ul></li>
-<li><a href="usage">Usage</a>
+<li>Development
 
 <ul>
-<li><a href="example#usage-of-9rules">Usage of 9rules</a></li>
-<li><a href="usage#example">Example</a></li>
-<li><a href="usage#help">Help</a></li>
-<li><a href="usage#demo">Demo</a></li>
+<li>Maven 3.x</li>
 </ul></li>
-<li><a href="about">About the Project</a>
+<li>Dependencies
 
 <ul>
-<li><a href="about#contribution">Contribution</a></li>
-<li><a href="about#authors">Authors</a></li>
-<li><a href="about#discussion">Discussion</a></li>
-<li><a href="about#license">License</a></li>
+<li>JDT Core 3.10.0</li>
+</ul></li>
+<li>Dependencies (the Unit Tests)
+
+<ul>
+<li>JUnit 4.12</li>
+<li>Hamcreset all 1.3</li>
 </ul></li>
 </ul>
 
-
-<ul>
-
-
-</ul>
 
     <footer class="site-footer">
   <span class="site-footer-credits">

@@ -21,7 +21,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  <title>9rules | 9rules</title>
+  <title>Description | 9rules</title>
 </head>
 
 <body>
@@ -70,44 +70,55 @@
 
   <section class="main-content">
     
-<h1>9rules</h1>
+  <h1>Description</h1>
+  
 
+<h2 id="rules">Rules</h2>
 
-
-<h2 id="table-of-contents">Table of Contents</h2>
+<p>This tool checks the 9 rules of small object programming for the Java source codes.
+Originally, 9 rules were shown in <a href="http://shop.oreilly.com/product/9781934356142.do">The ThoughtWorks Anthology</a>.
+The rules are as follows.</p>
 
 <ul>
-<li><a href="description">Description</a></li>
-<li><a href="install">Installation</a>
+<li>Rule # 1. Use one level of indentation per method.</li>
+<li>Rule # 2. Do not use the <code>else</code> keyword.</li>
+<li>Rule # 3. Wrap all primitives and <code>String</code>s.</li>
+<li>Rule # 4. Use only one dot per line.
 
 <ul>
-<li><a href="install#homebrew">Homebrew</a></li>
-<li><a href="install#install-yourself">Install yourself</a></li>
-<li><a href="install#requirements">Requirements</a></li>
+<li>Except the following items.
+
+<ul>
+<li>one line comments,</li>
+<li>string literals,</li>
+<li><code>this.</code>,
+* lines of <code>import</code>,
+* line of <code>package</code>,
+* first characters in the line,
+* variadic methods, and
+* <code>System.out.print(ln|f)?</code>.</li>
 </ul></li>
-<li><a href="usage">Usage</a>
+</ul></li>
+<li>Rule # 5. Do not abbreviate.</li>
+<li>Rule # 6. Keep all entities small.
 
 <ul>
-<li><a href="example#usage-of-9rules">Usage of 9rules</a></li>
-<li><a href="usage#example">Example</a></li>
-<li><a href="usage#help">Help</a></li>
-<li><a href="usage#demo">Demo</a></li>
+<li>The length of each method is less than 3 lines.</li>
+<li>The length of each class is less than 50 lines.</li>
+<li>The class files in a package are less than 10 files.</li>
 </ul></li>
-<li><a href="about">About the Project</a>
-
-<ul>
-<li><a href="about#contribution">Contribution</a></li>
-<li><a href="about#authors">Authors</a></li>
-<li><a href="about#discussion">Discussion</a></li>
-<li><a href="about#license">License</a></li>
-</ul></li>
+<li>Rule # 7. Do not use any classes with more than two instance variables.</li>
+<li>Rule # 8. Use first-class collections.</li>
+<li>Rule # 9. Do not use any getters/setters/properties.</li>
 </ul>
 
+<h2 id="implementation">Implementation</h2>
 
-<ul>
+<p>The tool can check above rules except rule # 5.
+To check rule # 5 must be refer the dictionaries.
+Of course, a library like <a href="https://wordnet.princeton.edu">WordNet</a> enables to check rule # 5.
+However, the tool does not implement the rule yet.</p>
 
-
-</ul>
 
     <footer class="site-footer">
   <span class="site-footer-credits">
