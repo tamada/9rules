@@ -15,18 +15,18 @@ A book titled '[The ThoughtWorks Anthology: Essays on Software Technology and In
 Chapter 6 in the book introduces object calisthenics for better software design.
 The rules shown in the book are as follows.
 
-1. Use 1 level of indentation per method (```DONE```),
-2. Do not use the ```else``` keyword (```DONE```),
-3. Wrap all primitives and strings (```DONE```),
-4. Use only 1 dot per line (```DONE```),
-5. Do not abbreviate (```Not support yet```),
+1. Use 1 level of indentation per method (`DONE`),
+2. Do not use the `else` keyword (`DONE`),
+3. Wrap all primitives and strings (`DONE`),
+4. Use only 1 dot per line (`DONE`),
+5. Do not abbreviate (`Not support yet`),
 6. Keep all entities small,
-     * 50 lines in a source file (```DONE```),
-     * 3 lines in a method (```DONE```), and
-     * 10 classses in a package (```Not support yet```).
-7. Do not use any classes with more than 2 instance variables (```DONE```),
-8. Use first-class collections (```DONE```), and
-9. Do not use any getters/setters/properties (```DONE```)
+     * 50 lines in a source file (`DONE`),
+     * 3 lines in a method (`DONE`), and
+     * 10 classses in a package (`Not support yet`).
+7. Do not use any classes with more than 2 instance variables (`DONE`),
+8. Use first-class collections (`DONE`), and
+9. Do not use any getters/setters/properties (`DONE`)
 
 Unfortunately, to confirm obeying the rules is by a human eye.
 Therefore, this tool was developed to validate the rules automatically by analyzing given Java source codes.
@@ -64,10 +64,10 @@ You can find the violations to see the actual source code.
 
 ## Usage
 
-* To run the program of the project, use ```-jar``` option of the ```java``` command.
-    * ```$ java -jar target/9rules-1.X.jar <TARGET SOURCE DIR...>```
+* To run the program of the project, use `-jar` option of the `java` command.
+    * `$ java -jar target/9rules-1.X.jar <TARGET SOURCE DIR...>`
 
-```<TARGET SOURCE DIR...>``` accepts several directories and several source files.
+`<TARGET SOURCE DIR...>` accepts several directories and several source files.
 The help message is as follows.
 
 ```sh
@@ -85,10 +85,10 @@ ARGUMENTS:
 
 If it is hard to obey the rules shown in above, we can lower the validating level by specifying the option.
 
-* The strict level (```--strict``` option) is just rules shown in above.
-* The general level (```--general``` option) is lowered as follows.
+* The strict level (`--strict` option) is just rules shown in above.
+* The general level (`--general` option) is lowered as follows.
     1. Use 1 level indentation per method (same as strict),
-    2. Do not use the ```else``` keyword (same as strict),
+    2. Do not use the `else` keyword (same as strict),
     3. Wrap all primitives and strings (same as strict),
     4. Use only 2 dots per line (**relieved**),
     5. Do not use abbreviate (not support yet),
@@ -99,9 +99,9 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
     7. Do not use any classes with more than 3 instance variables (**relieved**),
     8. Use first-class collections (same as strict), and
     9. Do not use any getters/setters/properties (same as strict).
-* The rough level (```--rough``` option) is lowered as follows.
+* The rough level (`--rough` option) is lowered as follows.
     1. Use 2 level indentation per method (**relieved**),
-    2. Do not use the ```else``` keyword (same as strict),
+    2. Do not use the `else` keyword (same as strict),
     3. Wrap all primitives and strings (same as strict),
     4. Use only 3 dots per line (**relieved**),
     5. Do not use abbreviate (not support yet),
@@ -112,7 +112,14 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
     7. Do not use any classes with more than 4 instance variables (**relieved**),
     8. Use first-class collections (same as strict), and
     9. Do not use any getters/setters/properties (same as strict).
-    
+
+### Use with Docker
+
+```sh
+$ docker build . -t 9rules # <- build 9rules images using Dockerfile.
+$ docker run -it --name '9rules_running' 9rules <ARGUMENTS...> 
+```
+
 ## Install
 
 * Clone the project from GitHub.
@@ -120,9 +127,9 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 * Run the following command to build the project.
 
 * Commands
-    * ```$ git clone git@github.com:tamada/9rules.git```
-    * ```$ cd 9rules```
-    * ```$ mvn package```
+    * `$ git clone git@github.com:tamada/9rules.git`
+    * `$ cd 9rules`
+    * `$ mvn package`
 
 ### Requirements
 
@@ -138,10 +145,10 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 ## How to Contribute
 
 1. Fork it (http://github.com/tamada/9rules)
-2. Create your feature branch (```git checkout -b my-new-feature```)
-3. Commit your changes (```git commit -m 'Add some feature'```)
-5. Run test suite (```mvn package```)
-5. Push to the branch (```git push origin my-new-feature```)
+2. Create your feature branch (`git checkout -b my-new-feature`)
+3. Commit your changes (`git commit -m 'Add some feature'`)
+5. Run test suite (`mvn package`)
+5. Push to the branch (`git push origin my-new-feature`)
 6. Create new pull request
 
 ## LICENSE
@@ -169,18 +176,18 @@ Apache License v 2.0
 その本の第５章にて，オブジェクト指向エクササイズという，ソフトウェア設計を改善する9つのルールが紹介されている．
 そのルールは次の通りである．
 
-1. 1つのメソッドにつき，インデントは一段階とすること．```DONE```
-2. ```else```句を使用しないこと．```DONE```
-3. すべてのプリミティブ型と文字列型をラップすること．```DONE```
-4. 1行につき，ドットは1つまでにすること．```DONE```
-5. 名前を省略しないこと．```未実装```
+1. 1つのメソッドにつき，インデントは一段階とすること．`DONE`
+2. `else`句を使用しないこと．`DONE`
+3. すべてのプリミティブ型と文字列型をラップすること．`DONE`
+4. 1行につき，ドットは1つまでにすること．`DONE`
+5. 名前を省略しないこと．`未実装`
 6. すべてのエンティティを小さくすること．
-    * 1クラスは50行まで．```DONE```
-    * 1メソッド3行まで．```DONE```
-    * 1つのパッケージには10ファイルまで．```未実装```
-7. １つのクラスにつき，インスタンス変数は２つまでにすること．```DONE```
-8. ファーストクラスコレクションを使用すること．```DONE```
-9. Getter，Setter，プロパティを使用しないこと．```DONE```
+    * 1クラスは50行まで．`DONE`
+    * 1メソッド3行まで．`DONE`
+    * 1つのパッケージには10ファイルまで．`未実装`
+7. １つのクラスにつき，インスタンス変数は２つまでにすること．`DONE`
+8. ファーストクラスコレクションを使用すること．`DONE`
+9. Getter，Setter，プロパティを使用しないこと．`DONE`
 
 残念ながら，これらのルールに従っているかを確認する方法は目視のみでした．
 そのため，与えられた Java ソースコードが上記ルールに従っているかを自動的に検証するため，このツールを作成しました．
@@ -210,7 +217,7 @@ $ cat -n src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java
 ```
 
 2つ目のコマンドが実際に実行しているところです．
-実行結果の，```src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java``` を見てみましょう．
+実行結果の，`src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java` を見てみましょう．
 ルールの違反が3つあると出力されています．これはつまり以下の内容が指摘されています．
 指摘された違反が正しいかを実際にソースコードをみて確認してください．
 
@@ -220,10 +227,10 @@ $ cat -n src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java
 
 ## 利用方法
 
-* プログラムを実行するには，```java```コマンドの ```-jar```オプションに 9rules-1.X.jar を指定してください．
-    * ```$ java -jar target/9rules-1.X.jar <TARGET SOURCE DIR...>```
+* プログラムを実行するには，`java`コマンドの `-jar`オプションに 9rules-1.X.jar を指定してください．
+    * `$ java -jar target/9rules-1.X.jar <TARGET SOURCE DIR...>`
 
-```<TARGET SOURCE DIR...>``` には複数のディレクトリや，Javaのソースファイルを指定できます．
+`<TARGET SOURCE DIR...>` には複数のディレクトリや，Javaのソースファイルを指定できます．
 ヘルプメッセージは次の通りです．
 
 ```sh
@@ -242,33 +249,33 @@ ARGUMENTS:
 上記に示した9つのルールの遵守が難しい場合は，オプションの指定で，違反レベルを下げることも可能です．
 If it is hard to obey the rules shown in above, we can lower the validating level by specifying the option.
 
-* ```--strict```オプション（デフォルト）では，上記に示したルールで検証します．
-* ```--general```オプションでは，次のルールで検証します．
-    1. 1つのメソッドにつき，インデントは一段階とすること（```---strict```と同じ）．
-    2. ```else```句を使用しないこと（```---strict```と同じ）．
-    3. すべてのプリミティブ型と文字列型をラップすること（```---strict```と同じ）．
+* `--strict`オプション（デフォルト）では，上記に示したルールで検証します．
+* `--general`オプションでは，次のルールで検証します．
+    1. 1つのメソッドにつき，インデントは一段階とすること（`---strict`と同じ）．
+    2. `else`句を使用しないこと（`---strict`と同じ）．
+    3. すべてのプリミティブ型と文字列型をラップすること（`---strict`と同じ）．
     4. 1行につき，ドットは2つまでにすること（**緩和**）．
-    5. 名前を省略しないこと．```未実装```
+    5. 名前を省略しないこと．`未実装`
     6. すべてのエンティティを小さくすること．
         * 1クラスは70行まで（**緩和**）．
         * 1メソッド5行まで（**緩和**）．
-        * 1つのパッケージには20ファイルまで．```未実装```
+        * 1つのパッケージには20ファイルまで．`未実装`
     7. １つのクラスにつき，インスタンス変数は3つまでにすること（**緩和**）．
-    8. ファーストクラスコレクションを使用すること（```---strict```と同じ）．
-    9. Getter，Setter，プロパティを使用しないこと（```---strict```と同じ）．
+    8. ファーストクラスコレクションを使用すること（`---strict`と同じ）．
+    9. Getter，Setter，プロパティを使用しないこと（`---strict`と同じ）．
 * The rough level is lowered as follows.
     1. 1つのメソッドにつき，インデントは2段階とすること（**緩和**）．
-    2. ```else```句を使用しないこと（```---strict```と同じ）．
-    3. すべてのプリミティブ型と文字列型をラップすること（```---strict```と同じ）．
+    2. `else`句を使用しないこと（`---strict`と同じ）．
+    3. すべてのプリミティブ型と文字列型をラップすること（`---strict`と同じ）．
     4. 1行につき，ドットは3つまでにすること（**更に緩和**）．
-    5. 名前を省略しないこと．```未実装```
+    5. 名前を省略しないこと．`未実装`
     6. すべてのエンティティを小さくすること．
         * 1クラスは100行まで（**更に緩和**）．
         * 1メソッド10行まで（**更に緩和**）．
-        * 1つのパッケージには30ファイルまで．```未実装```
+        * 1つのパッケージには30ファイルまで．`未実装`
     7. １つのクラスにつき，インスタンス変数は4つまでにすること（**更に緩和**）．
-    8. ファーストクラスコレクションを使用すること（```---strict```と同じ）．
-    9. Getter，Setter，プロパティを使用しないこと（```---strict```と同じ）．
+    8. ファーストクラスコレクションを使用すること（`---strict`と同じ）．
+    9. Getter，Setter，プロパティを使用しないこと（`---strict`と同じ）．
     
 ## インストール
 
@@ -277,9 +284,9 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 * Mavenコマンドを実行し，プロジェクトをビルドしてください．
 
 * 上記の手順は以下のコマンドを実行するのと同じです．
-    * ```$ git clone git@github.com:tamada/9rules.git```
-    * ```$ cd 9rules```
-    * ```$ mvn package```
+    * `$ git clone git@github.com:tamada/9rules.git`
+    * `$ cd 9rules`
+    * `$ mvn package`
 
 ### 必須ライブラリなど
 
@@ -295,10 +302,10 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 ## 貢献するには
 
 1. プロジェクトをフォークしてください．(https://github.com/tamada/9rules)
-2. フィーチャーブランチを作成してください．(```git checkout -b my-new-feature```)
-3. プロジェクトに変更を加え，コミットしてください．(```git commit -m 'Add some feature'```)
-5. 全てのテストが成功することを確認しましょう．(```mvn package```)
-5. ブランチを GitHub に push してください．(```git push origin my-new-feature```)
+2. フィーチャーブランチを作成してください．(`git checkout -b my-new-feature`)
+3. プロジェクトに変更を加え，コミットしてください．(`git commit -m 'Add some feature'`)
+5. 全てのテストが成功することを確認しましょう．(`mvn package`)
+5. ブランチを GitHub に push してください．(`git push origin my-new-feature`)
 6. 新たにプルリクエストを発行してください．
 
 ## ライセンス
