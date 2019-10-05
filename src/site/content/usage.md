@@ -38,9 +38,9 @@ src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
 ```
 
-### An Java source code as input
+### Java source codes as input
 
-Also, the tool can arrow an source code as input.
+Also, the tool accepts source code as input.
 
 ```
 $ ls
@@ -109,3 +109,29 @@ In the future version, the tool will arrange the annotations for ignoring each r
 ## Demo
 
 ![images/demo.gif]
+
+## Docker
+
+The docker container images are provided at DockerHub as the following repository.
+
+* [tamada/9rules:1.0.0](https://hub.docker.com/r/tamada/9rules) (tamada/9rules:latest)
+* [tamada/9rules-minimal:1.0.0](https://hub.docker.com/r/tamada/9rules-minimal) (tamada/9rules-minimal:latest)
+
+To run the 9rules by docker.
+
+```sh
+$ docker run --rm -v "$PWD":/opt/wd -w /opt/wd  <DOCKER_REPO> <ARGUMENTS...> 
+```
+
+* `ARGUMENTS...`: the arguments for `9rules`.
+* `--rm`: remove the container after running.
+* `-v "$PWD":/opt/wd`: share volume `$PWD` in host to `/opt/wd` in the container.
+* `-w /opt/wd`: change directory to `/opt/wd` before running `9rules`.
+* `DOCKER_REPO`: specifies docker repository, such as `tamada/9rules:latest`.
+
+### Example
+
+```sh
+$ docker run --rm -v /the/path/of/analysis/target:/opt/wd -w /opt/wd tamada/9rules-minimal:latest src/main/java
+```
+
