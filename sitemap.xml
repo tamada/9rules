@@ -3,31 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://tamada.github.io/9rules/</loc>
+    <loc>https://tamada.github.io:1313/9rules/</loc>
   </url>
   
   <url>
-    <loc>https://tamada.github.io/9rules/about/</loc>
+    <loc>https://tamada.github.io:1313/9rules/about/</loc>
   </url>
   
   <url>
-    <loc>https://tamada.github.io/9rules/categories/</loc>
+    <loc>https://tamada.github.io:1313/9rules/categories/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tamada.github.io/9rules/description/</loc>
+    <loc>https://tamada.github.io:1313/9rules/description/</loc>
   </url>
   
   <url>
-    <loc>https://tamada.github.io/9rules/install/</loc>
+    <loc>https://tamada.github.io:1313/9rules/install/</loc>
   </url>
   
   <url>
-    <loc>https://tamada.github.io/9rules/tags/</loc>
+    <loc>https://tamada.github.io:1313/9rules/tags/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://tamada.github.io/9rules/usage/</loc>
+    <loc>https://tamada.github.io:1313/9rules/usage/</loc>
   </url>
   
 </urlset>

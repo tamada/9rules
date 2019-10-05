@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>9rules</title>
-    <link>https://tamada.github.io/9rules/</link>
+    <link>https://tamada.github.io:1313/9rules/</link>
     <description>Recent content on 9rules</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
-	<atom:link href="https://tamada.github.io/9rules/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://tamada.github.io:1313/9rules/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About the project</title>
-      <link>https://tamada.github.io/9rules/about/</link>
+      <link>https://tamada.github.io:1313/9rules/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tamada.github.io/9rules/about/</guid>
+      <guid>https://tamada.github.io:1313/9rules/about/</guid>
       <description>Contribution  Fork the project. (https://github.com/tamada/9rules/fork) Create a feature branch. (git switch -c FEATURE_BRANCH_NAME) Edit the source files and Commit your changes. Create tests and commit them. Rebase your local changes against the master branch. Run the test suite with the mvn package and confirm that passes. Create a new pull request. Confirm all checks pass.  Authors  Haruaki Tamada  Discussion 
 License 
 Apache License, version 2.</description>
@@ -23,20 +23,20 @@ Apache License, version 2.</description>
     
     <item>
       <title>Description</title>
-      <link>https://tamada.github.io/9rules/description/</link>
+      <link>https://tamada.github.io:1313/9rules/description/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tamada.github.io/9rules/description/</guid>
+      <guid>https://tamada.github.io:1313/9rules/description/</guid>
       <description>Rules This tool checks the 9 rules of small object programming for the Java source codes. Originally, 9 rules were shown in The ThoughtWorks Anthology. The rules are as follows.
  Rule # 1. Use one level of indentation per method. Rule # 2. Do not use the else keyword. Rule # 3. Wrap all primitives and Strings. Rule # 4. Use only one dot per line.  Except the following items.</description>
     </item>
     
     <item>
       <title>Install</title>
-      <link>https://tamada.github.io/9rules/install/</link>
+      <link>https://tamada.github.io:1313/9rules/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tamada.github.io/9rules/install/</guid>
+      <guid>https://tamada.github.io:1313/9rules/install/</guid>
       <description> Homebrew Install 9rules via Homebrew, simply run:
 $ brew tap tamada/brew $ brew install ninerules 9rules command (wrapper for shell script) will be installed.
 Install yourself $ git clone https://github.com/tamada/9rules.git $ cd 9rules $ mvn package Requirements  Runtime  Java 8 or later.  Development  Maven 3.x  Dependencies  JDT Core 3.10.0  Dependencies (the Unit Tests)  JUnit 4.12 Hamcreset all 1.3   </description>
@@ -44,10 +44,10 @@ Install yourself $ git clone https://github.com/tamada/9rules.git $ cd 9rules $ 
     
     <item>
       <title>Usage</title>
-      <link>https://tamada.github.io/9rules/usage/</link>
+      <link>https://tamada.github.io:1313/9rules/usage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tamada.github.io/9rules/usage/</guid>
+      <guid>https://tamada.github.io:1313/9rules/usage/</guid>
       <description>Usage of 9rules 9rules is an executable jar, therefore, simply type java -jar 9rules-VERSION.jar, and specified java source codes and source code directory.
 Then, the tool checks each java source code and reports the results of the check.
 Example We assume that the project was cloned and compiled with Maven 3.

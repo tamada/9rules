@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Hugo 0.57.2" />
+  <meta name="generator" content="Hugo 0.55.6" />
   <link rel="stylesheet" href="/9rules/css/normalize.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   
@@ -105,9 +105,9 @@ line: <span style="color:#666">14</span>, getter method found
 line: <span style="color:#666">18</span>, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: <span style="color:#666">10</span>, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.</code></pre></div>
-<h3 id="an-java-source-code-as-input">An Java source code as input</h3>
+<h3 id="java-source-codes-as-input">Java source codes as input</h3>
 
-<p>Also, the tool can arrow an source code as input.</p>
+<p>Also, the tool accepts source code as input.</p>
 
 <pre><code>$ ls
 LICENSE    README.md  pom.xml    src/       target/
@@ -191,6 +191,27 @@ In the future version, the tool will arrange the annotations for ignoring each r
 
 <p>![images/demo.gif]</p>
 
+<h2 id="docker">Docker</h2>
+
+<p>The docker container images are provided at DockerHub as the following repository.</p>
+
+<ul>
+<li><a href="https://hub.docker.com/r/tamada/9rules">tamada/9rules:1.0.0</a> (tamada/9rules:latest)</li>
+<li><a href="https://hub.docker.com/r/tamada/9rules-minimal">tamada/9rules-minimal:1.0.0</a> (tamada/9rules-minimal:latest)</li>
+</ul>
+
+<p>To run the 9rules by docker.</p>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#ba2121">&#34;</span><span style="color:#19177c">$PWD</span><span style="color:#ba2121">&#34;</span>:/opt/wd -w /opt/wd  &lt;DOCKER_REPO&gt; &lt;ARGUMENTS...&gt; </code></pre></div>
+<ul>
+<li><code>ARGUMENTS...</code>: the arguments for <code>9rules</code>.</li>
+<li><code>--rm</code>: remove the container after running.</li>
+<li><code>-v &quot;$PWD&quot;:/opt/wd</code>: share volume <code>$PWD</code> in host to <code>/opt/wd</code> in the container.</li>
+<li><code>-w /opt/wd</code>: change directory to <code>/opt/wd</code> before running <code>9rules</code>.</li>
+<li><code>DOCKER_REPO</code>: specifies docker repository, such as <code>tamada/9rules:latest</code>.</li>
+</ul>
+
+<h3 id="example-1">Example</h3>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v /the/path/of/analysis/target:/opt/wd -w /opt/wd tamada/9rules-minimal:latest src/main/java</code></pre></div>
 
     <footer class="site-footer">
   <span class="site-footer-credits">
@@ -200,7 +221,5 @@ In the future version, the tool will arrange the annotations for ignoring each r
 
   </section>
   
-  
-
-</body>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
 </html>
