@@ -36,7 +36,7 @@ By the way, this tool is programed to obey above rules.
 
 The following demo shows validating Java source codes in top directory of 9rules project.
 
-![Demo](https://github.com/tamada/9rules/raw/master/src/site/resources/images/demo.gif)
+![Demo](https://github.com/tamada/9rules/raw/master/src/site/static/images/demo.gif)
 
 The demo was executed the following commands.
 
@@ -113,11 +113,31 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
     8. Use first-class collections (same as strict), and
     9. Do not use any getters/setters/properties (same as strict).
 
-### Use with Docker
+### Docker
+
+#### Run 9rules on Docker container.
+
+Container images for Docker of 9rules are:
+
+* [`tamada/9rules:latest`](https://hub.docker.com/r/tamada/9rules) (`tamada/9rules:1.0.0`)
+* [`tamada/9rules-minimal:latest`](https://hub.docker.com/r/tamada/9rules-minimal) (`tamada/9rules-minimal:1.0.0`)
+
+To run the 9rules by the docker container:
 
 ```sh
-$ docker build . -t 9rules # <- build 9rules images using Dockerfile.
-$ docker run -it --name '9rules_running' 9rules <ARGUMENTS...> 
+$ docker run --rm -v "$PWD":/opt/wd -w /opt/wd  <DOCKER_REPO> <ARGUMENTS...> 
+```
+
+* `ARGUMENTS...`: the arguments for `9rules`.
+* `--rm`: remove the container after running.
+* `-v "$PWD":/opt/wd`: share volume `$PWD` in host to `/opt/wd` in the container.
+* `-w /opt/wd`: change directory to `/opt/wd` before running `9rules`.
+* `DOCKER_REPO`: specifies docker repository, such as `tamada/9rules:latest`.
+
+#### Example
+
+```sh
+$ docker run --rm -v "$PWD":/opt/wd -w /opt/wd tamada/9rules-minimal:latest src/main/java
 ```
 
 ## Install
@@ -198,7 +218,7 @@ Apache License v 2.0
 以下のデモでは，サンプルソースコードが 9rules のルールに従っているかを確認しています．
 この実行結果を得るには，9rules プロジェクトのトップディレクトリにて同じコマンドを入力してください．
 
-![Demo](https://github.com/tamada/9rules/raw/master/src/site/resources/images/demo.gif)
+![Demo](https://github.com/tamada/9rules/raw/master/src/site/static/images/demo.gif)
 
 実行しているコマンドは次の通りです．
 
