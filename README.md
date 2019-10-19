@@ -119,20 +119,18 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 
 Container images for Docker of 9rules are:
 
-* [`tamada/9rules:latest`](https://hub.docker.com/r/tamada/9rules) (`tamada/9rules:1.0.0`)
-* [`tamada/9rules-minimal:latest`](https://hub.docker.com/r/tamada/9rules-minimal) (`tamada/9rules-minimal:1.0.0`)
+* [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
+    * `1.0.0-v2`, `latest`
 
 To run the 9rules by the docker container:
 
 ```sh
-$ docker run --rm -v "$PWD":/opt/wd -w /opt/wd  <DOCKER_REPO> <ARGUMENTS...> 
+$ docker run --rm -v "$PWD":/home/ninerules tamada/9rules <ARGUMENTS...> 
 ```
 
 * `ARGUMENTS...`: the arguments for `9rules`.
 * `--rm`: remove the container after running.
-* `-v "$PWD":/opt/wd`: share volume `$PWD` in host to `/opt/wd` in the container.
-* `-w /opt/wd`: change directory to `/opt/wd` before running `9rules`.
-* `DOCKER_REPO`: specifies docker repository, such as `tamada/9rules:latest`.
+* `-v "$PWD":/home/ninerules`: share volume `$PWD` in host to `/home/ninerules` in the container.
 
 #### Example
 
