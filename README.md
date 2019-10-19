@@ -135,8 +135,10 @@ $ docker run --rm -v "$PWD":/home/ninerules tamada/9rules <ARGUMENTS...>
 #### Example
 
 ```sh
-$ docker run --rm -v "$PWD":/opt/wd -w /opt/wd tamada/9rules-minimal:latest src/main/java
+$ docker run --rm -v "$PWD":/home/ninerules tamada/9rules:latest src/main/java
 ```
+
+`src/main/java` shows the source directory of the `9rules` project.
 
 ## Install
 
