@@ -1,6 +1,6 @@
-FROM alpine:3.10.1
+FROM alpine:3.10.1 AS base
 
-RUN    apk --no-cache add openjdk11 \
+RUN    apk --no-cache add openjdk11=11.0.4_p4-r1 \
     && rm -rf /var/cache/apk/* \
     && /usr/lib/jvm/java-11-openjdk/bin/jlink \
        --module-path /usr/lib/jvm/java-11-openjdk/jmods \
@@ -11,11 +11,12 @@ RUN    apk --no-cache add openjdk11 \
       --output /opt/openjdk-11-minimal
 
 FROM alpine:3.10.1
-MAINTAINER tamada
+LABEL maintainer="Haruaki Tamada" \
+      description=""
 
-COPY --from=0 /opt/openjdk-11-minimal /opt/openjdk-11-minimal
+COPY --from=base /opt/openjdk-11-minimal /opt/openjdk-11-minimal
 
-RUN apk --no-cache add curl unzip \
+RUN apk --no-cache add curl=7.66.0-r0 unzip=6.0-r4 \
     && curl -s -L -O https://github.com/tamada/9rules/releases/download/v1.0.0/9rules-1.0.0-bin.zip \
     && unzip -q 9rules-1.0.0-bin.zip        \ 
     && mv 9rules-1.0.0 /opt                 \
