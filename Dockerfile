@@ -12,7 +12,8 @@ RUN    apk --no-cache add openjdk11=11.0.4_p4-r1 \
 
 FROM alpine:3.10.1
 LABEL maintainer="Haruaki Tamada" \
-      description=""
+      9rules-version="1.0.0" \
+      description="Checking tool for object oriented exercises by nine rules. "
 
 COPY --from=base /opt/openjdk-11-minimal /opt/openjdk-11-minimal
 
