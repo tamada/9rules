@@ -108,30 +108,29 @@ In the future version, the tool will arrange the annotations for ignoring each r
 
 ## Demo
 
-![images/demo.gif]
+![demo](/9rules/images/demo.gif)
 
 ## Docker
 
 The docker container images are provided at DockerHub as the following repository.
 
-* [tamada/9rules:1.0.0](https://hub.docker.com/r/tamada/9rules) (tamada/9rules:latest)
-* [tamada/9rules-minimal:1.0.0](https://hub.docker.com/r/tamada/9rules-minimal) (tamada/9rules-minimal:latest)
+* [tamada/9rules](https://hub.docker.com/r/tamada/9rules) (tamada/9rules)
+    * `1.0.0-v2`, `latest`
 
 To run the 9rules by docker.
 
 ```sh
-$ docker run --rm -v "$PWD":/opt/wd -w /opt/wd  <DOCKER_REPO> <ARGUMENTS...> 
+$ docker run --rm -v $PWD:/home/ninerules tamada/9rules <ARGUMENTS...> 
 ```
 
 * `ARGUMENTS...`: the arguments for `9rules`.
 * `--rm`: remove the container after running.
-* `-v "$PWD":/opt/wd`: share volume `$PWD` in host to `/opt/wd` in the container.
-* `-w /opt/wd`: change directory to `/opt/wd` before running `9rules`.
-* `DOCKER_REPO`: specifies docker repository, such as `tamada/9rules:latest`.
+* `-v "$PWD":/home/ninerules`: share volume `$PWD` in host OS to `/home/ninerules` in the container OS.
+    * Note that `$PWD` must be the absolute path.
 
 ### Example
 
 ```sh
-$ docker run --rm -v /the/path/of/analysis/target:/opt/wd -w /opt/wd tamada/9rules-minimal:latest src/main/java
+$ docker run --rm -v $PWD:/home/ninerules tamada/9rules src/main/java
 ```
 

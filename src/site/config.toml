@@ -9,6 +9,7 @@ pygmentsStyle = "pygments"
 
 [params]
     project_name = "9rules"
+    project_logo = "images/logo.svg"
     project_tagline = "Checking tool of small object programming for the Java language."
     dateFormat = "2006-01-02"
 

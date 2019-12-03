@@ -19,7 +19,13 @@ title: About the project
 
 ## Authors
 
-* [Haruaki Tamada](https://github.com/tamada)
+* {{< githubuser tamada >}} [Haruaki Tamada](https://github.com/tamada)
+
+## Icons of 9rules
+
+{{< figure src="/9rules/images/logo.svg" alt="9rules logo" width="64" >}}
+
+If you use the logo, please use [logo.svg](https://tamada.github.io/9rules/images/logo.svg) or [logo.png](https://tamada.github.io/9rules/images/logo.png), both images are located on https://tamada.github.io/9rules/images/.
 
 ## Discussion
 

@@ -1,0 +1,8 @@
+<img src="{{ .Get "src" }}"
+     {{ if isset .Params "alt" }}
+     alt="{{ .Get "alt" }}"
+     {{ end }}
+     {{ if isset .Params "width" }}
+     width="{{ .Get "width" }}"
+     {{ end }}
+/>

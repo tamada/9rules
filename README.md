@@ -131,6 +131,7 @@ $ docker run --rm -v "$PWD":/home/ninerules tamada/9rules <ARGUMENTS...>
 * `ARGUMENTS...`: the arguments for `9rules`.
 * `--rm`: remove the container after running.
 * `-v "$PWD":/home/ninerules`: share volume `$PWD` in host to `/home/ninerules` in the container.
+    * Note that `$PWD` must be the absolute path.
 
 #### Example
 
