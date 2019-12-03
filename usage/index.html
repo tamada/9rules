@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Hugo 0.55.6" />
+  <meta name="generator" content="Hugo 0.59.1" />
   <link rel="stylesheet" href="/9rules/css/normalize.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   
@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="/9rules/css/cayman.87415a4997c8d6c666624ff26c8812f27f42b4cf5dc18c45fc8dcb0cd7d6d2f5.css">
   
   
+  <link rel="stylesheet" href="/9rules/9rules.css">
   <link rel="apple-touch-icon" sizes="180x180" href="/9rules/images/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/9rules/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/9rules/images/favicon-16x16.png">
@@ -26,6 +27,9 @@
 
 <body>
   <section class="page-header">
+  
+    <img src="https://tamada.github.io/9rulesimages/logo.svg" class="avatar" alt="project_logo">
+  
   <h1 class="project-name">
     9rules
   </h1>
@@ -189,29 +193,34 @@ In the future version, the tool will arrange the annotations for ignoring each r
 
 <h2 id="demo">Demo</h2>
 
-<p>![images/demo.gif]</p>
+<p><img src="/9rules/images/demo.gif" alt="demo" /></p>
 
 <h2 id="docker">Docker</h2>
 
 <p>The docker container images are provided at DockerHub as the following repository.</p>
 
 <ul>
-<li><a href="https://hub.docker.com/r/tamada/9rules">tamada/9rules:1.0.0</a> (tamada/9rules:latest)</li>
-<li><a href="https://hub.docker.com/r/tamada/9rules-minimal">tamada/9rules-minimal:1.0.0</a> (tamada/9rules-minimal:latest)</li>
+<li><a href="https://hub.docker.com/r/tamada/9rules">tamada/9rules</a> (tamada/9rules)
+
+<ul>
+<li><code>1.0.0-v2</code>, <code>latest</code></li>
+</ul></li>
 </ul>
 
 <p>To run the 9rules by docker.</p>
-<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#ba2121">&#34;</span><span style="color:#19177c">$PWD</span><span style="color:#ba2121">&#34;</span>:/opt/wd -w /opt/wd  &lt;DOCKER_REPO&gt; &lt;ARGUMENTS...&gt; </code></pre></div>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules &lt;ARGUMENTS...&gt; </code></pre></div>
 <ul>
 <li><code>ARGUMENTS...</code>: the arguments for <code>9rules</code>.</li>
 <li><code>--rm</code>: remove the container after running.</li>
-<li><code>-v &quot;$PWD&quot;:/opt/wd</code>: share volume <code>$PWD</code> in host to <code>/opt/wd</code> in the container.</li>
-<li><code>-w /opt/wd</code>: change directory to <code>/opt/wd</code> before running <code>9rules</code>.</li>
-<li><code>DOCKER_REPO</code>: specifies docker repository, such as <code>tamada/9rules:latest</code>.</li>
+<li><code>-v &quot;$PWD&quot;:/home/ninerules</code>: share volume <code>$PWD</code> in host OS to <code>/home/ninerules</code> in the container OS.
+
+<ul>
+<li>Note that <code>$PWD</code> must be the absolute path.</li>
+</ul></li>
 </ul>
 
 <h3 id="example-1">Example</h3>
-<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v /the/path/of/analysis/target:/opt/wd -w /opt/wd tamada/9rules-minimal:latest src/main/java</code></pre></div>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules src/main/java</code></pre></div>
 
     <footer class="site-footer">
   <span class="site-footer-credits">
@@ -221,5 +230,7 @@ In the future version, the tool will arrange the annotations for ignoring each r
 
   </section>
   
-<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10"></' + 'script>')</script></body>
+  
+
+</body>
 </html>
