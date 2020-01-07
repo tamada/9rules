@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="generator" content="Hugo 0.62.0" />
   <link rel="stylesheet" href="/9rules/css/normalize.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   
@@ -28,7 +28,7 @@
 <body>
   <section class="page-header">
   
-    <img src="https://tamada.github.io/9rules/images/logo.svg" class="avatar" alt="project_logo">
+    <img src="https://tamada.github.io/9rulesimages/logo.svg" class="avatar" alt="project_logo">
   
   <h1 class="project-name">
     9rules
@@ -75,49 +75,43 @@
   <section class="main-content">
     
   <h1>Description</h1>
-  
-
-<h2 id="rules">Rules</h2>
-
+  <h2 id="rules">Rules</h2>
 <p>This tool checks the 9 rules of small object programming for the Java source codes.
 Originally, 9 rules were shown in <a href="http://shop.oreilly.com/product/9781934356142.do">The ThoughtWorks Anthology</a>.
 The rules are as follows.</p>
-
 <ul>
 <li>Rule # 1. Use one level of indentation per method.</li>
 <li>Rule # 2. Do not use the <code>else</code> keyword.</li>
 <li>Rule # 3. Wrap all primitives and <code>String</code>s.</li>
 <li>Rule # 4. Use only one dot per line.
-
 <ul>
 <li>Except the following items.
-
 <ul>
 <li>one line comments,</li>
 <li>string literals,</li>
-<li><code>this.</code>,
-* lines of <code>import</code>,
-* line of <code>package</code>,
-* first characters in the line,
-* variadic methods, and
-* <code>System.out.print(ln|f)?</code>.</li>
-</ul></li>
-</ul></li>
+<li><code>this.</code>,</li>
+<li>lines of <code>import</code>,</li>
+<li>line of <code>package</code>,</li>
+<li>first characters in the line,</li>
+<li>variadic methods, and</li>
+<li><code>System.out.print(ln|f)?</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Rule # 5. Do not abbreviate.</li>
 <li>Rule # 6. Keep all entities small.
-
 <ul>
 <li>The length of each method is less than 3 lines.</li>
 <li>The length of each class is less than 50 lines.</li>
 <li>The class files in a package are less than 10 files.</li>
-</ul></li>
+</ul>
+</li>
 <li>Rule # 7. Do not use any classes with more than two instance variables.</li>
 <li>Rule # 8. Use first-class collections.</li>
 <li>Rule # 9. Do not use any getters/setters/properties.</li>
 </ul>
-
 <h2 id="implementation">Implementation</h2>
-
 <p>The tool can check above rules except rule # 5.
 To check rule # 5 must be refer the dictionaries.
 Of course, a library like <a href="https://wordnet.princeton.edu">WordNet</a> enables to check rule # 5.
@@ -126,12 +120,19 @@ However, the tool does not implement the rule yet.</p>
 
     <footer class="site-footer">
   <span class="site-footer-credits">
-    <a href="https://github.com/tamada/9rules"><img src="https://img.shields.io/badge/GitHub-tamada/9rules-blueviolet.svg?logo=github" alt="GitHub" /></a> Made with <a href="https://gohugo.io/">Hugo</a>. Theme by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Deployed to <a href="https://pages.github.com/">GitHub Pages</a>.
+    <a href="https://github.com/tamada/9rules"><img src="https://img.shields.io/badge/GitHub-tamada/9rules-blueviolet.svg?logo=github" alt="GitHub"></a> Made with <a href="https://gohugo.io/">Hugo</a>. Theme by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Deployed to <a href="https://pages.github.com/">GitHub Pages</a>.
   </span>
 </footer>
 
   </section>
   
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-62401730-2', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
   
 
 </body>

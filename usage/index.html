@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="generator" content="Hugo 0.59.1" />
+  <meta name="generator" content="Hugo 0.62.0" />
   <link rel="stylesheet" href="/9rules/css/normalize.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
   
@@ -28,7 +28,7 @@
 <body>
   <section class="page-header">
   
-    <img src="https://tamada.github.io/9rules/images/logo.svg" class="avatar" alt="project_logo">
+    <img src="https://tamada.github.io/9rulesimages/logo.svg" class="avatar" alt="project_logo">
   
   <h1 class="project-name">
     9rules
@@ -75,52 +75,41 @@
   <section class="main-content">
     
   <h1>Usage</h1>
-  
-
-<h2 id="usage-of-9rules">Usage of 9rules</h2>
-
+  <h2 id="usage-of-9rules">Usage of 9rules</h2>
 <p>9rules is an executable jar, therefore, simply type <code>java -jar 9rules-VERSION.jar</code>,
 and specified java source codes and source code directory.</p>
-
 <p>Then, the tool checks each java source code and reports the results of the check.</p>
-
 <h2 id="example">Example</h2>
-
 <p>We assume that the project was cloned and compiled with <a href="http://maven.apache.org/">Maven 3</a>.</p>
-
 <h3 id="an-simple-use-case">An simple use case</h3>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls
 LICENSE    README.md  pom.xml    src/       target/
 $ java -jar target/9rules-1.0.0.jar  src/test/resources/hello/src/main/java/
 src/test/resources/hello/src/main/java/sample/hello/GodObject.java
-line: <span style="color:#666">53</span>, <span style="color:#008000;font-weight:bold">else</span> statement found.
-line: <span style="color:#666">13</span>,14,15,16, field count is more than <span style="color:#666">2</span>
-line: <span style="color:#666">13</span>,14,15,16, not first class collection.
-line: <span style="color:#666">43</span>, Indentation level is too much <span style="color:#666">(</span>more than <span style="color:#666">1</span> indent level<span style="color:#666">)</span>
-line: <span style="color:#666">28</span>, Many dots per line <span style="color:#666">(</span>more than <span style="color:#666">1</span> dots<span style="color:#666">)</span>
-line: <span style="color:#666">29</span>, Many dots per line <span style="color:#666">(</span>more than <span style="color:#666">1</span> dots<span style="color:#666">)</span>
-line: <span style="color:#666">13</span>,14,15,16, no primitives.
-line: <span style="color:#666">43</span>, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.
-line: <span style="color:#666">65</span>, <span style="color:#008000">source</span> code is too long <span style="color:#666">(</span>over <span style="color:#666">50</span> lines<span style="color:#666">)</span>.
+line: 53, <span style="color:#008000;font-weight:bold">else</span> statement found.
+line: 13,14,15,16, field count is more than <span style="color:#666">2</span>
+line: 13,14,15,16, not first class collection.
+line: 43, Indentation level is too much <span style="color:#666">(</span>more than <span style="color:#666">1</span> indent level<span style="color:#666">)</span>
+line: 28, Many dots per line <span style="color:#666">(</span>more than <span style="color:#666">1</span> dots<span style="color:#666">)</span>
+line: 29, Many dots per line <span style="color:#666">(</span>more than <span style="color:#666">1</span> dots<span style="color:#666">)</span>
+line: 13,14,15,16, no primitives.
+line: 43, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.
+line: 65, <span style="color:#008000">source</span> code is too long <span style="color:#666">(</span>over <span style="color:#666">50</span> lines<span style="color:#666">)</span>.
 src/test/resources/hello/src/main/java/sample/hello/GodObjectButNotTarget.java
 src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java
-line: <span style="color:#666">10</span>, setter method found
-line: <span style="color:#666">14</span>, getter method found
-line: <span style="color:#666">18</span>, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.
+line: 10, setter method found
+line: 14, getter method found
+line: 18, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
-line: <span style="color:#666">10</span>, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.</code></pre></div>
-<h3 id="java-source-codes-as-input">Java source codes as input</h3>
-
+line: 10, method is too long <span style="color:#666">(</span>over <span style="color:#666">3</span> lines<span style="color:#666">)</span>.
+</code></pre></div><h3 id="java-source-codes-as-input">Java source codes as input</h3>
 <p>Also, the tool accepts source code as input.</p>
-
 <pre><code>$ ls
 LICENSE    README.md  pom.xml    src/       target/
 $ java -jar target/9rules-1.0.0.jar  src/test/resources/hello/src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
-</code></pre>
-
-<h2 id="help">Help</h2>
+</code></pre><h2 id="help">Help</h2>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">java -jar 9rules.jar <span style="color:#666">[</span>OPTIONS<span style="color:#666">]</span> &lt;TARGETS...&gt;
 
 OPTIONS:
@@ -130,106 +119,101 @@ OPTIONS:
     --help:    Print this message and exit.
 
 TARGETS:
-    Directories include Java <span style="color:#008000">source</span> files, and Java <span style="color:#008000">source</span> files.</code></pre></div>
-<h3 id="checking-level">Checking Level</h3>
-
+    Directories include Java <span style="color:#008000">source</span> files, and Java <span style="color:#008000">source</span> files.
+</code></pre></div><h3 id="checking-level">Checking Level</h3>
 <p>The check of default rules are quite hard to satisfy.
 Therefore, the tool introduce three checking levels.
 You can specify checking level in the command line option.</p>
-
 <ol>
 <li>Strict level (<code>---strict</code> option. default)
-
 <ul>
 <li>This level checks source codes strictly.
-
 <ul>
 <li>Rule # 1: Use 1 level of indentation per method.</li>
 <li>Rule # 4: Use only 1 dot per line.</li>
 <li>Rule # 6-1: The length of each method is less than 3 lines.</li>
 <li>Rule # 6-2: The length of each class is less than 50 lines.</li>
 <li>Rule # 7: Do not use any classes with more than 2 instance variables.</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>General level (<code>---general</code> option)
-
 <ul>
 <li>This level checks source codes generally.
-
 <ul>
 <li>Rule # 1: Use 1 level of indentation per method.</li>
 <li>Rule # 4: Use only 2 dot per line.</li>
 <li>Rule # 6-1: The length of each method is less than 5 lines.</li>
 <li>Rule # 6-2: The length of each class is less than 70 lines.</li>
 <li>Rule # 7: Do not use any classes with more than 3 instance variables.</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Rough level (<code>---rough</code> option)
-
 <ul>
 <li>This level checks source codes roughly.
-
 <ul>
 <li>Rule # 1: Use 2 level of indentation per method.</li>
 <li>Rule # 4: Use only 3 dot per line.</li>
 <li>Rule # 6-1: The length of each method is less than 10 lines.</li>
 <li>Rule # 6-2: The length of each class is less than 100 lines.</li>
 <li>Rule # 7: Do not use any classes with more than 4 instance variables.</li>
-</ul></li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 </ol>
-
 <h3 id="ignoring-targets">Ignoring Targets</h3>
-
 <p>There is a case of classes could not satisfy the rules because of a certain frameworks&rsquo; restriction.
 When the tool evaluate Java source codes, the tool would ignore such classes by the annotation.</p>
-
 <p>If the annotation <code>@IgnoreRules</code> was specified on class definition,
 the class will not be checked by the tool.</p>
-
 <p>In this version of <code>@IgnoreRules</code> annotation,
 the tool ignore all rules by specifying the annotation, and checks all rules without the annotation.
 In the future version, the tool will arrange the annotations for ignoring each rule.</p>
-
 <h2 id="demo">Demo</h2>
-
-<p><img src="/9rules/images/demo.gif" alt="demo" /></p>
-
+<p><img src="/9rules/images/demo.gif" alt="demo"></p>
 <h2 id="docker">Docker</h2>
-
 <p>The docker container images are provided at DockerHub as the following repository.</p>
-
 <ul>
 <li><a href="https://hub.docker.com/r/tamada/9rules">tamada/9rules</a> (tamada/9rules)
-
 <ul>
 <li><code>1.0.0-v2</code>, <code>latest</code></li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <p>To run the 9rules by docker.</p>
-<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules &lt;ARGUMENTS...&gt; </code></pre></div>
-<ul>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules &lt;ARGUMENTS...&gt; 
+</code></pre></div><ul>
 <li><code>ARGUMENTS...</code>: the arguments for <code>9rules</code>.</li>
 <li><code>--rm</code>: remove the container after running.</li>
 <li><code>-v &quot;$PWD&quot;:/home/ninerules</code>: share volume <code>$PWD</code> in host OS to <code>/home/ninerules</code> in the container OS.
-
 <ul>
 <li>Note that <code>$PWD</code> must be the absolute path.</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h3 id="example-1">Example</h3>
-<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules src/main/java</code></pre></div>
+<div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules src/main/java
+</code></pre></div>
 
     <footer class="site-footer">
   <span class="site-footer-credits">
-    <a href="https://github.com/tamada/9rules"><img src="https://img.shields.io/badge/GitHub-tamada/9rules-blueviolet.svg?logo=github" alt="GitHub" /></a> Made with <a href="https://gohugo.io/">Hugo</a>. Theme by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Deployed to <a href="https://pages.github.com/">GitHub Pages</a>.
+    <a href="https://github.com/tamada/9rules"><img src="https://img.shields.io/badge/GitHub-tamada/9rules-blueviolet.svg?logo=github" alt="GitHub"></a> Made with <a href="https://gohugo.io/">Hugo</a>. Theme by <a href="https://github.com/zwbetz-gh/cayman-hugo-theme">Cayman</a>. Deployed to <a href="https://pages.github.com/">GitHub Pages</a>.
   </span>
 </footer>
 
   </section>
   
+  
+  <script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', 'UA-62401730-2', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
   
 
 </body>
