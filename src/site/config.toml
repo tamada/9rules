@@ -3,6 +3,7 @@ languageCode = "en-us"
 defaultContentLanguage = "en"
 title = "9rules"
 theme = "cayman-hugo-theme"
+googleAnalytics = "UA-62401730-2"
 
 pygmentsCodefences = true
 pygmentsStyle = "pygments"
