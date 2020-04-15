@@ -1,6 +1,7 @@
 PWD := ${CURDIR}
 DOCKER_IMAGE_NAME := www9rules
-DOCKER_IMAGE := jojomi/hugo:latest
+JOJOMI_VERSION := 0.69.0
+DOCKER_IMAGE := jojomi/hugo:${JOJOMI_VERSION}
 
 define _docker_run
 	docker run --rm --name $1 $2 --interactive --volume ${PWD}:/src --volume ${PWD}/public:/output --workdir /src --entrypoint hugo $(DOCKER_IMAGE) $3

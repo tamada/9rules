@@ -15,7 +15,7 @@
       {{ $active = or $active (eq .Name $current.Title) }}
       {{ $active = or $active (and (eq .Name "Blog") (eq $current.Section "post")) }}
       {{ $active = or $active (and (eq .Name "Tags") (eq $current.Section "tags")) }}
-      <a href="{{ .URL }}" class="btn">{{ .Name }}</a>
+      <a href="{{ .URL }}" class="btn">{{ .Name | emojify }}</a>
     {{ end }}
   </nav>
 </section>
