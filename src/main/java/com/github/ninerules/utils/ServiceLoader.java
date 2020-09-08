@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class ServiceLoader<T> {
-    private List<String> list;
+    private final List<String> list;
 
     ServiceLoader(Stream<String> stream){
         list = stream.collect(toList());
@@ -14,12 +14,16 @@ public class ServiceLoader<T> {
 
     public Stream<Class<T>> stream(){
         return list.stream()
-                .map(this::toClass);
+                .map(this::toClass)
+                .flatMap(Either::stream);
     }
 
     @SuppressWarnings("unchecked")
-    private Class<T> toClass(String className){
-        return (Class<T>) ExceptionHandler.perform(className, Class::forName)
-                .orElse(null);
+    private Either<Exception, Class<T>> toClass(String className){
+        try{
+            return Either.ofValue((Class<T>)Class.forName(className));
+        } catch(Exception e) {
+            return Either.ofException(e);
+        }
     }
 }

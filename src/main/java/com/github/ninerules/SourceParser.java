@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 
+import com.github.ninerules.utils.Either;
 import com.github.ninerules.utils.ExceptionHandler;
 
 public class SourceParser {
@@ -14,13 +15,18 @@ public class SourceParser {
         this.path = path;
     }
 
-    public String parse(){
-        return readSource(path);
+    public String parse() {
+        return readSource(path)
+                .value()
+                .orElse("");
     }
 
-    private String readSource(Path path){
-        return ExceptionHandler.perform(path, this::readPlainSource)
-                .orElse("");
+    private Either<IOException, String> readSource(Path path){
+        try{
+            return Either.ofValue(readPlainSource(path));
+        } catch(IOException e){
+            return Either.ofException(e);
+        }
     }
 
     private String readPlainSource(Path path) throws IOException{

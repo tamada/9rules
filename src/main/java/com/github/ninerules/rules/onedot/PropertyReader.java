@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import com.github.ninerules.utils.Either;
 import com.github.ninerules.utils.ExceptionHandler;
 
 public class PropertyReader {

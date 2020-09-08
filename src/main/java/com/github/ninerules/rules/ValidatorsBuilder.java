@@ -5,6 +5,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.stream.Stream;
 
 import com.github.ninerules.StrictLevel;
+import com.github.ninerules.utils.Either;
 import com.github.ninerules.utils.ExceptionHandler;
 import com.github.ninerules.utils.ServiceLoader;
 import com.github.ninerules.utils.ServiceLoaderBuilder;
@@ -22,9 +23,11 @@ public class ValidatorsBuilder{
         return validators;
     }
 
+    // TODO: 2020/07/25 if this method has some error, how to notify it to the user? 
     private void initialize(final Validators validators){
         serviceLoaderStream().map(this::createInstance)
-        .forEach(validators::register);
+                .flatMap(either -> either.stream())
+                .forEach(validators::register);
     }
     
     private Stream<Class<Validator>> serviceLoaderStream(){
@@ -32,9 +35,12 @@ public class ValidatorsBuilder{
         return serviceLoader.stream();
     }
 
-    private Validator createInstance(Class<Validator> clazz){
-        return ExceptionHandler.perform(clazz, level, this::instantiate)
-                .orElse(null);
+    private Either<Exception, Validator> createInstance(Class<Validator> clazz){
+        try{
+            return Either.ofValue(instantiate(clazz, level));
+        } catch(Exception e) {
+            return Either.ofException(e);
+        }
     }
 
     private Validator instantiate(Class<Validator> clazz, StrictLevel level)
