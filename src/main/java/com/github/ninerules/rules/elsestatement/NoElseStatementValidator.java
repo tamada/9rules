@@ -15,6 +15,10 @@ import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 public class NoElseStatementValidator extends JdtValidator {
     public static final Message NO_ELSE_STATEMENT = new Message("else statement found.");
 
+    public NoElseStatementValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public NoElseStatementValidator(StrictLevel level) {
         super(level);
     }

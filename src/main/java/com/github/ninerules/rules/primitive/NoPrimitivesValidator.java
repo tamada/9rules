@@ -21,6 +21,10 @@ public class NoPrimitivesValidator extends FieldCollectingValidator{
     private FieldChecker checker = new FieldChecker();
     private Predicate<FieldDeclaration> predicate = item -> !checker.checkStatic(item);
 
+    public NoPrimitivesValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public NoPrimitivesValidator(StrictLevel level) {
         super(level);
     }

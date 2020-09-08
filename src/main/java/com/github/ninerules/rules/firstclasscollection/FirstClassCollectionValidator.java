@@ -20,6 +20,10 @@ public class FirstClassCollectionValidator extends FieldCollectingValidator{
     private FieldChecker checker = new FieldChecker();
     private Predicate<FieldDeclaration> predicate = item -> !checker.checkStaticAndFinal(item);
 
+    public FirstClassCollectionValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public FirstClassCollectionValidator(StrictLevel level) {
         super(level);
     }

@@ -15,6 +15,10 @@ import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 public class MethodLengthValidator extends JdtValidator {
     public static final Message TOO_LONG_METHOD = new Message("method is too long (over %s lines).");
 
+    public MethodLengthValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public MethodLengthValidator(StrictLevel level) {
         super(level);
     }

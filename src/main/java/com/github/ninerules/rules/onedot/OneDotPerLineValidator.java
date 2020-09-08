@@ -17,6 +17,10 @@ public class OneDotPerLineValidator extends PlainSourceValidator{
 
     private StringFilterManager filter = new StringFilterManager();
 
+    public OneDotPerLineValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public OneDotPerLineValidator(StrictLevel level) {
         super(level);
     }

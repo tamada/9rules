@@ -14,6 +14,10 @@ public class NoAccessorValidator extends JdtValidator{
 
     private AccessorChecker checker = new AccessorChecker();
 
+    public NoAccessorValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public NoAccessorValidator(StrictLevel level) {
         super(level);
     }

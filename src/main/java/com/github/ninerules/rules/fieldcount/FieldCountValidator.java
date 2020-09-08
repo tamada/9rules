@@ -17,6 +17,10 @@ public class FieldCountValidator extends FieldCollectingValidator {
     private FieldChecker checker = new FieldChecker();
     private Predicate<FieldDeclaration> predicate = item -> !checker.checkStaticAndFinal(item);
 
+    public FieldCountValidator() {
+        this(StrictLevel.STRICT);
+    }
+
     public FieldCountValidator(StrictLevel level) {
         super(level);
     }

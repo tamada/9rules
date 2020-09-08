@@ -12,6 +12,10 @@ import com.github.ninerules.rules.jdtvisitor.JdtValidator;
 public class SourceLengthValidator extends JdtValidator {
     public static final Message TOO_LONG_SOURCE = new Message("source code is too long (over %s lines).");
 
+    public SourceLengthValidator() {
+        this(StrictLevel.STRICT);
+    }
+    
     public SourceLengthValidator(StrictLevel level) {
         super(level);
     }
