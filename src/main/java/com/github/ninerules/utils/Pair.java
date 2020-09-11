@@ -1,5 +1,6 @@
 package com.github.ninerules.utils;
 
+import java.util.function.BiConsumer;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 
@@ -31,6 +32,10 @@ public class Pair<T, U> {
 
     public<R> R reduce(BiFunction<T, U, R> func){
         return func.apply(left, right);
+    }
+
+    public void apply(BiConsumer<T, U> action){
+        action.accept(left, right);
     }
 
     public<M, N> Pair<M, N> map(Function<T, M> lfunc, Function<U, N> rfunc){

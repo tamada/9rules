@@ -1,5 +1,7 @@
 package com.github.ninerules.rules.stringvisitor;
 
+import static io.vavr.control.Try.withResources;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,6 +12,7 @@ import com.github.ninerules.entities.LineCountsBuilder;
 import com.github.ninerules.utils.LoggingHelper;
 import com.github.ninerules.utils.Pair;
 import com.github.ninerules.utils.Streams;
+import io.vavr.control.Try;
 
 public class StringLineVisitorHelper {
     private StringLineVisitor visitor;
@@ -19,17 +22,13 @@ public class StringLineVisitorHelper {
     }
 
     public void visit(Path path){
-        try {
-            visitImpl(path);
-        } catch (IOException e){
-            LoggingHelper.throwing(getClass(), "visit", e);
-        }
+        Try.run(() -> visitImpl(path))
+                .orElseRun(e -> LoggingHelper.throwing(getClass(), "visit", e));
     }
 
     private void visitImpl(Path path) throws IOException{
-        try(Stream<String> stream = Files.lines(path)){
-            visitLine(stream);
-        }
+        withResources(() -> Files.lines(path))
+                .of(stream -> { visitLine(stream); return Void.TYPE; });
     }
 
     private void visitLine(Stream<String> stream){

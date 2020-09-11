@@ -2,12 +2,13 @@ package com.github.ninerules.rules;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 import com.github.ninerules.StrictLevel;
-import com.github.ninerules.utils.ExceptionHandler;
 import com.github.ninerules.utils.ServiceLoader;
 import com.github.ninerules.utils.ServiceLoaderBuilder;
+import io.vavr.control.Try;
 
 public class ValidatorsBuilder{
     private StrictLevel level;
@@ -24,7 +25,7 @@ public class ValidatorsBuilder{
 
     private void initialize(final Validators validators){
         serviceLoaderStream().map(this::createInstance)
-        .forEach(validators::register);
+        .forEach(item -> item.ifPresent(validators::register));
     }
     
     private Stream<Class<Validator>> serviceLoaderStream(){
@@ -32,9 +33,9 @@ public class ValidatorsBuilder{
         return serviceLoader.stream();
     }
 
-    private Validator createInstance(Class<Validator> clazz){
-        return ExceptionHandler.perform(clazz, level, this::instantiate)
-                .orElse(null);
+    private Optional<Validator> createInstance(Class<Validator> clazz){
+        return Try.of(() -> instantiate(clazz, level))
+                .toJavaOptional();
     }
 
     private Validator instantiate(Class<Validator> clazz, StrictLevel level)
