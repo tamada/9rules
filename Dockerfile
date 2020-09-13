@@ -11,19 +11,22 @@ RUN    apk --no-cache add openjdk11=11.0.4_p4-r1 \
       --output /opt/openjdk-11-minimal
 
 FROM alpine:3.10.1
+
+ARG ninerules_version="1.1.0"
+
 LABEL maintainer="Haruaki Tamada" \
-      9rules-version="1.1.0" \
+      version="${ninerules_version}" \
       description="Checking tool for object oriented exercises by nine rules. "
 
 COPY --from=base /opt/openjdk-11-minimal /opt/openjdk-11-minimal
 
 RUN    adduser -D ninerules \
-    && apk --no-cache add curl=7.66.0-r0 unzip=6.0-r4 \
-    && curl -s -L -O https://github.com/tamada/9rules/releases/download/v1.0.0/9rules-1.0.0-bin.zip \
-    && unzip -q 9rules-1.0.0-bin.zip        \ 
-    && mv 9rules-1.0.0 /opt                 \
-    && ln -s /opt/9rules-1.0.0 /opt/9rules  \
-    && rm 9rules-1.0.0-bin.zip              \
+    && apk --no-cache add curl=7.66.0-r0 unzip=6.0-r6 \
+    && curl -s -L -O "https://github.com/tamada/9rules/releases/download/v${ninerules_version}/9rules-${ninerules_version}-bin.zip" \
+    && unzip -q "9rules-${ninerules_version}-bin.zip"        \
+    && mv "9rules-${ninerules_version}" /opt                 \
+    && ln -s "/opt/9rules-${ninerules_version}" /opt/9rules  \
+    && rm "9rules-${ninerules_version}-bin.zip"              \
     && sed 's/CELLAR=./CELLAR=\/opt\/9rules/g' /opt/9rules/bin/9rules.sh > /usr/bin/9rules.sh \
     && chmod 755 /usr/bin/9rules.sh
 
