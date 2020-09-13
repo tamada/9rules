@@ -1,15 +1,15 @@
 ---
-title: Usage
+title: ":running: Usage"
 ---
 
-## Usage of 9rules
+## :fork_and_knife: Usage of 9rules
 
 9rules is an executable jar, therefore, simply type ```java -jar 9rules-VERSION.jar```,
 and specified java source codes and source code directory.
 
 Then, the tool checks each java source code and reports the results of the check.
 
-## Example
+## :balloon: Example
 
 We assume that the project was cloned and compiled with [Maven 3](http://maven.apache.org/).
 
@@ -50,7 +50,7 @@ src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
 ```
 
-## Help
+## :information_source: Help
 
 ```sh
 java -jar 9rules.jar [OPTIONS] <TARGETS...>
@@ -106,16 +106,17 @@ the tool ignore all rules by specifying the annotation, and checks all rules wit
 In the future version, the tool will arrange the annotations for ignoring each rule.
 
 
-## Demo
+## :confetti_ball: Demo
 
 ![demo](/9rules/images/demo.gif)
 
-## Docker
+## :whale: Docker
 
 The docker container images are provided at DockerHub as the following repository.
 
 * [tamada/9rules](https://hub.docker.com/r/tamada/9rules) (tamada/9rules)
-    * `1.0.0-v2`, `latest`
+    * `1.1.0`, `latest`
+    * `1.0.0-v2`
 
 To run the 9rules by docker.
 

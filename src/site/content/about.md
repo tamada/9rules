@@ -1,12 +1,12 @@
 ---
-title: About the project
+title: ":smile: About the project"
 ---
 
 [![Gitter](https://badges.gitter.im/9rules/Lobby.svg)](https://gitter.im/9rules/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](https://github.com/tamada/9rules/blob/master/LICENSE)
 
 
-## Contribution
+## :hammer_and_wrench: How to contribute the project
 
 1. Fork the project. ([https://github.com/tamada/9rules/fork](https://github.com/tamada/9rules/fork))
 2. Create a feature branch. (`git switch -c FEATURE_BRANCH_NAME`)
@@ -17,21 +17,21 @@ title: About the project
 7. Create a new pull request.
 8. Confirm all checks pass.
 
-## Authors
+## :man_office_worker: Authors :woman_office_worker:
 
 * {{< githubuser tamada >}} [Haruaki Tamada](https://github.com/tamada)
 
-## Icons of 9rules
+## :jack_o_lantern: Icons of 9rules
 
 {{< figure src="/9rules/images/logo.svg" alt="9rules logo" width="64" >}}
 
 If you use the logo, please use [logo.svg](https://tamada.github.io/9rules/images/logo.svg) or [logo.png](https://tamada.github.io/9rules/images/logo.png), both images are located on https://tamada.github.io/9rules/images/.
 
-## Discussion
+## :speech_balloon: Discussion
 
 [![Gitter](https://badges.gitter.im/9rules/Lobby.svg)](https://gitter.im/9rules/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-## License
+## :scroll: License
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](https://github.com/tamada/9rules/blob/master/LICENSE)
 

@@ -51,16 +51,17 @@ public class MainTest {
         String output = new String(out.toByteArray());
         String[] lines = output.split(System.getProperty("line.separator"));
 
-        assertThat(lines.length, is(10));
-        assertThat(lines[0], is("java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>"));
-        assertThat(lines[1], is(""));
-        assertThat(lines[2], is("OPTIONS:"));
-        assertThat(lines[3], is("    --strict:  Strictly level check (Default).")); 
-        assertThat(lines[4], is("    --general: General level check."));
-        assertThat(lines[5], is("    --rough:   Rough level check."));
-        assertThat(lines[6], is("    --help:    Print this message and exit."));
-        assertThat(lines[7], is(""));
-        assertThat(lines[8], is("ARGUMENTS:"));
-        assertThat(lines[9], is("    Directories include Java source files, and Java source files."));
+        assertThat(lines.length, is(11));
+        assertThat(lines[0], is("9rules version 1.1.0"));
+        assertThat(lines[1], is("java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>"));
+        assertThat(lines[2], is(""));
+        assertThat(lines[3], is("OPTIONS:"));
+        assertThat(lines[4], is("    --strict:  Strictly level check (Default)."));
+        assertThat(lines[5], is("    --general: General level check."));
+        assertThat(lines[6], is("    --rough:   Rough level check."));
+        assertThat(lines[7], is("    --help:    Print this message and exit."));
+        assertThat(lines[8], is(""));
+        assertThat(lines[9], is("ARGUMENTS:"));
+        assertThat(lines[10], is("    Directories include Java source files, and Java source files."));
     }
 }

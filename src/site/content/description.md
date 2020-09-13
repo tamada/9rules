@@ -1,5 +1,5 @@
 ---
-title: Description
+title: ":page_facing_up: Description"
 ---
 
 ## Rules

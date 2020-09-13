@@ -43,7 +43,7 @@ The demo was executed the following commands.
 ```sh
 $ tree src/test/resources/hello/src/main/java/
 // The result of tree command was printed.
-$ java -jar target/9rules-1.0-SNAPSHOT.jar src/test/resources/hello/src/main/java/
+$ java -jar target/9rules-1.1.0-SNAPSHOT.jar src/test/resources/hello/src/main/java/
 // ... skip
 src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java
 line: 10, setter method found.
@@ -120,7 +120,9 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 Container images for Docker of 9rules are:
 
 * [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
-    * `1.0.0-v2`, `latest`
+    * `1.1.0`, `latest`
+* [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
+    * `1.0.0-v2`
 
 To run the 9rules by the docker container:
 
