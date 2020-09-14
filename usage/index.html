@@ -22,7 +22,7 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/katex.min.js" integrity="sha384-9Nhn55MVVN0/4OFx7EE5kpFBPsEMZxKTCnA+4fqDmg12eCTqGi6+BB2LjY8brQxJ" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.2/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-  <title>Usage | 9rules</title>
+  <title>🏃 Usage | 9rules</title>
 </head>
 
 <body>
@@ -43,43 +43,43 @@
       
       
       
-      <a href="/9rules/" class="btn">Home</a>
+      <a href="/9rules/" class="btn">🏠 Home</a>
     
       
       
       
       
-      <a href="/9rules/description/" class="btn">Description</a>
+      <a href="/9rules/description/" class="btn">📄 Description</a>
     
       
       
       
       
-      <a href="/9rules/install/" class="btn">Install</a>
+      <a href="/9rules/install/" class="btn">⚓ Install</a>
     
       
       
       
       
-      <a href="/9rules/usage/" class="btn">Usage</a>
+      <a href="/9rules/usage/" class="btn">🏃 Usage</a>
     
       
       
       
       
-      <a href="/9rules/about/" class="btn">About</a>
+      <a href="/9rules/about/" class="btn">😄 About</a>
     
   </nav>
 </section>
 
   <section class="main-content">
     
-  <h1>Usage</h1>
-  <h2 id="usage-of-9rules">Usage of 9rules</h2>
+  <h1>🏃 Usage</h1>
+  <h2 id="fork_and_knife-usage-of-9rules">🍴 Usage of 9rules</h2>
 <p>9rules is an executable jar, therefore, simply type <code>java -jar 9rules-VERSION.jar</code>,
 and specified java source codes and source code directory.</p>
 <p>Then, the tool checks each java source code and reports the results of the check.</p>
-<h2 id="example">Example</h2>
+<h2 id="balloon-example">🎈 Example</h2>
 <p>We assume that the project was cloned and compiled with <a href="http://maven.apache.org/">Maven 3</a>.</p>
 <h3 id="an-simple-use-case">An simple use case</h3>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ ls
@@ -109,7 +109,7 @@ LICENSE    README.md  pom.xml    src/       target/
 $ java -jar target/9rules-1.0.0.jar  src/test/resources/hello/src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
-</code></pre><h2 id="help">Help</h2>
+</code></pre><h2 id="information_source-help">ℹ️ Help</h2>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">java -jar 9rules.jar <span style="color:#666">[</span>OPTIONS<span style="color:#666">]</span> &lt;TARGETS...&gt;
 
 OPTIONS:
@@ -173,14 +173,15 @@ the class will not be checked by the tool.</p>
 <p>In this version of <code>@IgnoreRules</code> annotation,
 the tool ignore all rules by specifying the annotation, and checks all rules without the annotation.
 In the future version, the tool will arrange the annotations for ignoring each rule.</p>
-<h2 id="demo">Demo</h2>
+<h2 id="confetti_ball-demo">🎊 Demo</h2>
 <p><img src="/9rules/images/demo.gif" alt="demo"></p>
-<h2 id="docker">Docker</h2>
+<h2 id="whale-docker">🐳 Docker</h2>
 <p>The docker container images are provided at DockerHub as the following repository.</p>
 <ul>
 <li><a href="https://hub.docker.com/r/tamada/9rules">tamada/9rules</a> (tamada/9rules)
 <ul>
-<li><code>1.0.0-v2</code>, <code>latest</code></li>
+<li><code>1.1.0</code>, <code>latest</code></li>
+<li><code>1.0.0-v2</code></li>
 </ul>
 </li>
 </ul>
@@ -195,7 +196,7 @@ In the future version, the tool will arrange the annotations for ignoring each r
 </ul>
 </li>
 </ul>
-<h3 id="example-1">Example</h3>
+<h3 id="example">Example</h3>
 <div class="highlight"><pre style=";-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$ docker run --rm -v <span style="color:#19177c">$PWD</span>:/home/ninerules tamada/9rules src/main/java
 </code></pre></div>
 

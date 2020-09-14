@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>9rules</title>
+    <title>:house: 9rules on 9rules</title>
     <link>https://tamada.github.io/9rules/</link>
-    <description>Recent content on 9rules</description>
+    <description>Recent content in :house: 9rules on 9rules</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     
@@ -11,16 +11,18 @@
     
     
     <item>
-      <title>About the project</title>
-      <link>https://tamada.github.io/9rules/about/</link>
+      <title>:anchor: Install</title>
+      <link>https://tamada.github.io/9rules/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://tamada.github.io/9rules/about/</guid>
-      <description>Contribution  Fork the project. (https://github.com/tamada/9rules/fork) Create a feature branch. (git switch -c FEATURE_BRANCH_NAME) Edit the source files and Commit your changes. Create tests and commit them. Rebase your local changes against the master branch. Run the test suite with the mvn package and confirm that passes. Create a new pull request. Confirm all checks pass.  Authors    Haruaki Tamada  Icons of 9rules If you use the logo, please use logo.</description>
+      <guid>https://tamada.github.io/9rules/install/</guid>
+      <description>:beer: Homebrew Install 9rules via Homebrew, simply run:
+$ brew tap tamada/brew $ brew install ninerules 9rules command (wrapper for shell script) will be installed.
+:muscle: Install yourself $ git clone https://github.com/tamada/9rules.git $ cd 9rules $ mvn package :briefcase: Requirements  Runtime  Java 8 or later.   Development  Maven 3.x   Dependencies  JDT Core 3.10.0 Vavr 0.10.3   Dependencies (the Unit Tests)  JUnit 4.</description>
     </item>
     
     <item>
-      <title>Description</title>
+      <title>:page_facing_up: Description</title>
       <link>https://tamada.github.io/9rules/description/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -30,26 +32,24 @@
     </item>
     
     <item>
-      <title>Install</title>
-      <link>https://tamada.github.io/9rules/install/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://tamada.github.io/9rules/install/</guid>
-      <description>Homebrew Install 9rules via Homebrew, simply run:
-$ brew tap tamada/brew $ brew install ninerules 9rules command (wrapper for shell script) will be installed.
-Install yourself $ git clone https://github.com/tamada/9rules.git $ cd 9rules $ mvn package Requirements  Runtime  Java 8 or later.   Development  Maven 3.x   Dependencies  JDT Core 3.10.0   Dependencies (the Unit Tests)  JUnit 4.12 Hamcreset all 1.3    </description>
-    </item>
-    
-    <item>
-      <title>Usage</title>
+      <title>:running: Usage</title>
       <link>https://tamada.github.io/9rules/usage/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://tamada.github.io/9rules/usage/</guid>
-      <description>Usage of 9rules 9rules is an executable jar, therefore, simply type java -jar 9rules-VERSION.jar, and specified java source codes and source code directory.
+      <description>:fork_and_knife: Usage of 9rules 9rules is an executable jar, therefore, simply type java -jar 9rules-VERSION.jar, and specified java source codes and source code directory.
 Then, the tool checks each java source code and reports the results of the check.
-Example We assume that the project was cloned and compiled with Maven 3.
+:balloon: Example We assume that the project was cloned and compiled with Maven 3.
 An simple use case $ ls LICENSE README.md pom.xml src/ target/ $ java -jar target/9rules-1.0.0.jar src/test/resources/hello/src/main/java/ src/test/resources/hello/src/main/java/sample/hello/GodObject.java line: 53, else statement found.</description>
+    </item>
+    
+    <item>
+      <title>:smile: About the project</title>
+      <link>https://tamada.github.io/9rules/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://tamada.github.io/9rules/about/</guid>
+      <description>:hammer_and_wrench: How to contribute the project  Fork the project. (https://github.com/tamada/9rules/fork) Create a feature branch. (git switch -c FEATURE_BRANCH_NAME) Edit the source files and Commit your changes. Create tests and commit them. Rebase your local changes against the master branch. Run the test suite with the mvn package and confirm that passes. Create a new pull request. Confirm all checks pass.  :man_office_worker: Authors :woman_office_worker:    Haruaki Tamada  :jack_o_lantern: Icons of 9rules If you use the logo, please use logo.</description>
     </item>
     
   </channel>
