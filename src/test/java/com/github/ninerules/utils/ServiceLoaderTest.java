@@ -55,7 +55,6 @@ public class ServiceLoaderTest {
         ServiceLoader<Pair> loader = new ServiceLoaderBuilder<Pair>().load(Pair.class);
 
         Class<Pair>[] pairs = (Class<Pair>[]) loader.stream().toArray(size -> new Class<?>[size]);
-        assertThat(pairs.length, is(1));
-        assertThat(pairs[0], is(nullValue()));
+        assertThat(pairs.length, is(0));
     }
 }

@@ -1,5 +1,7 @@
 package com.github.ninerules;
 
+import static io.vavr.control.Try.withResources;
+
 import java.io.PrintWriter;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
@@ -44,8 +46,7 @@ public class Main{
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        try(PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out, "utf-8"))){
-            new Main(args, out);
-        }
+        withResources(() -> new PrintWriter(new OutputStreamWriter(System.out, "utf-8")))
+                .of(out -> new Main(args, out));
     }
 }

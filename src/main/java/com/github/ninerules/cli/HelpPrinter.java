@@ -1,5 +1,9 @@
 package com.github.ninerules.cli;
 
+import static io.vavr.control.Try.withResources;
+
+import io.vavr.control.Try;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -25,18 +29,17 @@ public class HelpPrinter {
     }
 
     public void printHelp(){
-        try{
-            openAndPrintThem(getClass().getResource("/resources/help.txt"));
-        } catch(IOException e){ throw new InternalError(e); }
+        URL url = getClass().getResource("/resources/help.txt");
+        Try.run(() -> openAndPrintThem(url));
     }
 
     private void openAndPrintThem(URL location) throws IOException{
-        try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream(), "utf-8"))){
-            printLines(in.lines());
-        }
+        withResources(() -> new BufferedReader(new InputStreamReader(location.openStream(), "utf-8")))
+            .of(in -> printLines(in.lines()));
     }
 
-    private void printLines(Stream<String> stream){
+    private boolean printLines(Stream<String> stream){
         stream.forEach(out::println);
+        return true;
     }
 }

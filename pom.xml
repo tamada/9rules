@@ -46,6 +46,12 @@
   	  <version>2.10.1</version>
       <scope>compile</scope>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/io.vavr/vavr -->
+    <dependency>
+      <groupId>io.vavr</groupId>
+      <artifactId>vavr</artifactId>
+      <version>0.10.3</version>
+    </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>

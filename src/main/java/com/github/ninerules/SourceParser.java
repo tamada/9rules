@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.stream.Collectors;
 
-import com.github.ninerules.utils.ExceptionHandler;
+import io.vavr.control.Try;
 
 public class SourceParser {
     private Path path;
@@ -19,8 +19,8 @@ public class SourceParser {
     }
 
     private String readSource(Path path){
-        return ExceptionHandler.perform(path, this::readPlainSource)
-                .orElse("");
+        return Try.of(() -> readPlainSource(path))
+                .getOrElse("");
     }
 
     private String readPlainSource(Path path) throws IOException{

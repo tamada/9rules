@@ -1,8 +1,11 @@
 package com.github.ninerules.utils;
 
+import io.vavr.control.Try;
+
 import static java.util.stream.Collectors.toList;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Stream;
 
 public class ServiceLoader<T> {
@@ -13,13 +16,19 @@ public class ServiceLoader<T> {
     }
 
     public Stream<Class<T>> stream(){
-        return list.stream()
-                .map(this::toClass);
+        return optionalGet(list.stream()
+                .map(this::toClass));
+    }
+
+    private <K> Stream<K> optionalGet(Stream<Optional<K>> optionalStream) {
+        return optionalStream.filter(Optional::isPresent)
+                .map(Optional::get);
     }
 
     @SuppressWarnings("unchecked")
-    private Class<T> toClass(String className){
-        return (Class<T>) ExceptionHandler.perform(className, Class::forName)
-                .orElse(null);
+    private Optional<Class<T>> toClass(String className){
+        return Try.of(
+                () -> (Class<T>)Class.forName(className))
+                .toJavaOptional();
     }
 }

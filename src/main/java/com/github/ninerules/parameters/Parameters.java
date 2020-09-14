@@ -9,7 +9,7 @@ import java.util.EnumMap;
 import java.util.Map;
 
 import com.github.ninerules.StrictLevel;
-import com.github.ninerules.utils.ExceptionHandler;
+import io.vavr.control.Try;
 
 public class Parameters {
     private static final String STRICT_LEVEL_FIELD_NAME = "STRICT_LEVEL";
@@ -25,8 +25,9 @@ public class Parameters {
     }
 
     public static <T> T parameter(Class<? extends T> clazz, StrictLevel level){
-        return ExceptionHandler.perform(clazz, level, INSTANCE::createParameter)
-                .orElse(null);
+        return Try.of(
+                () -> INSTANCE.createParameter(clazz, level))
+                .getOrElseThrow(() -> new InternalError());
     }
 
     @SuppressWarnings("unchecked")

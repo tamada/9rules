@@ -1,5 +1,7 @@
 package com.github.ninerules.rules.onedot;
 
+import static io.vavr.control.Try.withResources;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Stream;
 
-import com.github.ninerules.utils.ExceptionHandler;
+import com.github.ninerules.utils.Pair;
+import io.vavr.control.Try;
 
 public class PropertyReader {
     private URL location;
@@ -19,8 +22,8 @@ public class PropertyReader {
 
     public Map<String, String> read(){
         Map<String, String> map = new HashMap<>();
-        return ExceptionHandler.perform(map, this::readProperty)
-                .orElse(map);
+        return Try.of(() -> readProperty(map))
+                .getOrElse(map);
     }
 
     private Map<String, String> readProperty(Map<String, String> map) throws IOException{
@@ -29,22 +32,20 @@ public class PropertyReader {
     }
 
     private void openAndReadProperty(Map<String, String> map) throws IOException{
-        try(BufferedReader in = new BufferedReader(new InputStreamReader(location.openStream(), "utf-8"))){
-            readImpl(map, in.lines());
-        }
+        withResources(() -> new BufferedReader(new InputStreamReader(location.openStream(), "utf-8")))
+                .of(in -> readImpl(map, in.lines()))
+                .getOrElseThrow(e -> new IOException(e));
     }
 
-    private void readImpl(Map<String, String> map, Stream<String> stream){
-        stream.forEach(line -> splitItemAndPutThem(map, line));
+    private boolean readImpl(Map<String, String> map, Stream<String> stream){
+        stream.map(line -> splitItem(line))
+                .forEach(pair -> pair.apply(map::put));
+        return true;
     }
 
-    private void splitItemAndPutThem(Map<String, String> map, String item){
+    private Pair<String, String> splitItem(String item) {
         int index = item.indexOf('=');
-        String key = item.substring(0, index);
-        map.put(key, parseLineToGetValue(item, index));
-    }
-
-    private String parseLineToGetValue(String line, int index){
-        return line.substring(index + 1);
+        return new Pair<>(item.substring(0, index),
+                item.substring(index + 1));
     }
 }
