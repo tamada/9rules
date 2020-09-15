@@ -1,3 +1,4 @@
+9rules version ${project.version}
 java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>
 
 OPTIONS:

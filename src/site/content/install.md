@@ -1,8 +1,8 @@
 ---
-title: Install
+title: ":anchor: Install"
 ---
 
-## Homebrew
+## :beer: Homebrew
 
 Install 9rules via [Homebrew](https://brew.sh), simply run:
 
@@ -13,7 +13,7 @@ $ brew install ninerules
 
 `9rules` command (wrapper for shell script) will be installed.
 
-## Install yourself
+## :muscle: Install yourself
 
 ```sh
 $ git clone https://github.com/tamada/9rules.git
@@ -21,7 +21,7 @@ $ cd 9rules
 $ mvn package
 ```
 
-## Requirements
+## :briefcase: Requirements
 
 * Runtime
     * Java 8 or later.
@@ -29,6 +29,7 @@ $ mvn package
     * Maven 3.x
 * Dependencies
     * JDT Core 3.10.0
+    * Vavr 0.10.3
 * Dependencies (the Unit Tests)
     * JUnit 4.12
     * Hamcreset all 1.3

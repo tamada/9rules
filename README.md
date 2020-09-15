@@ -1,9 +1,9 @@
 [![Build Status](https://travis-ci.org/tamada/9rules.svg?branch=master)](https://travis-ci.org/tamada/9rules)
 [![Coverage Status](https://coveralls.io/repos/github/tamada/9rules/badge.svg?branch=master)](https://coveralls.io/github/tamada/9rules?branch=master)
-[![codecov](https://codecov.io/gh/tamada/9rules/branch/master/graph/badge.svg)](https://codecov.io/gh/tamada/9rules)
 [![codebeat badge](https://codebeat.co/badges/7338b3d9-520f-429b-ba55-16aec78615d1)](https://codebeat.co/projects/github-com-tamada-9rules)
 [![Gitter](https://badges.gitter.im/9rules/Lobby.svg)](https://gitter.im/9rules/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](https://github.com/tamada/9rules/blob/master/LICENSE)
+[![Version](https://img.shields.io/badge/Version-1.1.0-yellowgreen.svg)](https://github.com/tamada/9rules/releases/tag/v1.1.0)
 
 # 9rules
 
@@ -43,7 +43,7 @@ The demo was executed the following commands.
 ```sh
 $ tree src/test/resources/hello/src/main/java/
 // The result of tree command was printed.
-$ java -jar target/9rules-1.0-SNAPSHOT.jar src/test/resources/hello/src/main/java/
+$ java -jar target/9rules-1.1.0-SNAPSHOT.jar src/test/resources/hello/src/main/java/
 // ... skip
 src/test/resources/hello/src/main/java/sample/hello/HelloWorld.java
 line: 10, setter method found.
@@ -120,7 +120,9 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 Container images for Docker of 9rules are:
 
 * [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
-    * `1.0.0-v2`, `latest`
+    * `1.1.0`, `latest`
+* [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
+    * `1.0.0-v2`
 
 To run the 9rules by the docker container:
 

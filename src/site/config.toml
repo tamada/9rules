@@ -20,22 +20,22 @@ pygmentsStyle = "pygments"
 
 [menu]
   [[menu.nav]]
-    name = "Home"
+    name = ":house: Home"
     url = "/"
     weight = 1
   [[menu.nav]]
-    name = "Description"
+    name = ":page_facing_up: Description"
     url = "/description/"
     weight = 2
   [[menu.nav]]
-    name = "Install"
+    name = ":anchor: Install"
     url = "/install/"
     weight = 3
   [[menu.nav]]
-    name = "Usage"
+    name = ":running: Usage"
     url = "/usage/"
     weight = 4
   [[menu.nav]]
-    name = "About"
+    name = ":smile: About"
     url = "/about/"
     weight = 5
