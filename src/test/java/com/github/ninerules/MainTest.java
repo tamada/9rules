@@ -79,7 +79,7 @@ public class MainTest {
         String[] lines = output.split(System.getProperty("line.separator"));
 
         assertThat(lines.length, is(13));
-        assertThat(lines[0], is("9rules version 1.1.0"));
+        assertThat(lines[0], is("9rules version 1.1.1"));
         assertThat(lines[1], is("java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>"));
         assertThat(lines[2], is(""));
         assertThat(lines[3], is("OPTIONS:"));
