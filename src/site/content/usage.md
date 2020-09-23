@@ -36,6 +36,7 @@ line: 14, getter method found
 line: 18, method is too long (over 3 lines).
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
+9rules found 13 violations in 3 files.
 ```
 
 ### Java source codes as input
@@ -48,18 +49,22 @@ LICENSE    README.md  pom.xml    src/       target/
 $ java -jar target/9rules-1.0.0.jar  src/test/resources/hello/src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 src/test/resources/hello/src/main/java/sample/hello/Launcher.java
 line: 10, method is too long (over 3 lines).
+9rules found 1 violations in 1 files.
 ```
 
 ## :information_source: Help
 
 ```sh
+9rules version 1.1.1
 java -jar 9rules.jar [OPTIONS] <TARGETS...>
 
 OPTIONS:
-    --strict:  Strictly level check (Default).
-    --general: General level check.
-    --rough:   Rough level check.
-    --help:    Print this message and exit.
+    --strict        Strictly level check (Default).
+    --general       General level check.
+    --rough         Rough level check.
+
+    --no-summary    Print no summary.
+    --help          Print this message and exit.
 
 TARGETS:
     Directories include Java source files, and Java source files.
@@ -115,7 +120,8 @@ In the future version, the tool will arrange the annotations for ignoring each r
 The docker container images are provided at DockerHub as the following repository.
 
 * [tamada/9rules](https://hub.docker.com/r/tamada/9rules) (tamada/9rules)
-    * `1.1.0`, `latest`
+    * `1.1.1`, `latest`
+    * `1.1.0`
     * `1.0.0-v2`
 
 To run the 9rules by docker.
