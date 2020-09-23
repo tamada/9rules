@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 import com.github.ninerules.StrictLevel;
+import com.github.ninerules.entities.Context;
 
 public class CommandLines {
     private Options options;
@@ -18,6 +19,11 @@ public class CommandLines {
     public boolean printHelpIfSpecified(PrintWriter out){
         HelpPrinter printer = new HelpPrinter(out);
         return printer.printIfSpecified(this);
+    }
+
+    public Context context() {
+        return new Context(options.level(),
+                options.isSpecified(Option.NO_SUMMARY));
     }
 
     public StrictLevel level(){

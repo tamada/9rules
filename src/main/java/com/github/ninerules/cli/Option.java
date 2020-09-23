@@ -12,6 +12,7 @@ public class Option {
     private static final Map<Option, StrictLevel> LEVELS = new HashMap<>();
 
     public static final Option HELP_OPTION    = new Option("--help");
+    public static final Option NO_SUMMARY     = new Option("--no-summary");
     public static final Option STRICT_OPTION  = new Option("--strict",  StrictLevel.STRICT);
     public static final Option GENERAL_OPTION = new Option("--general", StrictLevel.GENERAL);
     public static final Option ROUGH_OPTION   = new Option("--rough",   StrictLevel.ROUGH);

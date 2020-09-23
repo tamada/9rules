@@ -2,10 +2,12 @@
 java -jar 9rules.jar [OPTIONS] <ARGUMENTS...>
 
 OPTIONS:
-    --strict:  Strictly level check (Default).
-    --general: General level check.
-    --rough:   Rough level check.
-    --help:    Print this message and exit.
+    --strict        Strictly level check (Default).
+    --general       General level check.
+    --rough         Rough level check.
+
+    --no-summary    Print no summary.
+    --help          Print this message and exit.
 
 ARGUMENTS:
     Directories include Java source files, and Java source files.

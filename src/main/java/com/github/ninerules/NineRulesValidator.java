@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+import com.github.ninerules.entities.Context;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.jdt.core.dom.AST;
 import org.eclipse.jdt.core.dom.ASTParser;
@@ -15,15 +16,16 @@ import com.github.ninerules.rules.results.Results;
 
 public class NineRulesValidator {
     private static final int PARSER_LEVEL = AST.JLS12;
-    private StrictLevel level = StrictLevel.STRICT;
+    private Context context;
 
-    public NineRulesValidator(StrictLevel level){
-        this.level = level;
+    public NineRulesValidator(Context context){
+        this.context = context;
     }
 
     public Results validate(List<Path> list){
-        return validateOf(list.stream())
-                .orElse(Results.empty());
+        return context.buildSummary(
+                validateOf(list.stream())
+                .orElse(Results.empty()));
     }
 
     private Optional<Results> validateOf(Stream<Path> stream){
@@ -33,7 +35,8 @@ public class NineRulesValidator {
 
     private Results validate(Path path){
         Target target = parse(path);
-        return new Rules(level).validate(target);
+        return new Rules(context.level())
+                .validate(target);
     }
 
     public Target parse(Path path){
