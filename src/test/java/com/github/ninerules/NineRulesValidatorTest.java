@@ -8,6 +8,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.github.ninerules.entities.Context;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -33,7 +34,7 @@ public class NineRulesValidatorTest {
 
     @Test
     public void testBasic(){
-        NineRulesValidator validator = new NineRulesValidator(StrictLevel.STRICT);
+        NineRulesValidator validator = new NineRulesValidator(new Context(StrictLevel.STRICT, false));
         Results results = validator.validate(list);
 
         assertThat(results.contains(

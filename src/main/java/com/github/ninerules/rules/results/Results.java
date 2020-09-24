@@ -17,7 +17,7 @@ public class Results {
         violations.put(fileName, list);
     }
 
-    private Results(){
+    Results(){
     }
 
     public static final Results empty(){

@@ -29,7 +29,7 @@ public class Main{
     }
 
     public Results perform(CommandLines commandline){
-        NineRulesValidator checker = new NineRulesValidator(commandline.level());
+        NineRulesValidator checker = new NineRulesValidator(commandline.context());
         List<Path> list = listupTargets(commandline.arguments());
         return checker.validate(list);
     }

@@ -12,7 +12,7 @@ RUN    apk --no-cache add openjdk11=11.0.4_p4-r1 \
 
 FROM alpine:3.10.1
 
-ARG ninerules_version="1.1.0"
+ARG ninerules_version="1.1.1"
 
 LABEL maintainer="Haruaki Tamada" \
       version="${ninerules_version}" \
@@ -21,14 +21,15 @@ LABEL maintainer="Haruaki Tamada" \
 COPY --from=base /opt/openjdk-11-minimal /opt/openjdk-11-minimal
 
 RUN    adduser -D ninerules \
-    && apk --no-cache add curl=7.66.0-r0 unzip=6.0-r6 \
+    && apk --no-cache add --virtual .builddeps curl unzip \
     && curl -s -L -O "https://github.com/tamada/9rules/releases/download/v${ninerules_version}/9rules-${ninerules_version}-bin.zip" \
     && unzip -q "9rules-${ninerules_version}-bin.zip"        \
     && mv "9rules-${ninerules_version}" /opt                 \
     && ln -s "/opt/9rules-${ninerules_version}" /opt/9rules  \
     && rm "9rules-${ninerules_version}-bin.zip"              \
     && sed 's/CELLAR=./CELLAR=\/opt\/9rules/g' /opt/9rules/bin/9rules.sh > /usr/bin/9rules.sh \
-    && chmod 755 /usr/bin/9rules.sh
+    && chmod 755 /usr/bin/9rules.sh \
+    && apk del --purge .builddeps
 
 ENV JAVA_HOME="/opt/openjdk-11-minimal"
 ENV PATH="$PATH:$JAVA_HOME/bin"

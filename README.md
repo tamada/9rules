@@ -3,7 +3,7 @@
 [![codebeat badge](https://codebeat.co/badges/7338b3d9-520f-429b-ba55-16aec78615d1)](https://codebeat.co/projects/github-com-tamada-9rules)
 [![Gitter](https://badges.gitter.im/9rules/Lobby.svg)](https://gitter.im/9rules/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](https://github.com/tamada/9rules/blob/master/LICENSE)
-[![Version](https://img.shields.io/badge/Version-1.1.0-yellowgreen.svg)](https://github.com/tamada/9rules/releases/tag/v1.1.0)
+[![Version](https://img.shields.io/badge/Version-1.1.1-yellowgreen.svg)](https://github.com/tamada/9rules/releases/tag/v1.1.1)
 
 # 9rules
 
@@ -120,8 +120,8 @@ If it is hard to obey the rules shown in above, we can lower the validating leve
 Container images for Docker of 9rules are:
 
 * [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
-    * `1.1.0`, `latest`
-* [`tamada/9rules`](https://hub.docker.com/r/tamada/9rules) 
+    * `1.1.1`, `latest`
+    * `1.1.0`
     * `1.0.0-v2`
 
 To run the 9rules by the docker container:

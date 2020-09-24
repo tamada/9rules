@@ -10,6 +10,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.Map;
 
+import com.github.ninerules.entities.Context;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -31,7 +32,7 @@ public class NoAccessorValidatorTest {
     @Before
     public void setUp(){
         Path path = Paths.get(FILE_PATH);
-        target = new NineRulesValidator(StrictLevel.STRICT).parse(path);
+        target = new NineRulesValidator(new Context(StrictLevel.STRICT, false)).parse(path);
     }
 
     @Test
