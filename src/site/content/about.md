@@ -1,10 +1,10 @@
 ---
 title: ":smile: About the project"
+date: 2020-09-23
 ---
 
 [![Gitter](https://badges.gitter.im/9rules/Lobby.svg)](https://gitter.im/9rules/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat)](https://github.com/tamada/9rules/blob/master/LICENSE)
-
 
 ## :hammer_and_wrench: How to contribute the project
 
@@ -19,7 +19,7 @@ title: ":smile: About the project"
 
 ## :man_office_worker: Authors :woman_office_worker:
 
-* {{< githubuser tamada >}} [Haruaki Tamada](https://github.com/tamada)
+* [Haruaki Tamada](https://github.com/tamada)
 
 ## :jack_o_lantern: Icons of 9rules
 
@@ -50,4 +50,3 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-

@@ -1,5 +1,6 @@
 ---
 title: ":anchor: Install"
+date: 2020-09-23
 ---
 
 ## :beer: Homebrew

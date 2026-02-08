@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <circle style="fill: white;" cx="128" cy="128" r="128"/>
+  <path d="M 256 128 C 256 159.199 244.838 187.791 226.289 210 L 29.711 210 C 11.162 187.791 0 159.199 0 128 C 0 98.643 9.883 71.595 26.503 50 L 229.497 50 C 246.117 71.595 256 98.643 256 128 Z" style="fill: rgb(255, 204, 0);"/>
+  <circle style="fill: white" cx="128" cy="128" r="64"/>
+  <text x="128" y="155" style="white-space: pre; fill: rgb(51, 51, 51); font-family: Times; font-size: 96px; text-anchor: middle;">9</text>
+  <line style="stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-width: 3px;" x1="100" y1="173" x2="154" y2="173"/>
+</svg>

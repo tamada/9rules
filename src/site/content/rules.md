@@ -1,5 +1,6 @@
 ---
-title: ":page_facing_up: Description"
+title: ":page_facing_up: Rules"
+date: 2020-09-23
 ---
 
 ## Rules
