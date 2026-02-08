@@ -1,0 +1,11 @@
+.avatar {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-right: 10px;
+    height: 96px;
+    width: 96px;
+}
+
+.project-name {
+    display: inline-block;
+}
